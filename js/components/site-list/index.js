@@ -1,28 +1,15 @@
-/*import React from 'react';
-
-const SiteList = () => {
-	return <div>
-			<p>site!</p>
-		</div>;
-}
-
-export default SiteList;*/
-
-
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
-/*class SiteList extends React.Component<{}, {}> {
-    render(): React.ReactElement<{}> {
-        return (<div>
-            HELLO WORLD
-        </div>
-        );
-    }
-}*/
-const SiteList = () => {
-	return <div className="box">
-			<p>site!</p>
-		</div>;
-}
+const SiteList = ( {sites} ) => (
+	<div className="box">
+		<h3>Sites</h3>
+		{ sites.map( ( site ) => {
+			return <p key={"vvv_site_"+site.name}>{site.name}: {site.repo}</p>;
+		} ) }
+	</div>
+)
+SiteList.propTypes = {
+	sites: PropTypes.array
+};
 export default SiteList;
-//module.exports = Sitelist;

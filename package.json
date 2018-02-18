@@ -18,6 +18,7 @@
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "*",
     "babel-preset-react": "*",
     "eslint": "*",
