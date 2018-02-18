@@ -4,6 +4,7 @@ import {
 } from './actions'
 
 function vvvSitesApp(state = [], action) {
+	action.site;
 	switch (action.type) {
 		case ADD_SITE:
 			return {
@@ -11,10 +12,8 @@ function vvvSitesApp(state = [], action) {
 				"sites": [
 					...state.sites,
 					{
-						repo: "https://github.com/Varying-Vagrant-Vagrants/custom-site-template.git",
-						name: action.site.name,
-						expanded: false,
-						skip_provisioning: action.site.skip_provisioning
+						...action.site,
+						expanded: false
 					}
 				]
 			}

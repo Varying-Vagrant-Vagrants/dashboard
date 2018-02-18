@@ -25,7 +25,7 @@ Object.keys( window.vvv_sites).map( k => {
 // off to the races!
 ReactDOM.render(
 	<Provider store={store}>
-		<VisibleSiteList/>		
+		<VisibleSiteList/>
 	</Provider>,
 	document.getElementById('sitelist')
 );

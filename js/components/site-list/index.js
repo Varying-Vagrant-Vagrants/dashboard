@@ -1,12 +1,23 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import Site from '../site/index.js';
 
 const SiteList = ( {sites} ) => (
-	<div className="box">
-		<h3>Sites</h3>
-		{ sites.map( ( site ) => {
-			return <p key={"vvv_site_"+site.name}>{site.name}: {site.repo}</p>;
-		} ) }
+	<div className="vvv_sites">
+		{sites.map( ( site ) => {
+//			return <p key={"vvv_"+site.name}>{typeof site}</p>;
+			return <Site key={"vvv_site_"+site.name} site={site} />
+		} )}
+		<div className="box altbox">
+			<form action="POST" method="">
+				<h3>Add Site</h3>
+				<p><label>Name <input type="text" disabled placeholder="site name"/></label></p>
+				<p><label>Description <input type="text" disabled placeholder="description"/></label></p>
+				<p><label>URL <input type="url" disabled placeholder="URL"/></label></p>
+				<input type="submit" disabled value="Update config file"/>
+			</form>
+		</div>	
+
 	</div>
 )
 SiteList.propTypes = {

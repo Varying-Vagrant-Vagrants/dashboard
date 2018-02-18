@@ -139,6 +139,12 @@ input:focus,
 	outline: none;
 }
 
+button:disabled,
+input:disabled {
+	border-color: #c0c5ce;
+	color: #c0c5ce;
+	cursor: not-allowed !important;
+}
 .warning {
 	font-style: italic;
 
@@ -160,6 +166,17 @@ input:focus,
     color: #d08770;
 }
 
+.subpanel {
+
+	background: #272b35;
+	border: 1px solid #343d46;
+	color: white;
+
+	padding: 1.5em;
+	margin-left: -1.5em;
+	margin-right: -1.5em;
+	margin-bottom: -1.5em;
+}
 
 .right-column > .box,
 .alt-box {
@@ -168,12 +185,27 @@ input:focus,
 }
 
 .right-column > .box input,
+.right-column > .box button,
 .right-column >.box .button,
 .alt-box input,
-.alt-box .button {
+.alt-box button,
+.alt-box .button,
+.subpanel input,
+.subpanel button,
+.subpanel .button {
 	background: #272b35;
 }
 
+
+.vvv_site_link {
+	margin-right: 0.5em;
+}
+.vvv_site_link::after {
+	content: ',';
+}
+.vvv_site_link:last-of-type::after {
+	content: '';
+}
 
 /**
  * Source Code Pro License and Copyright:
