@@ -7,13 +7,19 @@ function endsWith( $haystack, $needle ) {
     return $length === 0 || 
     ( substr( $haystack, -$length ) === $needle );
 }
-
+$yaml = new Alchemy\Component\Yaml\Yaml();
+$data = $yaml->load( (file_exists('/vagrant/vvv-custom.yml')) ? '/vagrant/vvv-custom.yml' : '/vagrant/vvv-config.yml' );
 ?>
+<script>
+window.vvv_sites = <?php echo json_encode( $data['sites'] ); ?>
+</script>
+<div id="sitelist"></div>
 <div class="grid50">
-	<?php
-	$yaml = new Alchemy\Component\Yaml\Yaml();
 
-	$data = $yaml->load( (file_exists('/vagrant/vvv-custom.yml')) ? '/vagrant/vvv-custom.yml' : '/vagrant/vvv-config.yml' );
+	<?php
+	
+
+	
 	foreach ( $data['sites'] as $name => $site ) {
 
 		$classes = [];

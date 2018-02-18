@@ -32,5 +32,7 @@
 				?>
 			</div>
 		</div>
+
+		<script src="//vvv.test/dashboard/dist/bundle.js?t=<?php echo intval( filemtime( __DIR__.'/dist/bundle.js' ) ); ?>" type="text/javascript" name="vvv/react-dashboard"></script> 
 	</body>
 </html>

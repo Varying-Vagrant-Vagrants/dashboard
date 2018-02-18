@@ -10,12 +10,20 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "react-redux": "*",
+    "redux": "*"
   },
   "devDependencies": {
     "babel-core": "*",
+    "babel-eslint": "*",
     "babel-loader": "*",
     "babel-preset-env": "*",
+    "babel-preset-react": "*",
+    "eslint": "*",
+    "eslint-loader": "*",
+    "eslint-plugin-react": "*",
+    "uglifyjs-webpack-plugin": "^1.2.0",
     "webpack": "*"
   }
 }

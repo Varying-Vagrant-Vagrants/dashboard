@@ -1,0 +1,14 @@
+{
+	"presets": [
+		[
+			"babel-preset-env",
+			{
+				"targets": {
+					"browsers": "> 5%",
+					"uglify": true
+				}
+			}
+		],
+		"babel-preset-react"
+	]
+}
