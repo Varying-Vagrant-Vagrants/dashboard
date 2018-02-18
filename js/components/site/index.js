@@ -7,8 +7,8 @@ const Site = ( {site} ) => {
 		expanded = <div className="vvv_site_expanded subpanel">
 			<p><small>template: {site.repo.replace("https://github.com/",'').replace('.git','')}</small></p>
 			<p>
-				<button alt="WIP:Coming soon" className="button" disabled>Disable</button> 
-				<button alt="WIP:Coming soon" className="button" disabled>Delete</button>
+				<button title="WIP:Coming soon" className="button" disabled>Disable</button> 
+				<button title="WIP:Coming soon" className="button" disabled>Delete</button>
 			</p>
 		</div>;
 	//}

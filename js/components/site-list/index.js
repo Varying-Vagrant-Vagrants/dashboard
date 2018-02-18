@@ -11,10 +11,10 @@ const SiteList = ( {sites} ) => (
 		<div className="box altbox">
 			<form action="POST" method="">
 				<h3>Add Site</h3>
-				<p><label>Name <input type="text" disabled placeholder="site name"/></label></p>
-				<p><label>Description <input type="text" disabled placeholder="description"/></label></p>
-				<p><label>URL <input type="url" disabled placeholder="URL"/></label></p>
-				<input type="submit" disabled value="Update config file"/>
+				<p><label>Name <input type="text"  title="WIP:Coming soon"disabled placeholder="site name"/></label></p>
+				<p><label>Description <input type="text" vdisabled placeholder="description"/></label></p>
+				<p><label>URL <input type="url"  title="WIP:Coming soon"disabled placeholder="URL"/></label></p>
+				<input type="submit"  title="WIP:Coming soon"disabled value="Update config file"/>
 			</form>
 		</div>	
 
