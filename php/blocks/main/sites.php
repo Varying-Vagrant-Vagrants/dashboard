@@ -66,20 +66,27 @@ window.vvv_sites = <?php echo json_encode( $data['sites'] ); ?>
 			<strong>Folder:</strong> <code>www/<?php echo strip_tags( $name ); ?></code></p>
 			<?php
 			$warnings = [];
-			if ( $has_dev ) {
-				$warnings[] = '
-				<p><strong>Warning:</strong> the <code>.dev</code> TLD is owned by Google, and will not work in Chrome 58+, you should migrate to URLs ending with <code>.test</code></p>';
-			}
 			if ( $has_local ) {
 				$warnings[] = '
 				<p><strong>Warning:</strong> the <code>.local</code> TLD is used by Macs/Bonjour/Zeroconf as quick access to a local machine, this can cause clashes that prevent the loading of sites in VVV. E.g. a MacBook named <code>test</code> can be reached at <code>test.local</code>. You should migrate to URLs ending with <code>.test</code></p>';
 			}
-			if ( $has_dev || $has_local ) {
-				$warnings[] = '<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
+			if ( $has_local ) {
+				$warnings[] = '<p><a href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
 			}
 			if ( ! empty( $warnings ) ) {
 				echo '<div class="warning">';
 				echo implode( '', $warnings );
+				echo '</div>';
+			}
+			$errors = [];
+			if ( $has_dev ) {
+				$errors[] = '
+				<p><strong>Problem:</strong> the <code>.dev</code> TLD is owned by Google, and will not work in Chrome 58+, you should migrate to URLs ending with <code>.test</code></p>';
+				$errors[] = '<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
+			}
+			if ( ! empty( $errors ) ) {
+				echo '<div class="error">';
+				echo implode( '', $errors );
 				echo '</div>';
 			}
 			?>
