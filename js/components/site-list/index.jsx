@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Site from '../site/index.js';
+import Site from '../site';
 
 const SiteList = ({ sites }) => (
   <div className="vvv_sites">

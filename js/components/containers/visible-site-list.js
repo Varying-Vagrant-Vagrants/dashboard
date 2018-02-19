@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import SiteList from '../site-list/index.js';
+import SiteList from '../site-list';
 
 const getVisibleSites = (sites, filter) => {
   switch (filter) {
     /* case 'SHOW_PROVISIONED':
-			return SITES.filter(S => S.skip_provisioning)
-		case 'SHOW_UNPROVISIONED':
-			return sites.filter(s => !s.skip_provisioning)
-		case 'SHOW_ALL': */
+            return SITES.filter(S => S.skip_provisioning)
+        case 'SHOW_UNPROVISIONED':
+            return sites.filter(s => !s.skip_provisioning)
+        case 'SHOW_ALL': */
     default:
       return sites;
   }
@@ -19,15 +19,13 @@ const mapStateToProps = state => ({
 
 /* const mapDispatchToProps = dispatch => {
   return { }/*
-	onTodoClick: id => {
-	  dispatch(toggleTodo(id))
-	}
+    onTodoClick: id => {
+      dispatch(toggleTodo(id))
+    }
 }
 } */
 
 
-const VisibleSiteList = connect(mapStateToProps, /* ,
-	mapDispatchToProps */
-)(SiteList);
+const VisibleSiteList = connect(mapStateToProps, /* mapDispatchToProps */)(SiteList);
 
 export default VisibleSiteList;
