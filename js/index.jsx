@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 
 import vvvSitesApp from './reducers/reducers';
 import VisibleSiteList from './components/containers/visible-site-list';
-import { initial_state } from './reducers/initial-state';
+import { InitialState } from './reducers/initial-state';
 import { ADD_SITE } from './reducers/actions';
 
-const store = createStore(vvvSitesApp, initial_state);
+const store = createStore(vvvSitesApp, InitialState);
 
 // import all the sites intothe store from the config via window.vvv_sites
 Object.keys(window.vvv_sites).map((k) => {

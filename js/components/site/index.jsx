@@ -10,13 +10,14 @@ const Site = ({ site }) => {
       <button title="WIP:Coming soon" className="button" disabled>Disable</button>
       <button title="WIP:Coming soon" className="button" disabled>Delete</button>
     </p>
-              </div>);
+  </div>
+  );
   // }
   let visitButton = null;
   if (site.hosts.length > 0) {
     const sites = site.hosts.map(host => (<a key={`vvv_site_link_${host}`} className="vvv_site_link" href={`http://${host}`}>
       {host}
-                                          </a>));
+    </a>));
     visitButton = <p>{sites}</p>;
   }
   let provisioned = null;

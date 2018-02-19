@@ -5,7 +5,7 @@ import Site from '../site';
 const SiteList = ({ sites }) => (
   <div className="vvv_sites">
     {sites.map(site =>
-//			return <p key={"vvv_"+site.name}>{typeof site}</p>;
+//      return <p key={"vvv_"+site.name}>{typeof site}</p>;
       <Site key={`vvv_site_${site.name}`} site={site} />)}
     <div className="box altbox">
       <form action="POST" method="">

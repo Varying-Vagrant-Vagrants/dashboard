@@ -4,7 +4,6 @@ import {
 } from './actions';
 
 function vvvSitesApp(state = [], action) {
-  action.site;
   switch (action.type) {
     case ADD_SITE:
       return {

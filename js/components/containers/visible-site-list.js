@@ -26,6 +26,6 @@ const mapStateToProps = state => ({
 } */
 
 
-const VisibleSiteList = connect(mapStateToProps, /* mapDispatchToProps */)(SiteList);
+const VisibleSiteList = connect(mapStateToProps /* , mapDispatchToProps */)(SiteList);
 
 export default VisibleSiteList;

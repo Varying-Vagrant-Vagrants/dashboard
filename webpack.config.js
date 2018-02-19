@@ -4,8 +4,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
-    bundle: './js/index.js',
-    'bundle.min': './js/index.js',
+    'bundle': './js/index.jsx',
+    'bundle.min': './js/index.jsx',
   },
   output: {
     filename: '[name].js',
@@ -19,8 +19,8 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(/* process.env.NODE_ENV || */ 'development'),
     }),
     /* new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
-		}) */
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }) */
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -29,7 +29,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js?x$/,
         exclude: /(node_modules|bower_components|dist)/,
         use: {
           loader: 'babel-loader',

@@ -1,5 +1,6 @@
 
-export const initial_state = {
+const InitialState = {
   sites: [],
   visibilityFilter: 'ALL',
 };
+export default InitialState;

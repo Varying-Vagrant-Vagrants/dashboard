@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "./node_modules/.bin/webpack  --optimize-minimize --config webpack.config.js",
-    "test": "eslint ."
+    "test": "eslint --ext .jsx --ext .js ."
   },
   "author": "Tom J Nowell",
   "license": "GPL-3.0",
