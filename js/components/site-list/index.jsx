@@ -10,9 +10,21 @@ const SiteList = ({ sites }) => (
     <div className="box altbox">
       <form action="POST" method="">
         <h3>Add Site</h3>
-        <p><label>Name <input type="text" title="WIP:Coming soon"disabled placeholder="site name" /></label></p>
-        <p><label>Description <input type="text" vdisabled placeholder="description" /></label></p>
-        <p><label>URL <input type="url" title="WIP:Coming soon"disabled placeholder="URL" /></label></p>
+        <p>
+          <label htmlFor="vvv_site_add_name">Name
+            <input id="vvv_site_add_name" type="text" title="WIP:Coming soon" disabled placeholder="site name" />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="vvv_site_add_description">Description
+            <input id="vvv_site_add_description" type="text" vdisabled placeholder="description" />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="vvv_site_add_url">URL
+            <input id="vvv_site_add_url" type="url" title="WIP:Coming soon"disabled placeholder="URL" />
+          </label>
+        </p>
         <input type="submit" title="WIP:Coming soon"disabled value="Update config file" />
       </form>
     </div>
@@ -20,6 +32,10 @@ const SiteList = ({ sites }) => (
   </div>
 );
 SiteList.propTypes = {
-  sites: PropTypes.array,
+  sites: PropTypes.arrayOf(PropTypes.object),
+};
+
+SiteList.defaultProps = {
+  sites: [],
 };
 export default SiteList;
