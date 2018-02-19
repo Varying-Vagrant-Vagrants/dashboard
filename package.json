@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "./node_modules/.bin/webpack  --optimize-minimize --config webpack.config.js"
+    "build": "./node_modules/.bin/webpack  --optimize-minimize --config webpack.config.js",
+    "test": "eslint ."
   },
   "author": "Tom J Nowell",
   "license": "GPL-3.0",
