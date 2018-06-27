@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Site = ({ site, name }) => {
-  let expanded = null;
+  /* let expanded = null;
   // if ( true === site.expanded ) {
-  /* expanded = (
+  expanded = (
     <div className="vvv_site_expanded subpanel">
       <p><small>template: {site.repo.replace('https://github.com/', '').replace('.git', '')}</small></p>
       <p>
@@ -27,14 +27,13 @@ const Site = ({ site, name }) => {
   let active = 'active';
   if (site.skip_provisioning) {
     active = 'deactivated';
-    provisioned = <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small className="site_badge">site disabled</small></a>;
+    provisioned = <a target="_blank" rel="noopener noreferrer" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small className="site_badge">site disabled</small></a>;
   }
   return (
-    <div className={ `box site ${active}` }>
+    <div className={`box site ${active}`}>
       <h3>{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
-      
     </div>
   );
 };
@@ -48,6 +47,7 @@ Site.propTypes = {
   }),
 };
 Site.defaultProps = {
+  name: 'unknown site',
   site: {},
 };
 export default Site;
