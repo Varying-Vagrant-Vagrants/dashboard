@@ -214,8 +214,21 @@ input:disabled {
 }
 
 
-.vvv_site_link {
-	margin-right: 0.5em;
+.site a.vvv_site_link {
+	margin-right: 0.8em;
+	border-bottom: 1px solid gray;
+	color: gray;
+}
+.site.active a.vvv_site_link {
+	color: #ebcb8b;
+	border-bottom: 1px solid #ebcb8b;
+}
+.site.active a.vvv_site_link:hover {
+	color: #gd08770;
+	border-color: #d08770;
+}
+a.vvv_site_link::before {
+	content: '➔ ';
 }
 .vvv_site_link::after {
 	content: ',';
