@@ -2,37 +2,21 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Site from '../site';
 
-const SiteList = ({ sites }) => (
-  <div className="vvv_sites">
-    {sites.map(site =>
-//      return <p key={"vvv_"+site.name}>{typeof site}</p>;
-      <Site key={`vvv_site_${site.name}`} site={site} />)}
-    <div className="box altbox">
-      <form action="POST" method="">
-        <h3>Add Site</h3>
-        <p>
-          <label htmlFor="vvv_site_add_name">Name
-            <input id="vvv_site_add_name" type="text" title="WIP:Coming soon" disabled placeholder="site name" />
-          </label>
-        </p>
-        <p>
-          <label htmlFor="vvv_site_add_description">Description
-            <input id="vvv_site_add_description" type="text" vdisabled placeholder="description" />
-          </label>
-        </p>
-        <p>
-          <label htmlFor="vvv_site_add_url">URL
-            <input id="vvv_site_add_url" type="url" title="WIP:Coming soon"disabled placeholder="URL" />
-          </label>
-        </p>
-        <input type="submit" title="WIP:Coming soon"disabled value="Update config file" />
-      </form>
-    </div>
+const SiteList = (props) => {
+  let s = [];
+  for(var key in props.sites) {
+    const site = props.sites[key];
+    const n = <Site key={`vvv_site_${key}`} name={key} site={site} />
+    s.push(n);
+  }
 
+  return <div className="vvv_sites">
+    {s}
   </div>
-);
+};
+// (PropTypes.object),
 SiteList.propTypes = {
-  sites: PropTypes.arrayOf(PropTypes.object),
+  sites: PropTypes.object,
 };
 
 SiteList.defaultProps = {

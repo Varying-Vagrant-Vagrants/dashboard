@@ -16,7 +16,6 @@
 		<div class="grid">
 			<div class="column left-column">
 				<?php
-				require_once( __DIR__ . '/php/blocks/main/bundled-environments-intro.php' );
 				require_once( __DIR__ . '/php/blocks/main/sites.php' );
 				require_once( __DIR__ . '/php/blocks/main/adding-site-doc.php' );
 				?>

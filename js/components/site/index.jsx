@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Site = ({ site }) => {
+const Site = ({ site, name }) => {
   let expanded = null;
   // if ( true === site.expanded ) {
-  expanded = (
+  /* expanded = (
     <div className="vvv_site_expanded subpanel">
       <p><small>template: {site.repo.replace('https://github.com/', '').replace('.git', '')}</small></p>
       <p>
         <button title="WIP:Coming soon" className="button" disabled>Disable</button>
         <button title="WIP:Coming soon" className="button" disabled>Delete</button>
-      </p>
+      </p>{expanded}
     </div>
-  );
+  ); */
   // }
   let visitButton = null;
   if (site.hosts.length > 0) {
@@ -24,21 +24,23 @@ const Site = ({ site }) => {
     visitButton = <p>{sites}</p>;
   }
   let provisioned = null;
+  let active = 'active';
   if (site.skip_provisioning) {
-    provisioned = <span className="vvv_site_provision_skip_notice">Provisioning Skipped</span>;
+    active = 'deactivated';
+    provisioned = <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small className="site_badge">site disabled</small></a>;
   }
   return (
-    <div className="box site">
-      <h3>{site.name} {provisioned}</h3>
+    <div className={ `box site ${active}` }>
+      <h3>{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
-      {expanded}
+      
     </div>
   );
 };
 Site.propTypes = {
+  name: PropTypes.string,
   site: PropTypes.shape({
-    name: PropTypes.string,
     repo: PropTypes.string,
     description: PropTypes.string,
     skip_provision: PropTypes.bool,

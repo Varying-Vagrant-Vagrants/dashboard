@@ -1,6 +1,6 @@
 
 const InitialState = {
-  sites: [],
+  sites: window.vvv_sites,
   visibilityFilter: 'ALL',
 };
 export default InitialState;

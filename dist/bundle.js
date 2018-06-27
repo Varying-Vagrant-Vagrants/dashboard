@@ -1549,20 +1549,23 @@ var _visibleSiteList2 = _interopRequireDefault(_visibleSiteList);
 
 var _initialState = __webpack_require__(69);
 
+var _initialState2 = _interopRequireDefault(_initialState);
+
 var _actions = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers2.default, _initialState.InitialState);
+console.log(_initialState2.default);
+var store = (0, _redux.createStore)(_reducers2.default, _initialState2.default);
 
 // import all the sites intothe store from the config via window.vvv_sites
-var keys = Object.keys(window.vvv_sites);
+/*const keys = Object.keys(window.vvv_sites);
 function dispatchSites(k) {
-  var site = window.vvv_sites[k];
+  const site = window.vvv_sites[k];
   site.name = k;
-  store.dispatch((0, _actions.addSite)(site));
+  store.dispatch(addSite(site));
 }
-keys.forEach(dispatchSites);
+keys.forEach(dispatchSites);*/
 
 // off to the races!
 _reactDom2.default.render(_react2.default.createElement(
@@ -20859,21 +20862,25 @@ var _siteList2 = _interopRequireDefault(_siteList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var getVisibleSites = function getVisibleSites(sites, filter) {
-  switch (filter) {
-    /* case 'SHOW_PROVISIONED':
+var getVisibleSites = function getVisibleSites(sites) {
+  return sites;
+};
+/* {
+  return sites;
+  /* switch (filter) {
+    /* case 'SHOW_PROVISIONED'://, filter) => {
             return SITES.filter(S => S.skip_provisioning)
         case 'SHOW_UNPROVISIONED':
             return sites.filter(s => !s.skip_provisioning)
-        case 'SHOW_ALL': */
+        case 'SHOW_ALL': , state.visibilityFilter),
     default:
       return sites;
   }
-};
+}; */
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    sites: getVisibleSites(state.sites, state.visibilityFilter)
+    sites: getVisibleSites(state.sites)
   };
 };
 
@@ -20916,65 +20923,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var SiteList = function SiteList(_ref) {
-  var sites = _ref.sites;
+var SiteList = function SiteList(props) {
+  var s = [];
+  for (var key in props.sites) {
+    var site = props.sites[key];
+    var n = React.createElement(_site2.default, { key: 'vvv_site_' + key, name: key, site: site });
+    s.push(n);
+  }
+
   return React.createElement(
     'div',
     { className: 'vvv_sites' },
-    sites.map(function (site) {
-      return (
-        //      return <p key={"vvv_"+site.name}>{typeof site}</p>;
-        React.createElement(_site2.default, { key: 'vvv_site_' + site.name, site: site })
-      );
-    }),
-    React.createElement(
-      'div',
-      { className: 'box altbox' },
-      React.createElement(
-        'form',
-        { action: 'POST', method: '' },
-        React.createElement(
-          'h3',
-          null,
-          'Add Site'
-        ),
-        React.createElement(
-          'p',
-          null,
-          React.createElement(
-            'label',
-            { htmlFor: 'vvv_site_add_name' },
-            'Name',
-            React.createElement('input', { id: 'vvv_site_add_name', type: 'text', title: 'WIP:Coming soon', disabled: true, placeholder: 'site name' })
-          )
-        ),
-        React.createElement(
-          'p',
-          null,
-          React.createElement(
-            'label',
-            { htmlFor: 'vvv_site_add_description' },
-            'Description',
-            React.createElement('input', { id: 'vvv_site_add_description', type: 'text', vdisabled: true, placeholder: 'description' })
-          )
-        ),
-        React.createElement(
-          'p',
-          null,
-          React.createElement(
-            'label',
-            { htmlFor: 'vvv_site_add_url' },
-            'URL',
-            React.createElement('input', { id: 'vvv_site_add_url', type: 'url', title: 'WIP:Coming soon', disabled: true, placeholder: 'URL' })
-          )
-        ),
-        React.createElement('input', { type: 'submit', title: 'WIP:Coming soon', disabled: true, value: 'Update config file' })
-      )
-    )
+    s
   );
 };
+// (PropTypes.object),
 SiteList.propTypes = {
-  sites: _propTypes2.default.arrayOf(_propTypes2.default.object)
+  sites: _propTypes2.default.object
 };
 
 SiteList.defaultProps = {
@@ -21004,38 +20969,20 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Site = function Site(_ref) {
-  var site = _ref.site;
+  var site = _ref.site,
+      name = _ref.name;
 
   var expanded = null;
   // if ( true === site.expanded ) {
-  expanded = _react2.default.createElement(
-    'div',
-    { className: 'vvv_site_expanded subpanel' },
-    _react2.default.createElement(
-      'p',
-      null,
-      _react2.default.createElement(
-        'small',
-        null,
-        'template: ',
-        site.repo.replace('https://github.com/', '').replace('.git', '')
-      )
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      _react2.default.createElement(
-        'button',
-        { title: 'WIP:Coming soon', className: 'button', disabled: true },
-        'Disable'
-      ),
-      _react2.default.createElement(
-        'button',
-        { title: 'WIP:Coming soon', className: 'button', disabled: true },
-        'Delete'
-      )
-    )
-  );
+  /* expanded = (
+    <div className="vvv_site_expanded subpanel">
+      <p><small>template: {site.repo.replace('https://github.com/', '').replace('.git', '')}</small></p>
+      <p>
+        <button title="WIP:Coming soon" className="button" disabled>Disable</button>
+        <button title="WIP:Coming soon" className="button" disabled>Delete</button>
+      </p>{expanded}
+    </div>
+  ); */
   // }
   var visitButton = null;
   if (site.hosts.length > 0) {
@@ -21053,20 +21000,26 @@ var Site = function Site(_ref) {
     );
   }
   var provisioned = null;
+  var active = 'active';
   if (site.skip_provisioning) {
+    active = 'deactivated';
     provisioned = _react2.default.createElement(
-      'span',
-      { className: 'vvv_site_provision_skip_notice' },
-      'Provisioning Skipped'
+      'a',
+      { target: '_blank', href: 'https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning' },
+      _react2.default.createElement(
+        'small',
+        { className: 'site_badge' },
+        'site disabled'
+      )
     );
   }
   return _react2.default.createElement(
     'div',
-    { className: 'box site' },
+    { className: 'box site ' + active },
     _react2.default.createElement(
       'h3',
       null,
-      site.name,
+      name,
       ' ',
       provisioned
     ),
@@ -21075,13 +21028,12 @@ var Site = function Site(_ref) {
       null,
       site.description
     ),
-    visitButton,
-    expanded
+    visitButton
   );
 };
 Site.propTypes = {
+  name: _propTypes2.default.string,
   site: _propTypes2.default.shape({
-    name: _propTypes2.default.string,
     repo: _propTypes2.default.string,
     description: _propTypes2.default.string,
     skip_provision: _propTypes2.default.bool,
@@ -21105,7 +21057,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var InitialState = {
-  sites: [],
+  sites: window.vvv_sites,
   visibilityFilter: 'ALL'
 };
 exports.default = InitialState;

@@ -89,9 +89,17 @@ strong {
 .box {
 	border-radius:4px;
 	padding: 1.5em;
-	background: #343d46;
+	background: #272b35;
 	box-sizing: border-box;
 	margin-bottom:1em;
+}
+.box.site {
+	border: 1px solid #ebcb8b;
+}
+
+.box.site.deactivated {
+    border-color: gray;
+    color: gray;
 }
 
 .left-column {
