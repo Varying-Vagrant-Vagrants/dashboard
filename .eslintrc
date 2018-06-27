@@ -4,5 +4,8 @@
   "env": {
     "browser": true,
     "node": false
+  },
+  "rules": {
+	  "react/forbid-prop-types": 0
   }
 }
