@@ -21,7 +21,7 @@ const Site = ({ site, name }) => {
         {host}
       </a>
     ));
-    visitButton = <p>{sites}</p>;
+    visitButton = <p className="vvv_site_links">{sites}</p>;
   }
   let provisioned = null;
   let active = 'active';
@@ -31,9 +31,10 @@ const Site = ({ site, name }) => {
   }
   return (
     <div className={`box site ${active}`}>
-      <h3>{name} {provisioned}</h3>
+      <h3><div className="bookmark icon" /> {name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
+      <p className="vvv_site_folder"><div className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
     </div>
   );
 };

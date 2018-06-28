@@ -20980,7 +20980,7 @@ var Site = function Site(_ref) {
     });
     visitButton = _react2.default.createElement(
       'p',
-      null,
+      { className: 'vvv_site_links' },
       sites
     );
   }
@@ -21004,6 +21004,8 @@ var Site = function Site(_ref) {
     _react2.default.createElement(
       'h3',
       null,
+      _react2.default.createElement('div', { className: 'bookmark icon' }),
+      ' ',
       name,
       ' ',
       provisioned
@@ -21013,7 +21015,26 @@ var Site = function Site(_ref) {
       null,
       site.description
     ),
-    visitButton
+    visitButton,
+    _react2.default.createElement(
+      'p',
+      { className: 'vvv_site_folder' },
+      _react2.default.createElement('div', { className: 'file-icon file-icon-xs' }),
+      ' ',
+      _react2.default.createElement(
+        'strong',
+        null,
+        'Folder:'
+      ),
+      ' ',
+      _react2.default.createElement(
+        'code',
+        null,
+        'www/',
+        name,
+        '/public_html'
+      )
+    )
   );
 };
 Site.propTypes = {
