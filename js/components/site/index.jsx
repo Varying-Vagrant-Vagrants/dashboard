@@ -17,7 +17,7 @@ const Site = ({ site, name }) => {
   let visitButton = null;
   if (site.hosts.length > 0) {
     const sites = site.hosts.map(host => (
-      <a key={`vvv_site_link_${host}`} className="vvv_site_link" href={`http://${host}`}>
+      <a key={`vvv_site_link_${host}`}className="vvv_site_link" href={`http://${host}`}>
         {host}
       </a>
     ));
@@ -31,10 +31,10 @@ const Site = ({ site, name }) => {
   }
   return (
     <div className={`box site ${active}`}>
-      <h3><div className="bookmark icon" /> {name} {provisioned}</h3>
+      <h3><div className="bookmark icon" />{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
-      <p className="vvv_site_folder"><div className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
+      <p className="vvv_site_folder"><span className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
     </div>
   );
 };
