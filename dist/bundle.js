@@ -20986,7 +20986,7 @@ var Site = function Site(_ref) {
   }
   var provisioned = null;
   var active = 'active';
-  var site_icon = _react2.default.createElement('div', { className: 'bookmark icon' });
+  var siteIcon = _react2.default.createElement('div', { className: 'bookmark icon' });
   if (site.skip_provisioning) {
     active = 'deactivated';
     provisioned = _react2.default.createElement(
@@ -20998,7 +20998,7 @@ var Site = function Site(_ref) {
         'site disabled'
       )
     );
-    site_icon = _react2.default.createElement('div', { className: 'moon icon' });
+    siteIcon = _react2.default.createElement('div', { className: 'moon icon' });
   }
   return _react2.default.createElement(
     'div',
@@ -21006,7 +21006,7 @@ var Site = function Site(_ref) {
     _react2.default.createElement(
       'h3',
       null,
-      site_icon,
+      siteIcon,
       name,
       ' ',
       provisioned

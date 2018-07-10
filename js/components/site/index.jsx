@@ -25,15 +25,15 @@ const Site = ({ site, name }) => {
   }
   let provisioned = null;
   let active = 'active';
-  let site_icon = <div className="bookmark icon" />;
+  let siteIcon = <div className="bookmark icon" />;
   if (site.skip_provisioning) {
     active = 'deactivated';
     provisioned = <a target="_blank" rel="noopener noreferrer" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small className="site_badge">site disabled</small></a>;
-    site_icon = <div className="moon icon" />;
+    siteIcon = <div className="moon icon" />;
   }
   return (
     <div className={`box site ${active}`}>
-      <h3>{site_icon}{name} {provisioned}</h3>
+      <h3>{siteIcon}{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
       <p className="vvv_site_folder"><span className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
