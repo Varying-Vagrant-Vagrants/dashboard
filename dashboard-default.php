@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+$version = file_get_contents('/vagrant/version');
+
+
+?><!DOCTYPE html>
 <html>
 	<head>
 		<title>Varying Vagrant Vagrants Dashboard</title>
@@ -7,7 +11,7 @@
 	</head>
 	<body>
 		<h2 id="vvv_logo">
-			<img src="//vvv.test/dashboard/vvv-tight.png"/> Varying Vagrant Vagrants
+			<img src="//vvv.test/dashboard/vvv-tight.png"/> Varying Vagrant Vagrants v<?php echo $version; ?>
 		</h2>
 		<?php
 		require_once( __DIR__ . '/php/notices.php' );
@@ -23,8 +27,8 @@
 			<div class="column right-column">
 				<?php
 				require_once( __DIR__ . '/php/blocks/sidebar/search-docs.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/bundled-tools.php' );
+				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/contribute-wp.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/terminal-power.php' );
