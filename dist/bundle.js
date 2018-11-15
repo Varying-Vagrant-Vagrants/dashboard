@@ -20842,6 +20842,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _reactRedux = __webpack_require__(17);
 
 var _siteList = __webpack_require__(67);
@@ -20853,22 +20855,42 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var getVisibleSites = function getVisibleSites(sites) {
   return sites;
 };
-/* {
-  return sites;
-  /* switch (filter) {
-    /* case 'SHOW_PROVISIONED'://, filter) => {
-            return SITES.filter(S => S.skip_provisioning)
-        case 'SHOW_UNPROVISIONED':
-            return sites.filter(s => !s.skip_provisioning)
-        case 'SHOW_ALL': , state.visibilityFilter),
-    default:
-      return sites;
-  }
-}; */
+
+var getProvisionedSites = function getProvisionedSites(sites) {
+  var keys = Object.keys(sites);
+  var provisionedSites = keys.map(function (key) {
+    if (sites[key].skip_provisioning === false) {
+      return _extends({}, sites[key], {
+        name: key
+      });
+    }
+    return null;
+  });
+  return provisionedSites.filter(function (s) {
+    return s;
+  });
+};
+
+var getSkippedSites = function getSkippedSites(sites) {
+  var keys = Object.keys(sites);
+  var skippedSites = keys.map(function (key) {
+    if (sites[key].skip_provisioning === true) {
+      return _extends({}, sites[key], {
+        name: key
+      });
+    }
+    return null;
+  });
+  return skippedSites.filter(function (s) {
+    return s;
+  });
+};
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    sites: getVisibleSites(state.sites)
+    sites: getVisibleSites(state.sites),
+    provisionedSites: getProvisionedSites(state.sites),
+    skippedSites: getSkippedSites(state.sites)
   };
 };
 
@@ -20912,19 +20934,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var SiteList = function SiteList(props) {
-  var keys = Object.keys(props.sites);
-  var sites = keys.map(function (key) {
-    return React.createElement(_site2.default, { key: 'vvv_site_' + key, name: key, site: props.sites[key] });
+  var provisionedSites = props.provisionedSites.map(function (site) {
+    return React.createElement(_site2.default, { key: 'vvv_site_' + site.name, name: site.name, site: site });
   });
+  var skippedSites = props.skippedSites.map(function (site) {
+    return React.createElement(_site2.default, { key: 'vvv_site_' + site.name, name: site.name, site: site });
+  });
+
   return React.createElement(
     'div',
     { className: 'vvv_sites' },
-    sites
+    provisionedSites,
+    skippedSites
   );
 };
 // (PropTypes.object),
 SiteList.propTypes = {
-  sites: _propTypes2.default.object
+  sites: _propTypes2.default.object,
+  provisionedSites: _propTypes2.default.array,
+  skippedSites: _propTypes2.default.array
 };
 
 SiteList.defaultProps = {

@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 import Site from '../site';
 
 const SiteList = (props) => {
-  const keys = Object.keys(props.sites);
-  const sites = keys.map(key => <Site key={`vvv_site_${key}`} name={key} site={props.sites[key]} />);
-  return <div className="vvv_sites">{sites}</div>;
+  const provisionedSites = props.provisionedSites.map(
+  	site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />
+  );
+  const skippedSites = props.skippedSites.map(
+  	site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />
+  );
+
+  return <div className="vvv_sites">{provisionedSites}{skippedSites}</div>;
 };
 // (PropTypes.object),
 SiteList.propTypes = {
   sites: PropTypes.object,
+  provisionedSites: PropTypes.array,
+  skippedSites: PropTypes.array,
 };
 
 SiteList.defaultProps = {
