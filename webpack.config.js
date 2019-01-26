@@ -4,8 +4,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
-    'bundle': './js/index.jsx',
-    'bundle.min': './js/index.jsx',
+    'bundle': ["babel-polyfill", './js/index.jsx'],
+    'bundle.min': ["babel-polyfill", './js/index.jsx'],
   },
   output: {
     filename: '[name].js',
@@ -15,13 +15,11 @@ module.exports = {
     new UglifyJsPlugin({
       include: /\.min\.js$/,
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(/* process.env.NODE_ENV || */ 'development'),
-    }),
     /* new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }) */
   ],
+  mode: "development",
   resolve: {
     extensions: ['.js', '.jsx'],
     mainFields: ['browser', 'main'],
@@ -30,16 +28,17 @@ module.exports = {
     rules: [
       {
         test: /\.js?x$/,
-        exclude: /(node_modules|bower_components|dist)/,
+        include: path.resolve(__dirname, 'js'),
         use: {
           loader: 'babel-loader',
         },
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components|dist)/,
+        include: path.resolve(__dirname, 'js'),
         use: ['babel-loader', 'eslint-loader'],
       },
     ],
   },
 };
+
