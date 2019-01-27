@@ -33,6 +33,11 @@ const Site = ({ site, name }) => {
   }
   return (
     <div className={`box site ${active}`}>
+      <div className="vvv_site_dropdown_menu">
+        <ul>
+          <li><button>:)</button></li>
+        </ul>
+      </div>
       <h3>{siteIcon}{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}

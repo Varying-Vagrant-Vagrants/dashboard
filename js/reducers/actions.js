@@ -3,12 +3,14 @@
 
 export const ADD_SITE = 'ADD_SITE';
 export const TOGGLE_SITE = 'TOGGLE_SITE';
+export const SHOW_SITES = 'SHOW_SITES';
 
-function addSite(site) {
-  return {
-    type: ADD_SITE,
-    site,
-  };
-}
+export const addSite = site => ({
+  type: ADD_SITE,
+  site,
+});
 
-export default addSite;
+export const showSites = filter => ({
+  type: SHOW_SITES,
+  filter,
+});

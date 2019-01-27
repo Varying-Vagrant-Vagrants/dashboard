@@ -118,6 +118,7 @@ strong {
 }
 
 input,
+button,
 .button {
 	padding: .5em 1em;
 	border: 1px solid #ebcb8b;
@@ -129,6 +130,7 @@ input,
 	margin-bottom: 1em;
 }
 
+button:hover,
 input[type="submit"]:hover {
 	cursor: pointer;
 }
@@ -141,6 +143,7 @@ input[type="submit"]:hover {
 input:hover,
 input:active,
 input:focus,
+button:hover,
 .button:hover {
 	border-color: #d08770;
 	color: #d08770;
@@ -445,3 +448,14 @@ a.vvv_site_link::before {
 	border-right: solid 1px transparent;
 }
 
+.vvv_sites_filter > ul {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    list-style: none;
+    margin-bottom: 1em;
+}
+
+.vvv_sites_filter > ul > li {
+    display: inline-block;
+}

@@ -2,21 +2,35 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Site from '../site';
 
-const SiteList = (props) => {
-  const provisionedSites = props.provisionedSites.map(
-  	site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />
-  );
-  const skippedSites = props.skippedSites.map(
-  	site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />
-  );
+const SiteList = ({ sites, showAllSites, showProvisionedSites, showSkippedSites }) => {
+  const siteList = sites.map(site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />);
 
-  return <div className="vvv_sites">{provisionedSites}{skippedSites}</div>;
+  return (
+    <div>
+      <div className="vvv_sites_filter">
+        <ul>
+          <li>Filter:</li>
+          <li>
+            <button onClick={showAllSites} onKeyDown={showAllSites}>All</button>
+          </li>
+          <li>
+            <button onClick={showProvisionedSites} onKeyDown={showProvisionedSites}>Active</button>
+          </li>
+          <li>
+            <button onClick={showSkippedSites} onKeyDown={showSkippedSites}>Skipped</button>
+          </li>
+        </ul>
+      </div>
+      <div className="vvv_sites">{siteList}</div>
+    </div>
+  );
 };
-// (PropTypes.object),
+
 SiteList.propTypes = {
-  sites: PropTypes.object,
-  provisionedSites: PropTypes.array,
-  skippedSites: PropTypes.array,
+  sites: PropTypes.array,
+  showAllSites: PropTypes.func.isRequired,
+  showProvisionedSites: PropTypes.func.isRequired,
+  showSkippedSites: PropTypes.func.isRequired,
 };
 
 SiteList.defaultProps = {

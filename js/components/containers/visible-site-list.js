@@ -1,52 +1,18 @@
 import { connect } from 'react-redux';
 import SiteList from '../site-list';
-
-const getVisibleSites = sites => sites;
-
-const getProvisionedSites = (sites) => {
-  const keys = Object.keys(sites);
-  const provisionedSites = keys.map((key) => {
-    if (sites[key].skip_provisioning === false) {
-      return {
-        ...sites[key],
-        name: key,
-      };
-    }
-    return null;
-  });
-  return provisionedSites.filter(s => s);
-};
-
-const getSkippedSites = (sites) => {
-  const keys = Object.keys(sites);
-  const skippedSites = keys.map((key) => {
-    if (sites[key].skip_provisioning === true) {
-      return {
-        ...sites[key],
-        name: key,
-      };
-    }
-    return null;
-  });
-  return skippedSites.filter(s => s);
-};
+import { showSites } from '../../reducers/actions';
 
 
 const mapStateToProps = state => ({
-  sites: getVisibleSites(state.sites),
-  provisionedSites: getProvisionedSites(state.sites),
-  skippedSites: getSkippedSites(state.sites),
+  sites: state.visible_sites,
 });
 
-/* const mapDispatchToProps = dispatch => {
-  return { }/*
-    onTodoClick: id => {
-      dispatch(toggleTodo(id))
-    }
-}
-} */
+const mapDispatchToProps = dispatch => ({
+  showAllSites: () => dispatch(showSites('all')),
+  showProvisionedSites: () => dispatch(showSites('provisioned')),
+  showSkippedSites: () => dispatch(showSites('skipped')),
+});
 
-
-const VisibleSiteList = connect(mapStateToProps /* , mapDispatchToProps */)(SiteList);
+const VisibleSiteList = connect(mapStateToProps, mapDispatchToProps)(SiteList);
 
 export default VisibleSiteList;
