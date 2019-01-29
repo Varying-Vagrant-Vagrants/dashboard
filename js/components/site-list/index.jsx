@@ -2,7 +2,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Site from '../site';
 
-const SiteList = ({ sites, showAllSites, showProvisionedSites, showSkippedSites }) => {
+const SiteList = ({
+  sites, showAllSites, showProvisionedSites, showSkippedSites,
+}) => {
   const siteList = sites.map(site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />);
 
   return (
