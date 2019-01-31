@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Site from '../site';
 
 const SiteList = ({
-  sites, showAllSites, showProvisionedSites, showSkippedSites,
+  sites, filter, showAllSites, showProvisionedSites, showSkippedSites,
 }) => {
   const siteList = sites.map(site => <Site key={`vvv_site_${site.name}`} name={site.name} site={site} />);
 
@@ -11,15 +11,15 @@ const SiteList = ({
     <div>
       <div className="vvv_sites_filter">
         <ul>
-          <li>Filter:</li>
+          <li>Filter sites: </li>
           <li>
-            <button onClick={showAllSites} onKeyDown={showAllSites}>All</button>
+            <button className={ filter == 'all' ? 'active_filter' : ''} onClick={showAllSites} onKeyDown={showAllSites}>All</button>
           </li>
           <li>
-            <button onClick={showProvisionedSites} onKeyDown={showProvisionedSites}>Active</button>
+            <button className={ filter == 'provisioned' ? 'active_filter' : ''} onClick={showProvisionedSites} onKeyDown={showProvisionedSites}>Active</button>
           </li>
           <li>
-            <button onClick={showSkippedSites} onKeyDown={showSkippedSites}>Skipped</button>
+            <button className={ filter == 'skipped' ? 'active_filter' : ''} onClick={showSkippedSites} onKeyDown={showSkippedSites}>Skipped</button>
           </li>
         </ul>
       </div>

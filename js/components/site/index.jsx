@@ -34,14 +34,14 @@ const Site = ({ site, name }) => {
   return (
     <div className={`box site ${active}`}>
       <div className="vvv_site_dropdown_menu">
-        <ul>
-          <li><button>:)</button></li>
-        </ul>
+        <span className="vvv_site_dropdown_menu_button">↓</span>
+        <div className="vvv_site_dropdown_menu_content">
+            <p className="vvv_site_folder"><span className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
+        </div>
       </div>
       <h3>{siteIcon}{name} {provisioned}</h3>
       <p>{site.description}</p>
       {visitButton}
-      <p className="vvv_site_folder"><span className="file-icon file-icon-xs" /> <strong>Folder:</strong> <code>www/{name}/public_html</code></p>
     </div>
   );
 };

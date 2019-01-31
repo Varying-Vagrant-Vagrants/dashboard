@@ -72,6 +72,7 @@ function vvvSitesApp(state = [], action) {
       return {
         ...state,
         visible_sites: getFilteredSites(state.sites, action.filter),
+        filter: action.filter,
       };
     default:
       return state;

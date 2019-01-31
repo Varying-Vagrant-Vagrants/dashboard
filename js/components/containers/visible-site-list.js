@@ -5,6 +5,7 @@ import { showSites } from '../../reducers/actions';
 
 const mapStateToProps = state => ({
   sites: state.visible_sites,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

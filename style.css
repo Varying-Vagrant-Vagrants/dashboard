@@ -150,6 +150,15 @@ button:hover,
 	text-decoration: none;
 	outline: none;
 }
+button.active_filter {
+    border-color: #d08770;
+    color: #d08770;
+}
+
+button.active_filter:hover {
+    border-color: #fff;
+    color: #fff;
+}
 
 button:disabled,
 input:disabled {
@@ -458,4 +467,47 @@ a.vvv_site_link::before {
 
 .vvv_sites_filter > ul > li {
     display: inline-block;
+}
+
+.vvv_sites_filter button {
+	margin-left: 1em;
+}
+
+
+.vvv_site_dropdown_menu {
+	float:right;
+	position: relative;
+}
+
+.vvv_site_dropdown_menu {
+  position: relative;
+  display: inline-block;
+}
+
+.vvv_site_dropdown_menu_content {
+  display: none;
+  position: absolute;
+  right:0;
+  background-color: #2b303b;
+  border: 1px solid #ebcb8b;
+  color: #ebcb8b;
+  border-radius: 5px;
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.vvv_site_dropdown_menu:hover .vvv_site_dropdown_menu_content {
+  display: block;
+}
+
+.vvv_site_dropdown_menu_button {
+    border: 1px solid #ebcb8b;
+    color: #ebcb8b;
+    border-radius: 5px;
+    width: 28px;
+    display: block;
+    height: 28px;
+    text-align: center;
+    font-weight: bold;
 }
