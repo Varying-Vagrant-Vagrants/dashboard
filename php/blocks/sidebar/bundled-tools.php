@@ -15,6 +15,13 @@
 		<?php
 	}
 	?>
+	<?php
+	if ( file_exists( '/var/local/tideways-php/' ) ) {
+		?>
+		<a class="button" href="http://xhgui.vvv.test/" target="_blank">XHGui</a>
+		<?php
+	} 
+	?>
 	<a class="button" href="//vvv.test/webgrind/" target="_blank">Webgrind</a>
 	<a class="button" href="//vvv.test/phpinfo/" target="_blank">PHP Info</a>
 	<a class="button" href="php-status?html&amp;full" target="_blank">PHP Status</a>
