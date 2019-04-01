@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+$version = file_get_contents('/vagrant/version');
+
+
+?><!DOCTYPE html>
 <html>
 	<head>
 		<title>Varying Vagrant Vagrants Dashboard</title>
@@ -7,7 +11,7 @@
 	</head>
 	<body>
 		<h2 id="vvv_logo">
-			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV
+			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<?php echo $version; ?>
 		</h2>
 		<?php
 		require_once( __DIR__ . '/php/notices.php' );
