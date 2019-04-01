@@ -16,9 +16,9 @@
 	}
 	?>
 	<?php
-	if ( file_exists( '/var/local/tideways-php/' ) ) {
+	if ( file_exists( '/srv/www/default/xhgui/' ) ) {
 		?>
-		<a class="button" href="http://xhgui.vvv.test/" target="_blank">XHGui</a>
+		<a class="button" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
 		<?php
 	} 
 	?>
