@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h2 id="vvv_logo">
-			<img src="//vvv.test/dashboard/vvv-tight.png"/> Varying Vagrant Vagrants
+			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV
 		</h2>
 		<?php
 		require_once( __DIR__ . '/php/notices.php' );
