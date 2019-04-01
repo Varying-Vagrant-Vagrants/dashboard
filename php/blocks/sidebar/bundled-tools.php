@@ -15,6 +15,13 @@
 		<?php
 	}
 	?>
+	<?php
+	if ( file_exists( '/srv/www/default/xhgui/' ) ) {
+		?>
+		<a class="button" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
+		<?php
+	} 
+	?>
 	<a class="button" href="//vvv.test/webgrind/" target="_blank">Webgrind</a>
 	<a class="button" href="//vvv.test/phpinfo/" target="_blank">PHP Info</a>
 	<a class="button" href="php-status?html&amp;full" target="_blank">PHP Status</a>
