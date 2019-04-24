@@ -118,15 +118,21 @@ strong {
 }
 
 input,
+input::placeholder,
+button,
+.button {
+	color: #ebcb8b;
+	font-family: 'Source Code Pro', monospace;
+	font-size: 16px;
+}
+
+input,
 button,
 .button {
 	padding: .5em 1em;
 	border: 1px solid #ebcb8b;
 	border-radius: 4px;
 	background: #343d46;
-	color: #ebcb8b;
-	font-family: 'Source Code Pro', monospace;
-	font-size: 16px;
 	margin-bottom: 1em;
 }
 
@@ -144,10 +150,29 @@ input:hover,
 input:active,
 input:focus,
 button:hover,
-.button:hover {
-	border-color: #d08770;
+.button:hover,
+input:hover::placeholder {
 	color: #d08770;
 	text-decoration: none;
+}
+
+input:active::placeholder,
+input:focus::placeholder {
+	color: #7f3d29;
+}
+
+
+input::placeholder {
+	opacity: 50%;
+}
+
+
+input:hover,
+input:active,
+input:focus,
+button:hover,
+.button:hover {
+	border-color: #d08770;
 	outline: none;
 }
 button.active_filter {
