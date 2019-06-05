@@ -18,6 +18,8 @@ function endsWith( $haystack, $needle ) {
 
 		$classes = [];
 		$description = 'A WordPress installation';
+		$site_title = $site['custom']['site_title'];
+
 		if ( 'wordpress-default' === $name ) {
 			$description = 'WordPress stable';
 		} else if ( 'wordpress-develop' === $name ) {
@@ -34,7 +36,11 @@ function endsWith( $haystack, $needle ) {
 		?>
 		<div class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
 			<h4><?php
-			echo strip_tags( $name );
+			if ( ! empty( $site_title ) ) {
+				echo strip_tags( $site_title );
+			} else {
+				echo strip_tags( $name );
+			}
 			if ( true == $skip_provisioning ) {
 				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
 			}
