@@ -30,7 +30,7 @@ $version = file_get_contents('/vagrant/version');
 				require_once( __DIR__ . '/php/blocks/sidebar/search-docs.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/bundled-tools.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
+				//require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/contribute-wp.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/terminal-power.php' );
 				?>
