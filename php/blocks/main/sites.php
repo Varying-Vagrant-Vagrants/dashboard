@@ -12,8 +12,15 @@ function endsWith( $haystack, $needle ) {
 <div class="grid50">
 	<?php
 	$yaml = new Alchemy\Component\Yaml\Yaml();
+	
+	$config_file = '/vagrant/config.yml';
+	if ( file_exists( '/vagrant/config.yml' ) {
+		$config_file = '/vagrant/config.yml';
+	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) {
+		$config_file = '/vagrant/vvv-custom.yml';
+	}
 
-	$data = $yaml->load( (file_exists('/srv/config/default-config.yml')) ? '/srv/config/config.yml' : '/srv/config/default-config.yml' );
+	$data = $yaml->load( $config );
 	foreach ( $data['sites'] as $name => $site ) {
 
 		$classes = [];
