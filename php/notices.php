@@ -9,16 +9,6 @@
 	<p><a href="http://vvv.test" class="button">Visit the Dashboard</a></p>
 </div>
 
-<?php
-if ( ! file_exists( '/srv/config/config.yml' ) ) {
-	?>
-	<div id="vvv_custom_missing" class="top-notice-box box">
-		<p><strong>Super Important:</strong> You need to copy <code>config/default-config.yml</code> to <code>config/config.yml</code> or your changes will be destroyed when you update!</p>
-	</div>
-	<?php
-}
-?>
-
 <script>
 // If it's not vvv.test then this site has failed to provision, let the user know
 // also notify if the dashboard is being shown on the raw IP
