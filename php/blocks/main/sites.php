@@ -13,7 +13,7 @@ function endsWith( $haystack, $needle ) {
 	<?php
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 
-	$data = $yaml->load( (file_exists('/vagrant/vvv-custom.yml')) ? '/vagrant/vvv-custom.yml' : '/vagrant/vvv-config.yml' );
+	$data = $yaml->load( (file_exists('/srv/config/default-config.yml')) ? '/srv/config/config.yml' : '/srv/config/config.yml' );
 	foreach ( $data['sites'] as $name => $site ) {
 
 		$classes = [];
@@ -41,7 +41,7 @@ function endsWith( $haystack, $needle ) {
 			<h4><?php
 			echo strip_tags( $site_title );
 			if ( true == $skip_provisioning ) {
-				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/vvv-config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
+				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
 			}
 			?></h4>
 			<p><?php echo strip_tags( $description ); ?></p>

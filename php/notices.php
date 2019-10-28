@@ -10,10 +10,10 @@
 </div>
 
 <?php
-if ( ! file_exists('/vagrant/vvv-custom.yml') ) {
+if ( ! file_exists( '/srv/config/config.yml' ) ) {
 	?>
 	<div id="vvv_custom_missing" class="top-notice-box box">
-		<p><strong>Super Important:</strong> You need to copy <code>vvv-config.yml</code> to <code>vvv-custom.yml</code> or your changes will be destroyed when you update!</p>
+		<p><strong>Super Important:</strong> You need to copy <code>config/default-config.yml</code> to <code>config/config.yml</code> or your changes will be destroyed when you update!</p>
 	</div>
 	<?php
 }
