@@ -13,7 +13,7 @@ function endsWith( $haystack, $needle ) {
 	<?php
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 
-	$data = $yaml->load( (file_exists('/srv/config/default-config.yml')) ? '/srv/config/config.yml' : '/srv/config/config.yml' );
+	$data = $yaml->load( (file_exists('/srv/config/default-config.yml')) ? '/srv/config/config.yml' : '/srv/config/default-config.yml' );
 	foreach ( $data['sites'] as $name => $site ) {
 
 		$classes = [];
