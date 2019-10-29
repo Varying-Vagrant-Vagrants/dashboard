@@ -8,8 +8,18 @@
 	<p>If you're trying to access a site, you need to visit the host/domain given to the site if one was set.</p>
 	<p><a href="http://vvv.test" class="button">Visit the Dashboard</a></p>
 </div>
+<div id="vvv_update" class="top-notice box" style="display:none">
+	<p>There is a new update available for VVV! Check the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/keeping-up-to-date/#thoroughly-updating-vvv">documentation</a>.</p>
+</div>
 
 <script>
+fetch('https://raw.githubusercontent.com/Varying-Vagrant-Vagrants/VVV/master/version').then(function(response) {
+  return response.blob();
+}).then(function(version) {
+  if ( version !== document.querySelector('.version').textContent.trim() ) {
+	document.querySelector('#vvv_update').style.display = 'block';
+  }
+});
 // If it's not vvv.test then this site has failed to provision, let the user know
 // also notify if the dashboard is being shown on the raw IP
 if ( location.hostname.indexOf( "192.168") !== -1 ) {
