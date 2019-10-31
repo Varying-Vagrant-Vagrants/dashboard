@@ -5,7 +5,7 @@
 		// note that at this time we cannot check for updates to be 100% sure,
 		// that requires a network connection which isn't always present
 		?>
-		<p>You're running VVV <code><?php echo trim( file_get_contents( '/vagrant/version' ) ); ?></code>, <strong>if</strong> there are updates available you can run <code>git pull</code> and reprovision to apply them</p>
+		<p>You're running VVV <code><?php echo trim( strip_tags( file_get_contents( '/vagrant/version' ) ) ); ?></code>, <strong>if</strong> there are updates available you can run <code>git pull</code> and reprovision to apply them</p>
 		<?php
 	}
 	?>
