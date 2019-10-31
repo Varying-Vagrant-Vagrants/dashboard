@@ -14,9 +14,9 @@ function endsWith( $haystack, $needle ) {
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 	
 	$config_file = '/vagrant/config.yml';
-	if ( file_exists( '/vagrant/config.yml' ) {
+	if ( file_exists( '/vagrant/config.yml' ) ) {
 		$config_file = '/vagrant/config.yml';
-	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) {
+	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
 		$config_file = '/vagrant/vvv-custom.yml';
 	}
 
