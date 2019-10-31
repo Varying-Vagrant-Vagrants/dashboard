@@ -11,7 +11,7 @@ $version = file_get_contents('/vagrant/version');
 	</head>
 	<body>
 		<h2 id="vvv_logo">
-			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo $version; ?></span>
+			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
 		</h2>
 		<?php
 		require_once( __DIR__ . '/php/notices.php' );
