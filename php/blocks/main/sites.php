@@ -20,7 +20,7 @@ function endsWith( $haystack, $needle ) {
 		$config_file = '/vagrant/vvv-custom.yml';
 	}
 
-	$data = $yaml->load( $config );
+	$data = $yaml->load( $config_file );
 	foreach ( $data['sites'] as $name => $site ) {
 
 		$classes = [];
