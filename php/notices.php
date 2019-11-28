@@ -14,9 +14,9 @@
 
 <script>
 fetch('https://raw.githubusercontent.com/Varying-Vagrant-Vagrants/VVV/master/version').then(function(response) {
-  return response.blob();
+  return response.text();
 }).then(function(version) {
-  if ( version !== document.querySelector('.version').textContent.trim() ) {
+  if ( version.trim() !== document.querySelector('.version').textContent.trim() ) {
 	document.querySelector('#vvv_update').style.display = 'block';
   }
 });
