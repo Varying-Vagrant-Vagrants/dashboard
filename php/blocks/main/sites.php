@@ -4,7 +4,7 @@ require( __DIR__ . '/../../yaml.php' );
 function endsWith( $haystack, $needle ) {
     $length = strlen( $needle );
 
-    return $length === 0 || 
+    return $length === 0 ||
     ( substr( $haystack, -$length ) === $needle );
 }
 
@@ -17,14 +17,14 @@ function display_site( $name, array $site ) {
 		$site_title = strip_tags( $site['custom']['site_title'] );
 	}
 
-	if ( 'wordpress-default' === $name ) {
+	if ( !empty( $site['description'] ) ) {
+		$description = $site['description'];
+	} else if ( 'wordpress-default' === $name ) {
 		$description = 'WordPress stable';
 	} else if ( 'wordpress-develop' === $name ) {
 		$description = 'A dev build of WordPress, with a trunk build in the <code>src</code> subfolder, and a grunt build in the <code>build</code> folder';
 	}
-	if ( !empty( $site['description'] ) ) {
-		$description = $site['description'];
-	}
+
 	$skip_provisioning = false;
 	if ( !empty( $site['skip_provisioning'] ) ) {
 		$skip_provisioning = $site['skip_provisioning'];
@@ -47,12 +47,8 @@ function display_site( $name, array $site ) {
 				?>
 				<a href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a>,
 				<?php
-				if ( false === $has_dev ){
-					$has_dev = endsWith( $host, '.dev' );
-				}
-				if ( false === $has_local ){
-					$has_local = endsWith( $host, '.local' );
-				}
+				$has_dev = $has_dev || endsWith( $host, '.dev' );
+				$has_local = $has_local || endsWith( $host, '.local' );
 			}
 		}
 		?><br/>
