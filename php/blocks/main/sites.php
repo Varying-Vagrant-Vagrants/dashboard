@@ -30,6 +30,34 @@ function get_site_description( $name, array $site ) : string {
 	return 'A WordPress installation';
 }
 
+function get_site_warnings( array $site ) : array {
+	$warnings = [];
+	if ( empty( $site['hosts'] ) ) {
+		$warnings[] = '
+		<p><strong>Warning:</strong> there are no hosts for this site! It might be unreachable in the browser, add a hosts section to this sites config file.</p>';
+	}
+
+	$has_dev = array_reduce( $site['hosts'], function( $has_dev, $host ) {
+		return $has_dev || endsWith( $host, '.dev' );
+	});
+	$has_local = array_reduce( $site['hosts'], function( $has_local, $host ) {
+		return $has_local || endsWith( $host, '.local' );
+	});
+
+	if ( $has_dev ) {
+		$warnings[] = '
+		<p><strong>Warning:</strong> the <code>.dev</code> TLD is owned by Google, and will not work in Chrome 58+, you should migrate to URLs ending with <code>.test</code></p>';
+	}
+	if ( $has_local ) {
+		$warnings[] = '
+		<p><strong>Warning:</strong> the <code>.local</code> TLD is used by Macs/Bonjour/Zeroconf as quick access to a local machine, this can cause clashes that prevent the loading of sites in VVV. E.g. a MacBook named <code>test</code> can be reached at <code>test.local</code>. You should migrate to URLs ending with <code>.test</code></p>';
+	}
+	if ( $has_dev || $has_local ) {
+		$warnings[] = '<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
+	}
+	return $warnings;
+}
+
 function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = get_site_description( $name, $site );
@@ -55,39 +83,18 @@ function display_site( $name, array $site ) : void {
 		?></h4>
 		<p><?php echo strip_tags( $description ); ?></p>
 		<p class="vvv-site-links"><strong>URL:</strong> <?php
-		$has_dev = false;
-		$has_local = false;
 		$hosts = [];
 		if ( !empty( $site['hosts'] ) ) {
 			$hosts = $site['hosts'];
-		} else {
-			$warnings[] = '
-			<p><strong>Warning:</strong> there are no hosts for this site! It might be unreachable in the browser, add a hosts section to this sites config file.</p>';
 		}
+
 		array_walk( $site['hosts'], function( $host ) {
 			?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
 		} );
-		$has_dev = array_reduce( $site['hosts'], function( $has_dev, $host ) {
-			return $has_dev || endsWith( $host, '.dev' );
-		});
-		$has_local = array_reduce( $site['hosts'], function( $has_dev, $host ) {
-			return $has_local || endsWith( $host, '.local' );
-		});
 		?><br/>
 		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code></p>
 		<?php
-		$warnings = [];
-		if ( $has_dev ) {
-			$warnings[] = '
-			<p><strong>Warning:</strong> the <code>.dev</code> TLD is owned by Google, and will not work in Chrome 58+, you should migrate to URLs ending with <code>.test</code></p>';
-		}
-		if ( $has_local ) {
-			$warnings[] = '
-			<p><strong>Warning:</strong> the <code>.local</code> TLD is used by Macs/Bonjour/Zeroconf as quick access to a local machine, this can cause clashes that prevent the loading of sites in VVV. E.g. a MacBook named <code>test</code> can be reached at <code>test.local</code>. You should migrate to URLs ending with <code>.test</code></p>';
-		}
-		if ( $has_dev || $has_local ) {
-			$warnings[] = '<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
-		}
+		$warnings = get_site_warnings( $site );
 		show_warnings( $warnings );
 		?>
 	</div>
