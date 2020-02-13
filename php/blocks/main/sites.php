@@ -8,8 +8,16 @@ function endsWith( $haystack, $needle ) {
     ( substr( $haystack, -$length ) === $needle );
 }
 
+function show_warnings( array $warnings ) : void {
+	if ( empty( $warnings ) ) {
+		return;
+	}
+	echo '<div class="warning">';
+	echo implode( '', $warnings );
+	echo '</div>';
+}
 
-function display_site( $name, array $site ) {
+function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = 'A WordPress installation';
 	$site_title = strip_tags( $name );
@@ -39,20 +47,21 @@ function display_site( $name, array $site ) {
 		}
 		?></h4>
 		<p><?php echo strip_tags( $description ); ?></p>
-		<p><strong>URL:</strong> <?php
+		<p class="vvv-site-links"><strong>URL:</strong> <?php
 		$has_dev = false;
 		$has_local = false;
 		if ( !empty( $site['hosts'] ) ) {
 			foreach( $site['hosts'] as $host ) {
-				?>
-				<a href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a>,
-				<?php
+				?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
 				$has_dev = $has_dev || endsWith( $host, '.dev' );
 				$has_local = $has_local || endsWith( $host, '.local' );
 			}
+		} else {
+			$warnings[] = '
+			<p><strong>Warning:</strong> there are no hosts for this site! It might be unreachable in the browser, add a hosts section to this sites config file.</p>';
 		}
 		?><br/>
-		<strong>Folder:</strong> <code>www/<?php echo strip_tags( $name ); ?></code></p>
+		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code></p>
 		<?php
 		$warnings = [];
 		if ( $has_dev ) {
@@ -66,11 +75,7 @@ function display_site( $name, array $site ) {
 		if ( $has_dev || $has_local ) {
 			$warnings[] = '<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/dev-tld/">Click here for instructions for switching to .test</a></p>';
 		}
-		if ( ! empty( $warnings ) ) {
-			echo '<div class="warning">';
-			echo implode( '', $warnings );
-			echo '</div>';
-		}
+		show_warnings( $warnings );
 		?>
 	</div>
 	<?php
@@ -89,23 +94,19 @@ function display_site( $name, array $site ) {
 
 	$data = $yaml->load( $config_file );
 	foreach ( $data['sites'] as $name => $site ) {
-		$skip_provisioning = false;
-		if ( !empty( $site['skip_provisioning'] ) ) {
-			$skip_provisioning = $site['skip_provisioning'];
-			$classes[] = 'site_skip_provision';
+		if (
+			isset( $site['skip_provisioning'] )
+			&& ( $site['skip_provisioning'] == false )
+		) {
+			display_site( $name, $site );
 		}
-		if ( $skip_provisioning ) {
-			continue;
-		}
-		display_site( $name, $site );
 	}
+
 	foreach ( $data['sites'] as $name => $site ) {
-		$skip_provisioning = false;
-		if ( !empty( $site['skip_provisioning'] ) ) {
-			$skip_provisioning = $site['skip_provisioning'];
-			$classes[] = 'site_skip_provision';
-		}
-		if ( ! $skip_provisioning ) {
+		if (
+			isset( $site['skip_provisioning'] )
+			&& ( $site['skip_provisioning'] == false )
+		) {
 			continue;
 		}
 		display_site( $name, $site );
