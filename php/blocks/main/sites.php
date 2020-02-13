@@ -37,6 +37,8 @@ function display_site( $name, array $site ) : void {
 	if ( !empty( $site['skip_provisioning'] ) ) {
 		$skip_provisioning = $site['skip_provisioning'];
 		$classes[] = 'site_skip_provision';
+	} else {
+		$classes[] = 'site_provision';
 	}
 	?>
 	<div class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
@@ -81,7 +83,7 @@ function display_site( $name, array $site ) : void {
 	<?php
 }
 ?>
-<div class="grid50">
+<div class="grid50 vvv-sites">
 	<?php
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 
