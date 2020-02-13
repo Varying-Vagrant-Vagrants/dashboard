@@ -17,20 +17,25 @@ function show_warnings( array $warnings ) : void {
 	echo '</div>';
 }
 
+function get_site_description( $name, array $site ) : string {
+	if ( !empty( $site['description'] ) ) {
+		return $site['description'];
+	}
+	if ( 'wordpress-default' === $name ) {
+		return 'WordPress stable';
+	}
+	if ( 'wordpress-develop' === $name ) {
+		return 'A dev build of WordPress, with a trunk build in the <code>src</code> subfolder, and a grunt build in the <code>build</code> folder';
+	}
+	return 'A WordPress installation';
+}
+
 function display_site( $name, array $site ) : void {
 	$classes = [];
-	$description = 'A WordPress installation';
+	$description = get_site_description( $name, $site );
 	$site_title = strip_tags( $name );
 	if( isset( $site['custom']['site_title'] ) ) {
 		$site_title = strip_tags( $site['custom']['site_title'] );
-	}
-
-	if ( !empty( $site['description'] ) ) {
-		$description = $site['description'];
-	} else if ( 'wordpress-default' === $name ) {
-		$description = 'WordPress stable';
-	} else if ( 'wordpress-develop' === $name ) {
-		$description = 'A dev build of WordPress, with a trunk build in the <code>src</code> subfolder, and a grunt build in the <code>build</code> folder';
 	}
 
 	$skip_provisioning = false;
@@ -52,16 +57,22 @@ function display_site( $name, array $site ) : void {
 		<p class="vvv-site-links"><strong>URL:</strong> <?php
 		$has_dev = false;
 		$has_local = false;
+		$hosts = [];
 		if ( !empty( $site['hosts'] ) ) {
-			foreach( $site['hosts'] as $host ) {
-				?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
-				$has_dev = $has_dev || endsWith( $host, '.dev' );
-				$has_local = $has_local || endsWith( $host, '.local' );
-			}
+			$hosts = $site['hosts'];
 		} else {
 			$warnings[] = '
 			<p><strong>Warning:</strong> there are no hosts for this site! It might be unreachable in the browser, add a hosts section to this sites config file.</p>';
 		}
+		array_walk( $site['hosts'], function( $host ) {
+			?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
+		} );
+		$has_dev = array_reduce( $site['hosts'], function( $has_dev, $host ) {
+			return $has_dev || endsWith( $host, '.dev' );
+		});
+		$has_local = array_reduce( $site['hosts'], function( $has_dev, $host ) {
+			return $has_local || endsWith( $host, '.local' );
+		});
 		?><br/>
 		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code></p>
 		<?php
