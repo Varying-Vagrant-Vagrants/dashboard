@@ -13,6 +13,10 @@ function display_site( $name, array $site ) {
 	$classes = [];
 	$description = 'A WordPress installation';
 	$site_title = strip_tags( $name );
+	$upstream = 'php72';
+	if ( !empty( $site['nginx_upstream'] ) ) {
+		$upstream = $site['nginx_upstream'];
+	}
 	if( isset( $site['custom']['site_title'] ) ) {
 		$site_title = strip_tags( $site['custom']['site_title'] );
 	}
@@ -52,7 +56,8 @@ function display_site( $name, array $site ) {
 			}
 		}
 		?><br/>
-		<strong>Folder:</strong> <code>www/<?php echo strip_tags( $name ); ?></code></p>
+		<strong>Folder:</strong> <code>www/<?php echo strip_tags( $name ); ?></code><br/>
+		<strong>Using:</strong> <code><?php echo strip_tags( $upstream ); ?></code></p>
 		<?php
 		$warnings = [];
 		if ( $has_dev ) {
