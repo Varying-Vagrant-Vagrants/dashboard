@@ -62,6 +62,10 @@ function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = get_site_description( $name, $site );
 	$site_title = strip_tags( $name );
+	$upstream = 'php72';
+	if ( !empty( $site['nginx_upstream'] ) ) {
+		$upstream = $site['nginx_upstream'];
+	}
 	if( isset( $site['custom']['site_title'] ) ) {
 		$site_title = strip_tags( $site['custom']['site_title'] );
 	}
@@ -92,7 +96,8 @@ function display_site( $name, array $site ) : void {
 			?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
 		} );
 		?><br/>
-		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code></p>
+		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code><br/>
+		<strong>Using:</strong> <code><?php echo strip_tags( $upstream ); ?></code></p>
 		<?php
 		$warnings = get_site_warnings( $site );
 		show_warnings( $warnings );
