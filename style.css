@@ -104,8 +104,13 @@ strong {
 	border-top: 1px solid #2b303b;
 }
 
+.site_provision {
+    border: 1px solid #ebcb8b;
+}
+
 .site_skip_provision {
 	opacity: .4;
+    border: 1px solid #343d46;
 }
 
 input,
@@ -172,6 +177,10 @@ input:focus,
 .alt-box input,
 .alt-box .button {
 	background: #272b35;
+}
+
+.vvv-site-link + .vvv-site-link:before {
+	content: ", ";
 }
 
 table {
