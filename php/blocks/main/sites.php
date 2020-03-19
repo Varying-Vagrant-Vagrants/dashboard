@@ -30,8 +30,12 @@ function get_site_description( $name, array $site ) : string {
 	return 'A WordPress installation';
 }
 
-function get_site_warnings( array $site ) : array {
+function get_site_warnings( $name, array $site ) : array {
 	$warnings = [];
+	if ( $name === 'wordpress-meta-environment' ) {
+		return $warnings;
+	}
+
 	if ( empty( $site['hosts'] ) ) {
 		$warnings[] = '
 		<p><strong>Warning:</strong> there are no hosts for this site! It might be unreachable in the browser, add a hosts section to this sites config file.</p>';
@@ -86,6 +90,9 @@ function display_site( $name, array $site ) : void {
 		}
 		?></h4>
 		<p><?php echo strip_tags( $description ); ?></p>
+		<?php
+			if ( $site_title !== 'wordpress-meta-environment' ) {
+		?>
 		<p class="vvv-site-links"><strong>URL:</strong> <?php
 		$hosts = [];
 		if ( !empty( $site['hosts'] ) ) {
@@ -96,10 +103,11 @@ function display_site( $name, array $site ) : void {
 			?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
 		} );
 		?><br/>
+		<?php } ?>
 		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code><br/>
 		<strong>Using:</strong> <code><?php echo strip_tags( $upstream ); ?></code></p>
 		<?php
-		$warnings = get_site_warnings( $site );
+		$warnings = get_site_warnings( $name, $site );
 		show_warnings( $warnings );
 		?>
 	</div>
