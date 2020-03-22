@@ -51,7 +51,7 @@ foreach ( $exts as $name => $ext ) {
 	}
 	$current_debug_ext = $ext;
 	?>
-	<p>The currently loaded debugging extension for PHP is <strong><?php echo $name; ?></strong> at version <code><?php echo phpversion( 'xdebug' ); ?></code></p>
+	<p>The currently loaded debugging extension for PHP is <strong><?php echo $name; ?></strong> at version <code><?php echo phpversion( $ext ); ?></code></p>
 	<?php
 	break;
 }
