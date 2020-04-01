@@ -121,23 +121,25 @@ function display_site( $name, array $site ) : void {
 	}
 
 	$data = $yaml->load( $config_file );
+	$provisioned_sites = [];
+	$skipped_sites = [];
 	foreach ( $data['sites'] as $name => $site ) {
+		$skipped = false;
 		if (
 			isset( $site['skip_provisioning'] )
-			&& ( $site['skip_provisioning'] == false )
+			&& ( $site['skip_provisioning'] == true )
 		) {
-			display_site( $name, $site );
+			$skipped_sites[ $name ] = $site;
+		} else {
+			$provisioned_sites[ $name ] = $site;
 		}
 	}
-
-	foreach ( $data['sites'] as $name => $site ) {
-		if (
-			isset( $site['skip_provisioning'] )
-			&& ( $site['skip_provisioning'] == false )
-		) {
-			continue;
-		}
+	foreach( $provisioned_sites as $name => $site ) {
 		display_site( $name, $site );
 	}
+	foreach( $skipped_sites as $name => $site ) {
+		display_site( $name, $site );
+	}
+
 	?>
 </div>
