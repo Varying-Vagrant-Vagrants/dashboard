@@ -105,7 +105,7 @@ strong {
 }
 
 .site_provision {
-    border: 1px solid #ebcb8b;
+    /*border: 1px solid #ebcb8b;*/
 }
 
 .site_skip_provision {
@@ -194,6 +194,18 @@ th {
 
 th, td {
 	padding: 10px 30px 10px 0px;
+}
+
+.inclusive-teddy-bear {
+    font-family: monospace;
+	white-space: pre;
+	text-align:center;
+	color: #ebcb8b;
+	line-height: 1.2em;
+}
+
+.inclusive-teddy-bear strong {
+	color: #ebcb8b;
 }
 
 /**

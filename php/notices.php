@@ -9,7 +9,7 @@
 	<p><a href="http://vvv.test" class="button">Visit the Dashboard</a></p>
 </div>
 <div id="vvv_update" class="top-notice box" style="display:none">
-	<p>There is a new update available for VVV! Check the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/keeping-up-to-date/#thoroughly-updating-vvv">documentation</a>.</p>
+	<p>There is an updated version of VVV, check the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/keeping-up-to-date/#thoroughly-updating-vvv">documentation</a> for how to upgrade.</p>
 </div>
 
 <script>
