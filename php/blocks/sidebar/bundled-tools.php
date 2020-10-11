@@ -11,9 +11,9 @@
 		?><a class="button" href="//vvv.test/opcache-status/opcache.php" target="_blank">Opcache Status</a> <?php
 	}
 	if ( file_exists( '/usr/local/bin/mailhog' ) ) {
-		?><a class="button" href="http://vvv.test:8025" target="_blank">MailHog</a> <?php
+		?><a class="button" href="http://vvv.test:8025" target="_blank">📨 MailHog</a> <?php
 	} else if ( file_exists( '/usr/local/rvm/bin/mailcatcher' ) ) {
-		?><a class="button" href="http://vvv.test:1080" target="_blank">Mailcatcher</a> <?php
+		?><a class="button" href="http://vvv.test:1080" target="_blank">📨 Mailcatcher</a> <?php
 	}
 
 	if ( is_dir( '/srv/www/default/xhgui/' ) ) {

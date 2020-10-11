@@ -1,38 +1,30 @@
 <?php
-$version = explode( '.', phpversion() );
-$version = $version[0] . "." . $version[1] . "." . explode( '+', $version[2] )[0];
+$version_arr = explode( '.', phpversion() );
+$version = $version_arr[0] . "." . $version_arr[1] . "." . explode( '+', $version_arr[2] )[0];
 ?>
 <div class="box alt-box">
-	<h3>PHP Status</h3>
-
-	<p>The default version of PHP is <code>v<?php echo $version; ?></code>, but individual sites can use other versions of PHP. <a href="https://launchpad.net/~ondrej/+archive/ubuntu/php" target="_blank">PHP packages are installed from Ondřej Surý PPA</a></p>
-
-	<p>Update your <code>config/config.yml</code> file to install more versions of PHP</p>
-
-
 	<table>
 		<tr>
 			<th>PHP Installations</th>
 		</tr>
 <?php
-$files = glob('/usr/bin/php5.*');
+$default_version = 'php' . $version_arr[0] . "." . $version_arr[1];
+$files = glob( '/usr/bin/php[0-9].*' );
 foreach ( $files as $file ) {
+	$default = '';
+	if ( trim( basename( $file ) ) === $default_version ) {
+		$default = ' <em>( default )</em>';
+	}
 	?>
 		<tr>
-			<td><?php echo basename( $file ) ?></td>
-		</tr>
-	<?php
-}
-$files = glob('/usr/bin/php7.*');
-foreach ( $files as $file ) {
-	?>
-		<tr>
-			<td><?php echo basename( $file ) ?></td>
+			<td><?php echo basename( $file ) . $default; ?></td>
 		</tr>
 	<?php
 }
 ?>
-
+		<tr>
+			<td><a href="https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/changing-php-version/" target="_blank">Adding more versions of PHP</a></td>
+		</tr>
 	</table>
 </div>
 <div class="box alt-box">

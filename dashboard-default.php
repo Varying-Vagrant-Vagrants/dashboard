@@ -21,7 +21,7 @@ $version = file_get_contents('/vagrant/version');
 			<div class="column left-column">
 				<?php
 				require_once( __DIR__ . '/php/blocks/main/sites.php' );
-				require_once( __DIR__ . '/php/blocks/main/bundled-environments-intro.php' );
+				// require_once( __DIR__ . '/php/blocks/main/bundled-environments-intro.php' );
 				require_once( __DIR__ . '/php/blocks/main/adding-site-doc.php' );
 				require_once( __DIR__ . '/php/blocks/main/php-status.php' );
 				?>
@@ -32,9 +32,9 @@ $version = file_get_contents('/vagrant/version');
 				require_once( __DIR__ . '/php/blocks/sidebar/bundled-tools.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/search-docs.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
-				//require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/contribute-wp.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/terminal-power.php' );
+				// require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
+				// require_once( __DIR__ . '/php/blocks/sidebar/contribute-wp.php' );
+				// require_once( __DIR__ . '/php/blocks/sidebar/terminal-power.php' );
 				?>
 			</div>
 		</div>
