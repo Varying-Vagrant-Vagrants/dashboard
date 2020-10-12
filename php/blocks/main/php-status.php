@@ -28,32 +28,67 @@ foreach ( $files as $file ) {
 	</table>
 </div>
 <div class="box alt-box">
-	<h3>PHP Debug Extension</h3>
+	<h3>PHP Debugging Extensions</h3>
 
-<?php
-$exts = [
-	'XDebug'	=> 'xdebug',
-	'Tideways'  => 'tideways_xhprof',
-	'PCov'      => 'pcov',
-];
-$current_debug_ext = '';
-foreach ( $exts as $name => $ext ) {
-	if ( ! extension_loaded( $ext ) ) {
-		continue;
+	<?php
+	$exts = [
+		'XDebug'          => 'xdebug',
+		'Tideways XHProf' => 'tideways_xhprof',
+		'PCov'            => 'pcov',
+	];
+	$current_debug_ext = '';
+	foreach ( $exts as $name => $ext ) {
+		if ( ! extension_loaded( $ext ) ) {
+			continue;
+		}
+		$current_debug_ext = $ext;
+		break;
 	}
-	$current_debug_ext = $ext;
 	?>
-	<p>The currently loaded debugging extension for PHP is <strong><?php echo $name; ?></strong> at version <code><?php echo phpversion( $ext ); ?></code></p>
-	<?php
-	break;
-}
-if ( empty( $current_debug_ext ) ) {
-	?>
-	<p>No debugging extension is active at the moment</p>
-	<?php
-}
-?>
+	<table>
+		<thead>
+			<tr>
+				<th>On?</th>
+				<th>Name</th>
+				<th>Command to activate</th>
+			</tr>
+		</thead>
+		<?php
+		foreach ( $exts as $name => $ext ) {
+			?>
+			<tr>
+				<td><?php
+				if ( ! file_exists( '/etc/php/7.2/mods-available/' . $ext . '.ini' ) ) {
+					echo 'Not present';
+				} else {
+					if ( extension_loaded( $ext ) ) {
+						echo 'Active';
+					} else {
+						echo 'Inactive';
+					}
+				}?></td>
+				<td><?php echo $name; ?></td>
+				<td>
+					<?php
+					if ( ! file_exists( '/etc/php/7.2/mods-available/' . $ext . '.ini' ) ) {
+						?><a href="https://varyingvagrantvagrants.org/docs/en-US/references/tideways-xhgui/" target="_blank">Learn how to add Tideways XHProf</a><?php
+					} else {
+						?>
+						<code>vagrant ssh -c "switch_php_debugmod <?php echo $ext; ?>"</code>
+						<?php
+					}
+					?>
+				</td>
+			</tr>
 
-	<p>To switch between debug extensions, use <code>vagrant ssh</code> to enter the VM, then use <code>switch_php_debugmod</code> followed by the extension you prefer. For example <code>switch_php_debugmod xdebug</code>. Use <code>switch_php_debugmod none</code> to disable them. On older versions of VVV you would need to use <code>xdebug_on</code> or <code>xdebug_off</code>.</p>
-	<p>All installs come with XDebug installed but turned off. Tideways can be added by modifying <code>config/config.yml</code></p>
+			<?php
+		}
+		?>
+		<tr>
+			<td>-</td>
+			<td>None</td>
+			<td><code>vagrant ssh -c "switch_php_debugmod none"</code></td>
+		</tr>
+	</table>
+
 </div>
