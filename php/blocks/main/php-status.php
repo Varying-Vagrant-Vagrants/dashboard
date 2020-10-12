@@ -58,7 +58,7 @@ foreach ( $files as $file ) {
 			?>
 			<tr>
 				<td><?php
-				if ( ! file_exists( '/etc/php/7.2/mods-available/' . $ext . '.ini' ) ) {
+				if ( ! file_exists( '/etc/php/' . $version_arr[0] . "." . $version_arr[1] . '/mods-available/' . $ext . '.ini' ) ) {
 					echo 'Not present';
 				} else {
 					if ( extension_loaded( $ext ) ) {
@@ -71,7 +71,13 @@ foreach ( $files as $file ) {
 				<td>
 					<?php
 					if ( ! file_exists( '/etc/php/7.2/mods-available/' . $ext . '.ini' ) ) {
-						?><a href="https://varyingvagrantvagrants.org/docs/en-US/references/tideways-xhgui/" target="_blank">Learn how to add Tideways XHProf</a><?php
+						if ( 'tideways_xhprof' === $ext ) {
+							?>
+							<a href="https://varyingvagrantvagrants.org/docs/en-US/references/tideways-xhgui/" target="_blank">Learn how to add Tideways XHProf</a>
+							<?php
+						} else {
+							echo 'Update VVV to get this extension';
+						}
 					} else {
 						?>
 						<code>vagrant ssh -c "switch_php_debugmod <?php echo $ext; ?>"</code>
