@@ -5,38 +5,37 @@ $version = file_get_contents('/vagrant/version');
 ?><!DOCTYPE html>
 <html>
 	<head>
-		<title>Varying Vagrant Vagrants Dashboard</title>
+		<title>VVV Dashboard</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="//vvv.test/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__.'/style.css' ) ); ?>">
 	</head>
 	<body>
-		<h2 id="vvv_logo">
-			<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
-		</h2>
+		
+		<header>
+			<h2 id="vvv_logo">
+				<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
+			</h2>
+		</header>
 		<?php
 		require_once( __DIR__ . '/php/notices.php' );
 		//require_once( __DIR__ . '/php/blocks/intro.php' );
 		?>
 		<div class="grid">
-			<div class="column left-column">
+			<main class="column left-column">
 				<?php
 				require_once( __DIR__ . '/php/blocks/main/sites.php' );
-				require_once( __DIR__ . '/php/blocks/main/bundled-environments-intro.php' );
 				require_once( __DIR__ . '/php/blocks/main/adding-site-doc.php' );
 				require_once( __DIR__ . '/php/blocks/main/php-status.php' );
 				?>
-			</div>
-			<div class="column right-column">
+			</main>
+			<aside class="column right-column">
 				<?php
 				require_once( __DIR__ . '/php/blocks/sidebar/inclusivity.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/bundled-tools.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/search-docs.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
-				//require_once( __DIR__ . '/php/blocks/sidebar/vvv1.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/contribute-wp.php' );
-				require_once( __DIR__ . '/php/blocks/sidebar/terminal-power.php' );
 				?>
-			</div>
+			</aside>
 		</div>
 	</body>
 </html>

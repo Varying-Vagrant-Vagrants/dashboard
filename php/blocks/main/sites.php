@@ -1,11 +1,10 @@
 <?php
+require_once( __DIR__ . '/../../yaml.php' );
 
-require( __DIR__ . '/../../yaml.php' );
 function endsWith( $haystack, $needle ) {
-    $length = strlen( $needle );
+	$length = strlen( $needle );
 
-    return $length === 0 ||
-    ( substr( $haystack, -$length ) === $needle );
+	return $length === 0 || ( substr( $haystack, -$length ) === $needle );
 }
 
 function show_warnings( array $warnings ) : void {
@@ -65,7 +64,8 @@ function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = get_site_description( $name, $site );
 	$site_title = strip_tags( $name );
-	$upstream = 'php72';
+	$version_arr = explode( '.', phpversion() );
+	$upstream = 'php' . $version_arr[0] . $version_arr[1];
 	if ( !empty( $site['nginx_upstream'] ) ) {
 		$upstream = $site['nginx_upstream'];
 	}
@@ -81,36 +81,39 @@ function display_site( $name, array $site ) : void {
 		$classes[] = 'site_provision';
 	}
 	?>
-	<div class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
+	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
 		<h4><?php
 		echo strip_tags( $site_title );
 		if ( true == $skip_provisioning ) {
 			echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
 		}
 		?></h4>
-		<p><?php echo strip_tags( $description ); ?></p>
+		<?php
+		if ( ! empty( $description ) ) {
+			?>
+			<p><?php echo strip_tags( $description ); ?></p>
+			<?php
+		}
+		?>
 		<p class="vvv-site-links"><strong>URL:</strong> <?php
-		$hosts = [];
 		if ( !empty( $site['hosts'] ) ) {
-			$hosts = $site['hosts'];
 			array_walk( $site['hosts'], function( $host ) {
 				?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
 			} );
 		}
 
 		?><br/>
-		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code><br/>
+		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code> 
 		<strong>Using:</strong> <code><?php echo strip_tags( $upstream ); ?></code></p>
 		<?php
 		$warnings = get_site_warnings( $site );
 		show_warnings( $warnings );
 		?>
-	</div>
+	</article>
 	<?php
 }
-?>
-<div class="grid50 vvv-sites">
-	<?php
+
+function display_sites() : void {
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 
 	$config_file = '/vagrant/config.yml';
@@ -134,12 +137,19 @@ function display_site( $name, array $site ) : void {
 			$provisioned_sites[ $name ] = $site;
 		}
 	}
-	foreach( $provisioned_sites as $name => $site ) {
-		display_site( $name, $site );
-	}
-	foreach( $skipped_sites as $name => $site ) {
+
+	foreach ( $provisioned_sites as $name => $site ) {
 		display_site( $name, $site );
 	}
 
+	foreach ( $skipped_sites as $name => $site ) {
+		display_site( $name, $site );
+	}
+}
+
+?>
+<div class="vvv-sites">
+	<?php
+	display_sites();
 	?>
 </div>
