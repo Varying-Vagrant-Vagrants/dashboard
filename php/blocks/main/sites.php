@@ -81,7 +81,7 @@ function display_site( $name, array $site ) : void {
 		$classes[] = 'site_provision';
 	}
 	?>
-	<div class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
+	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
 		<h4><?php
 		echo strip_tags( $site_title );
 		if ( true == $skip_provisioning ) {
@@ -109,12 +109,11 @@ function display_site( $name, array $site ) : void {
 		$warnings = get_site_warnings( $site );
 		show_warnings( $warnings );
 		?>
-	</div>
+	</article>
 	<?php
 }
-?>
-<div class="vvv-sites">
-	<?php
+
+function display_sites() : void {
 	$yaml = new Alchemy\Component\Yaml\Yaml();
 
 	$config_file = '/vagrant/config.yml';
@@ -138,12 +137,19 @@ function display_site( $name, array $site ) : void {
 			$provisioned_sites[ $name ] = $site;
 		}
 	}
+
 	foreach ( $provisioned_sites as $name => $site ) {
 		display_site( $name, $site );
 	}
+
 	foreach ( $skipped_sites as $name => $site ) {
 		display_site( $name, $site );
 	}
+}
 
+?>
+<div class="vvv-sites">
+	<?php
+	display_sites();
 	?>
 </div>
