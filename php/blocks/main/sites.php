@@ -114,16 +114,7 @@ function display_site( $name, array $site ) : void {
 }
 
 function display_sites() : void {
-	$yaml = new Alchemy\Component\Yaml\Yaml();
-
-	$config_file = '/vagrant/config.yml';
-	if ( file_exists( '/vagrant/config.yml' ) ) {
-		$config_file = '/vagrant/config.yml';
-	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
-		$config_file = '/vagrant/vvv-custom.yml';
-	}
-
-	$data = $yaml->load( $config_file );
+	$data = get_config_yaml();
 	$provisioned_sites = [];
 	$skipped_sites = [];
 	foreach ( $data['sites'] as $name => $site ) {
