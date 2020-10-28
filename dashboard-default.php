@@ -1,6 +1,18 @@
 <?php
 $version = file_get_contents('/vagrant/version');
 
+function get_config_yaml() {
+	$yaml = new Alchemy\Component\Yaml\Yaml();
+
+	$config_file = '/vagrant/config.yml';
+	if ( file_exists( '/vagrant/config.yml' ) ) {
+		$config_file = '/vagrant/config.yml';
+	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
+		$config_file = '/vagrant/vvv-custom.yml';
+	}
+
+	return $yaml->load( $config_file );
+}
 
 ?><!DOCTYPE html>
 <html>
