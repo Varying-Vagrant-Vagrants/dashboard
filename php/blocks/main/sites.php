@@ -1,7 +1,7 @@
 <?php
-require_once( __DIR__ . '/../../yaml.php' );
+require_once __DIR__ . '/../../yaml.php';
 
-function endsWith( $haystack, $needle ) {
+function endsWith( $haystack, $needle ) : bool {
 	$length = strlen( $needle );
 
 	return $length === 0 || ( substr( $haystack, -$length ) === $needle );
@@ -119,7 +119,7 @@ function display_sites() : void {
 	$config_file = '/vagrant/config.yml';
 	if ( file_exists( '/vagrant/config.yml' ) ) {
 		$config_file = '/vagrant/config.yml';
-	} else if ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
+	} elseif ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
 		$config_file = '/vagrant/vvv-custom.yml';
 	}
 
@@ -127,7 +127,6 @@ function display_sites() : void {
 	$provisioned_sites = [];
 	$skipped_sites = [];
 	foreach ( $data['sites'] as $name => $site ) {
-		$skipped = false;
 		if (
 			isset( $site['skip_provisioning'] )
 			&& ( $site['skip_provisioning'] == true )
@@ -142,8 +141,18 @@ function display_sites() : void {
 		display_site( $name, $site );
 	}
 
-	foreach ( $skipped_sites as $name => $site ) {
-		display_site( $name, $site );
+	if ( ! empty( $skipped_sites ) ) {
+		?>
+		<details class="box alt-box">
+			<summary>Disabled Sites</summary>
+			<p>These sites had <code>skip_provisioning: true</code> set in the config file when VVV was last provisioned. They were consequently skipped. Set this to <code>false</code> and reprovision to activate them.</p>
+			<?php
+			foreach ( $skipped_sites as $name => $site ) {
+				display_site( $name, $site );
+			}
+			?>
+		</details>
+		<?php
 	}
 }
 
