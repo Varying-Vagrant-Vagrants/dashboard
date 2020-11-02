@@ -1,11 +1,12 @@
 <div class="box inclusivity">
-<div class="inclusive-teddy-bear"> <strong>Black Lives Matter!</strong> 
+<div class="inclusive-teddy-bear">
+	<h3>Black Lives Matter!</h3> 
 
- ✧ ▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄ ✧ 
+<pre class="teddy"> ✧ ▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄ ✧ 
   ✧█▒▒░░░░░░░░░▒▒█   
 ✧   █░░█░░░░░█░░█ ✧  
  ▄▄  █░░░▀█▀░░░█  ▄▄✧
-█░░█ ▀▄░░░░░░░▄▀ █░░█
+█░░█ ▀▄░░░░░░░▄▀ █░░█</pre>
 </div>
 	<ul>
 		<li>
