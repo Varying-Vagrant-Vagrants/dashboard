@@ -17,11 +17,22 @@ p:last-child {
 a {
 	color: #ebcb8b;
 	text-decoration: none;
+	background: #ebcb8b11;
+    border-radius: 4px;
+    border-bottom: 1px solid #ebcb8baa;
 }
 
 a:hover {
 	color: #d08770;
-	text-decoration: default;
+	background: #d0877011;
+    border-bottom: 1px solid #d08770aa;
+}
+
+a:focus, a:active {
+	color: #ff00ee;
+	background: #ff00ee11;
+	border-bottom: 1px solid #ff1fddaa;
+	outline: 2px solid #ff00ee;
 }
 
 h2, h3, h4, h5 {
@@ -134,6 +145,18 @@ input,
 	margin-bottom: 1em;
 }
 
+button:focus,
+button:active,
+.button:focus,
+.button:active,
+input:focus,
+input:active {
+	color: #ff00ee;
+	background: #ff00ee11;
+	border-color: #ff1fdd;
+	outline: none;
+}
+
 input[type="submit"]:hover {
 	cursor: pointer;
 }
@@ -144,8 +167,6 @@ input[type="submit"]:hover {
 }
 
 input:hover,
-input:active,
-input:focus,
 .button:hover {
 	border-color: #d08770;
 	color: #d08770;
@@ -206,7 +227,6 @@ th, td {
 }
 
 .inclusive-teddy-bear {
-    font-family: monospace;
 	text-align:center;
 	color: #ebcb8b;
 	line-height: 1.2em;
