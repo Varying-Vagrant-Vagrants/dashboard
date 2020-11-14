@@ -231,6 +231,11 @@ th, td {
 	padding: 10px 30px 10px 0px;
 }
 
+th:last-child,
+td:last-child {
+    padding-right: 0;
+}
+
 .inclusive-teddy-bear {
 	text-align:center;
 	color: #ebcb8b;
