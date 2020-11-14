@@ -82,12 +82,18 @@ function display_site( $name, array $site ) : void {
 	}
 	?>
 	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
-		<h4><?php
-		echo strip_tags( $site_title );
-		if ( true == $skip_provisioning ) {
-			echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
-		}
-		?></h4>
+		<h4>
+			<?php
+			echo '<strong>' . strip_tags( $site_title ) . '</strong>';
+			if ( true == $skip_provisioning ) {
+				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
+			}
+			?>
+			<div class="site-header-meta">
+				<small><code>/srv/www/<?php echo strip_tags( $name ); ?></code></small>
+				<span class="chip"><?php echo strip_tags( $upstream ); ?></span>
+			</div>
+		</h4>
 		<?php
 		if ( ! empty( $description ) ) {
 			?>
@@ -95,16 +101,16 @@ function display_site( $name, array $site ) : void {
 			<?php
 		}
 		?>
-		<p class="vvv-site-links"><strong>URL:</strong> <?php
-		if ( !empty( $site['hosts'] ) ) {
-			array_walk( $site['hosts'], function( $host ) {
-				?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
-			} );
-		}
+		<p class="vvv-site-links">
+			<?php
+			if ( !empty( $site['hosts'] ) ) {
+				array_walk( $site['hosts'], function( $host ) {
+					?><a class="vvv-site-link" href="<?php echo 'http://'.$host; ?>" target="_blank"><?php echo 'http://'.$host; ?></a><?php
+				} );
+			}
 
-		?><br/>
-		<strong>VM Folder:</strong> <code>/srv/www/<?php echo strip_tags( $name ); ?></code> 
-		<strong>Using:</strong> <code><?php echo strip_tags( $upstream ); ?></code></p>
+			?>
+		</p>
 		<?php
 		$warnings = get_site_warnings( $site );
 		show_warnings( $warnings );
