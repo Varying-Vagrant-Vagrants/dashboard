@@ -14,6 +14,7 @@ p:first-child {
 p:last-child {
 	margin-bottom: 0;
 }
+
 a {
 	color: #ebcb8b;
 	text-decoration: none;
@@ -209,8 +210,12 @@ input:hover,
 	background: #272b35;
 }
 
-.vvv-site-link + .vvv-site-link:before {
-	content: ", ";
+.vvv-site-link + .vvv-site-link {
+	margin-left: 1em;
+}
+
+.site-header-meta {
+	float: right;
 }
 
 table {
@@ -244,6 +249,31 @@ th, td {
 .inclusivity li {
 	text-align: center;
 	list-style: none;
+}
+
+.chips {
+	list-style: none;
+	margin-bottom: 1.5em;
+	padding: 0;
+}
+
+.chip {
+	border: 1px dashed;
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 75%;
+	padding: 0.1em 0.75em;
+}
+
+.chip.default,
+.chip.active {
+	border-color: white;
+	color: white;
+	font-weight: bold;
+}
+
+.chip + .chip {
+	margin-right: 0.5em;
 }
 
 /**
