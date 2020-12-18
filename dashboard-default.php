@@ -10,7 +10,6 @@ $version = file_get_contents('/vagrant/version');
 		<link rel="stylesheet" type="text/css" href="//vvv.test/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__.'/style.css' ) ); ?>">
 	</head>
 	<body>
-		
 		<header>
 			<h2 id="vvv_logo">
 				<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
@@ -31,6 +30,7 @@ $version = file_get_contents('/vagrant/version');
 			<aside class="column right-column">
 				<?php
 				require_once( __DIR__ . '/php/blocks/sidebar/inclusivity.php' );
+				require_once( __DIR__ . '/php/blocks/sidebar/xdebug.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/bundled-tools.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/search-docs.php' );
 				require_once( __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php' );
