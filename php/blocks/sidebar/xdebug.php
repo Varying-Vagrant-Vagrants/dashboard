@@ -8,5 +8,5 @@ if ( ! xdebug_is_debugger_active() ) {
 }
 ?>
 <div class="box">
-	<p>✅ Active XDebug session detected</p>
+	<p>✅ Active Xdebug session detected.</p>
 </div>
