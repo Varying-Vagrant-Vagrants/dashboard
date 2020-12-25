@@ -1,3 +1,25 @@
+<div id="vvv_root_warning" class="top-notice box">
+	<h1><strong>DANGER:</strong> This VM was created using sudo/root</h1>
+	<p>This is an emergency. Root VMs cause lots of problems. Do not use <code>sudo</code> with vagrant commands, and do not use VVV as a root user.</p>
+	<p>We are assuming you are trying to recover your database so that you can fix this:</p>
+	<details class="button">
+		<summary>Click For Sudo Recovery Instructions</summary>
+		<ol>
+			<li>These commands must be done in this order.</li>
+			<li>Back up your databases. You can SSH in and use <code>mysqldump</code>, use the built in backup script, or PHPMyAdmin.</li>
+			<li>Run <code>sudo vagrant halt</code> to power down VVV.</li>
+			<li>Run <code>sudo vagrant destroy --force</code> to destroy the VM.</li>
+			<li>It may be necessary to launch the VirtualBox user interface as a root user to clean up virtual machines running as root.</li>
+			<li>You will need to delete the <code>.vagrant</code> subfolder.</li>
+			<li>You will need to change the owner and group of all files in the VVV folder to your user ( not root) <code>whoami</code> will tell you the user to change ownership to.</li>
+			<li>Run <code>vagrant up</code> without using <code>sudo</code>, if this fails, search for virtualbox and vagrant files across your system that have not been cleaned up.</li>
+			<li>Never use <code>sudo</code> again. Not even just in case.</li>
+		</ol>
+	</details>
+
+	<p>In the future we will be adding more roadblocks to prevent normal usage of VVV while under root. E.g. sites will refuse to provision, features will disable themselves, etc.</p>
+	<p><em>By continuing to use VVV with <code>sudo</code> you will be unable to request support for anything other than fixing this issue.</em></p>
+</div>
 <div id="vvv_provision_fail" class="top-notice box" style="display:none">
 	<p><strong>Problem:</strong> Could not load the site, this implies that provisioning the site failed, please check there were no errors during provisioning, and reprovision.</p>
 	<p><em><strong>Note</strong>, sometimes this is because provisioning hasn't finished yet, if it's still running, wait and refresh the page.</em> If that doesn't fix the issue, re-read our docs on adding sites, check the syntax of all your provisioner files, and double check our troubleshooting page:</p>

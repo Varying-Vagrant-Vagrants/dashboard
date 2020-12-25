@@ -7,6 +7,10 @@ body {
 	line-height: 1.6;
 }
 
+body.root-warning {
+	background: #290a10;
+}
+
 p:first-child {
     margin-top: 0;
 }
@@ -69,6 +73,13 @@ pre.teddy {
 	font-size: 3em;
 	font-weight: normal;
 	color: white;
+	background: #2b303b;
+	display: inline-block;
+	border-radius: 4px;
+}
+
+.root-warning #vvv_logo {
+	padding: 0.1em 0.25em;
 }
 
 #vvv_logo > img {
@@ -82,8 +93,10 @@ strong {
 
 #vvv_provision_fail,
 #vvv_hosts_fail,
+#vvv_root_warning,
 .top-notice-box.box {
-	background: #bf616a;
+	background: #9b323d;
+	font-weight: bold;
 	border: 1px solid #ebcb8b;
 }
 
@@ -244,6 +257,10 @@ td:last-child {
 
 .inclusive-teddy-bear strong {
 	color: #ebcb8b;
+}
+
+.root-bear pre {
+	color: skyblue;
 }
 
 .inclusivity ul {
