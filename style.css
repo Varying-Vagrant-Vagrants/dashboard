@@ -100,6 +100,14 @@ strong {
 	border: 1px solid #ebcb8b;
 }
 
+#vvv_root_warning {
+	display: none;
+}
+
+.root-warning #vvv_root_warning {
+	display: block;
+}
+
 .grid, .grid50 {
 	display: grid;
 	margin-bottom: 1em;
