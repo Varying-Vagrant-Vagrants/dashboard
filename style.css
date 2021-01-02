@@ -67,6 +67,7 @@ pre.teddy {
 	font-size: 16px;
 	line-height: 16px;
 	margin: 0;
+	overflow: hidden;
 }
 
 #vvv_logo {
