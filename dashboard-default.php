@@ -8,6 +8,7 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 		<title>VVV Dashboard</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="//vvv.test/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__ . '/style.css' ) ); ?>">
+		<link rel="shortcut icon" href="//vvv.test/dashboard/vvv-tight.png">
 	</head>
 	<body class="<?php echo $root_warning ? 'root-warning' : ''; ?>">
 		<header>
