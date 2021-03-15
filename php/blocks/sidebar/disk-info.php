@@ -33,7 +33,7 @@
 	?>
 	<div class="disk">
 		<div class="disk-header-meta">
-			<div class="disk-label">Physical Machine</div>
+			<div class="disk-label">Host Machine</div>
 			<div class="disk-total"><?php echo $p_total_space; ?> GB</div>
 		</div>
 		<div class="disk-use-bar"><div class="inner<?php echo $p_low_space ? ' low' : ''; ?>" style="width: <?php echo $p_used_percent; ?>%"></div></div>
