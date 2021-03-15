@@ -1,5 +1,5 @@
 <div class="box disk-info">
-	<h3>Disk Info</h3>
+	<h3>Disk Space</h3>
 
 	<?php
 	$v_free_space_mb = round( disk_free_space( '/' ) / 1024 / 1024, 1 );
