@@ -3,6 +3,7 @@
 
 	<?php
 	$v_free_space_mb = round( disk_free_space( '/' ) / 1024 / 1024, 1 );
+	$v_free_space_mb = 182;
 	$v_free_space_gb = round( $v_free_space_mb / 1024, 1 );
 	$v_total_space   = round( disk_total_space( '/' ) / 1024 / 1024 / 1024, 0 );
 	$v_used_space    = round( $v_total_space - ( $v_free_space_mb / 1024 ), 1 );
@@ -39,7 +40,7 @@
 		<div class="disk-use-bar"><div class="inner<?php echo $p_low_space ? ' low' : ''; ?>" style="width: <?php echo $p_used_percent; ?>%"></div></div>
 		<div class="disk-footer-meta">
 			<div class="disk-used"><small><?php echo $p_used_space; ?> GB (<?php echo $p_used_percent; ?>%)</small></div>
-			<div class="disk-free"><small><?php echo $p_free_space; ?> GB</small></div>
+			<div class="disk-free"><small><?php echo $p_free_space; ?></small></div>
 		</div>
 	</div>
 
