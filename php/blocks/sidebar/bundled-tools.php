@@ -52,7 +52,7 @@
 		<?php
 		if ( extension_loaded( 'xdebug' ) ) {
 			?>
-			<a class="button tool-xdebuginfo" href="//vvv.text/phpinfo/xdebug.php" target="_blank">Xdebug Info</a>
+			<a class="button tool-xdebuginfo" href="//vvv.test/xdebuginfo/" target="_blank">Xdebug Info</a>
 			<?php
 		}
 		?>
