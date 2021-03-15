@@ -50,7 +50,7 @@
 		<a class="button tool-phpinfo" href="//vvv.test/phpinfo/" target="_blank">PHP Info</a>
 		<a class="button tool-phpstatus" href="php-status?html&amp;full" target="_blank">PHP Status</a>
 		<?php
-		if ( extension_loaded( 'xdebug' ) ) {
+		if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) {
 			?>
 			<a class="button tool-xdebuginfo" href="//vvv.test/xdebuginfo/" target="_blank">Xdebug Info</a>
 			<?php
