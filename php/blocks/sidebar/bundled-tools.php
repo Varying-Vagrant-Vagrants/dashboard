@@ -49,5 +49,12 @@
 		?>
 		<a class="button tool-phpinfo" href="//vvv.test/phpinfo/" target="_blank">PHP Info</a>
 		<a class="button tool-phpstatus" href="php-status?html&amp;full" target="_blank">PHP Status</a>
+		<?php
+		if ( extension_loaded( 'xdebug' ) ) {
+			?>
+			<a class="button tool-xdebuginfo" href="//vvv.text/phpinfo/xdebug.php" target="_blank">Xdebug Info</a>
+			<?php
+		}
+		?>
 	</nav>
 </div>
