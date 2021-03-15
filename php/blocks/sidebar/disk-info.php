@@ -3,7 +3,6 @@
 
 	<?php
 	$v_free_space_mb = round( disk_free_space( '/' ) / 1024 / 1024, 1 );
-	$v_free_space_mb = 182;
 	$v_free_space_gb = round( $v_free_space_mb / 1024, 1 );
 	$v_total_space   = round( disk_total_space( '/' ) / 1024 / 1024 / 1024, 0 );
 	$v_used_space    = round( $v_total_space - ( $v_free_space_mb / 1024 ), 1 );
