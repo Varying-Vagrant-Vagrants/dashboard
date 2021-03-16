@@ -31,6 +31,7 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 				<?php
 				require_once __DIR__ . '/php/blocks/sidebar/inclusivity.php';
 				require_once __DIR__ . '/php/blocks/sidebar/bundled-tools.php';
+				require_once __DIR__ . '/php/blocks/sidebar/disk-info.php';
 				require_once __DIR__ . '/php/blocks/sidebar/search-docs.php';
 				require_once __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php';
 				?>
