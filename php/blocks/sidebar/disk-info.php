@@ -1,5 +1,5 @@
 <div class="box disk-info">
-	<h3>Disk Info</h3>
+	<h3>Disk Space</h3>
 
 	<?php
 	$v_free_space_mb = round( disk_free_space( '/' ) / 1024 / 1024, 1 );
@@ -12,7 +12,7 @@
 	?>
 	<div class="disk">
 		<div class="disk-header-meta">
-			<div class="disk-label">Virtual Machine</div>
+			<div class="disk-label">VVV Guest Virtual Machine</div>
 			<div class="disk-total"><?php echo $v_total_space; ?> GB</div>
 		</div>
 		<div class="disk-use-bar"><div class="inner<?php echo $v_low_space ? ' low' : ''; ?>" style="width: <?php echo $v_used_percent; ?>%"></div></div>
@@ -33,7 +33,7 @@
 	?>
 	<div class="disk">
 		<div class="disk-header-meta">
-			<div class="disk-label">Physical Machine</div>
+			<div class="disk-label">Host Machine</div>
 			<div class="disk-total"><?php echo $p_total_space; ?> GB</div>
 		</div>
 		<div class="disk-use-bar"><div class="inner<?php echo $p_low_space ? ' low' : ''; ?>" style="width: <?php echo $p_used_percent; ?>%"></div></div>
