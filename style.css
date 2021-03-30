@@ -237,8 +237,9 @@ input:hover,
 	background: #272b35;
 }
 
-.vvv-site-link + .vvv-site-link {
-	margin-left: 1em;
+.vvv-site-link {
+	display: inline-block;
+	margin-right: 1em;
 }
 
 .site-header-meta {
