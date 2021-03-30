@@ -238,9 +238,8 @@ input:hover,
 }
 
 .vvv-site-link {
-	display: list-item;
-	margin-left: 1em;
-	list-style: square;
+	display: inline-block;
+	margin-right: 1em;
 }
 
 .site-header-meta {
