@@ -1,10 +1,21 @@
+html {
+	background-color: #2b303b;
+}
+
 body {
 	font-family: 'Source Code Pro', monospace;
-	background-color: #2b303b;
 	color: #c0c5ce;
-	padding: 3em;
-	font-size: 16px;
-	line-height: 1.6;
+	padding: 0.25em;
+	font-size: 14px;
+	line-height: 1.6em;
+}
+
+@media only screen and (min-width: 600px) {
+	body {
+		font-size: 16px;
+		padding: 3em;
+		max-width: 1024px;
+	}
 }
 
 body.root-warning {
@@ -114,20 +125,26 @@ strong {
 	display: block;
 }
 
+@media only screen and (min-width: 600px) {
+	.grid,
+	.grid50 {
+		display: grid;
+	}
+
+	.grid {
+		grid-template-columns: 70% 30%;
+	}
+
+	.grid50 {
+		/*grid-auto-columns: 50% 50%;*/
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1em;
+		grid-auto-flow: dense;
+	}
+}
+
 .grid, .grid50 {
-	display: grid;
 	margin-bottom: 1em;
-}
-
-.grid {
-	grid-template-columns: 70% 30%;
-}
-
-.grid50 {
-	/*grid-auto-columns: 50% 50%;*/
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1em;
-	grid-auto-flow: dense;
 }
 
 .grid50 .box {
