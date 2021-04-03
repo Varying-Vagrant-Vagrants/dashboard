@@ -7,13 +7,13 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 	<head>
 		<title>VVV Dashboard</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="//vvv.test/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__ . '/style.css' ) ); ?>">
-		<link rel="shortcut icon" href="//vvv.test/dashboard/vvv-tight.png">
+		<link rel="stylesheet" type="text/css" href="/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__ . '/style.css' ) ); ?>">
+		<link rel="shortcut icon" href="/dashboard/vvv-tight.png">
 	</head>
 	<body class="<?php echo $root_warning ? 'root-warning' : ''; ?>">
 		<header>
 			<h2 id="vvv_logo">
-				<img src="//vvv.test/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
+				<img src="/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
 			</h2>
 		</header>
 		<?php
