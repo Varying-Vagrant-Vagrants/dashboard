@@ -120,31 +120,53 @@ function display_site( $name, array $site ) : void {
 }
 
 function display_sites() : void {
-	$yaml = new Alchemy\Component\Yaml\Yaml();
+	
+	$config_locations = [
+		'/srv/vvv/config.yml',
+		'/vagrant/config.yml',
+		'/vagrant/vvv-custom.yml',
+	];
 
-	$config_file = '/vagrant/config.yml';
-	if ( file_exists( '/vagrant/config.yml' ) ) {
-		$config_file = '/vagrant/config.yml';
-	} elseif ( file_exists( '/vagrant/vvv-custom.yml' ) ) {
-		$config_file = '/vagrant/vvv-custom.yml';
-	}
-
-	$data = $yaml->load( $config_file );
-	$provisioned_sites = [];
-	$skipped_sites = [];
-	foreach ( $data['sites'] as $name => $site ) {
-		if (
-			isset( $site['skip_provisioning'] )
-			&& ( $site['skip_provisioning'] == true )
-		) {
-			$skipped_sites[ $name ] = $site;
-		} else {
-			$provisioned_sites[ $name ] = $site;
+	$config_file = false;
+	foreach ( $config_locations as $location ) {
+		if ( is_readable( $location ) ) {
+			$config_file = $location;
+			break;
 		}
 	}
 
-	foreach ( $provisioned_sites as $name => $site ) {
-		display_site( $name, $site );
+	if ( false === $config_file ) {
+		echo '<p>No config file was found.</p>';
+		return;
+	}
+	
+	$yaml = new Alchemy\Component\Yaml\Yaml();
+	$data = $yaml->load( $config_file );
+
+	$provisioned_sites = [];
+	$skipped_sites = [];
+
+	if ( ! empty( $data['sites'] ) && is_array( $data['sites'] ) ) {
+		foreach ( $data['sites'] as $name => $site ) {
+			if (
+				isset( $site['skip_provisioning'] )
+				&& ( $site['skip_provisioning'] == true )
+			) {
+				$skipped_sites[ $name ] = $site;
+			} else {
+				$provisioned_sites[ $name ] = $site;
+			}
+		}
+	} else {
+		echo '<p>No sites were found.</p>';
+	}
+
+	if ( ! empty( $provisioned_sites ) ) {
+		foreach ( $provisioned_sites as $name => $site ) {
+			display_site( $name, $site );
+		}
+	} else {
+		echo '<p>There are no provisioned sites.</p>';
 	}
 
 	if ( ! empty( $skipped_sites ) ) {
