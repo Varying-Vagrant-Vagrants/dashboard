@@ -26,7 +26,6 @@ $navbar-height: 1rem;
 
 @import "bulmaswatch/darkly/_overrides.scss";
 
-
 html {
 	min-height: 100vh;
 	//background: #272b35 fixed linear-gradient(0deg, #272b35 10%, #2b303b 37%, #343d46 100%);
@@ -44,11 +43,11 @@ html {
 }
 
 body > .section {
-	padding-top:0;
+	padding-top: 0;
 }
 
 .main-area {
-	padding-top:1rem;
+	padding-top: 1rem;
 
 	& > .section:first-child {
 		padding-top: 0;
@@ -64,13 +63,13 @@ body > .section {
 	padding: $menu-list-link-padding;
 }
 
-@media only screen and ( min-width: 769px ) {
+@media only screen and (min-width: 769px) {
 	.fixed-column {
 		top: 0;
 		bottom: 4rem;
-		position:fixed;
+		position: fixed;
 		max-height: 100vh;
-		overflow-y:scroll;
+		overflow-y: scroll;
 	}
 }
 
@@ -79,6 +78,6 @@ body > .section {
 
 	& > a {
 		pointer-events: none;
-		opacity:50%;
+		opacity: 50%;
 	}
 }
