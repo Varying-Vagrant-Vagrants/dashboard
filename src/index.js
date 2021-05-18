@@ -2,7 +2,7 @@ import './sass/style.scss';
 import Frame from "./js/components/Frame";
 import store from "./js/redux/store";
 
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import {
   HashRouter as Router
 } from "react-router-dom";

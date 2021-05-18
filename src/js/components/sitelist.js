@@ -11,5 +11,4 @@ const SiteList = () => {
 	</section>;
 };
 
-
 export default SiteList;

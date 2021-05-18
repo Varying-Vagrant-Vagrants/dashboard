@@ -22,5 +22,4 @@ const SiteListItem = ( { siteName } ) => {
 	</div>;
 };
 
-
 export default SiteListItem;

@@ -53,6 +53,6 @@ const Sidebar = () => {
 			</div>
 		</form>
 	</nav>;
-}
+};
 
 export default Sidebar;

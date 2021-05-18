@@ -1,4 +1,3 @@
-
 const Demo = () => {
 	return <>
 	<section className="section" id="typography">
@@ -297,6 +296,5 @@ const Demo = () => {
 	</section>
 	</>;
 };
-
 
 export default Demo;

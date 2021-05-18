@@ -38,5 +38,4 @@ const RootWarning = () => {
 	</div>;
 };
 
-
 export default RootWarning;

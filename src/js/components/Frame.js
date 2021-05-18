@@ -9,7 +9,7 @@ import Sidebar from "./sidebar";
 import SiteList from "./sitelist";
 import StatusBar from "./statusbar";
 
-function Frame ( props ) {
+function Frame () {
 	return <>
 		<StatusBar/>
 		<div className="columns">
@@ -36,6 +36,6 @@ function Frame ( props ) {
 			</div>
 		</div>
 	</>;
-}
+};
 
 export default Frame;
