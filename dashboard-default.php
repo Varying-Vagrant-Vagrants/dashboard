@@ -42,7 +42,41 @@ $tools = [
 $environment = [
 	'version'             => $version,
 	'provisioned_as_root' => $root_warning,
+	'php'                 => [
+		'debug_extensions' => [
+			'xdebug'          => [
+				'name'        => 'XDebug',
+				'description' => 'Useful for connecting a debugger',
+				'command'     => 'vagrant ssh -c "switch_php_debugmod xdebug"'
+			],
+			'tideways_xhprof' => [
+				'name'        => 'Tideways XHProf',
+				'description' => 'Used with XHGui to generate profiles',
+				'command'     => 'vagrant ssh -c "switch_php_debugmod tideways_xhprof"'
+			],
+			'pcov'            => [
+				'name'        => 'PCov',
+				'description' => 'Speeds up test coverage calculation',
+				'command'     => 'vagrant ssh -c "switch_php_debugmod pcov"'
+			],
+			'none'            => [
+				'name'        => 'None',
+				'description' => 'Vanilla PHP',
+				'command'     => 'vagrant ssh -c "switch_php_debugmod none"',
+			],
+		],
+	],
 ];
+
+$current_debug_ext = 'none';
+foreach ( $environment['php']['debug_extensions'] as $ext => $options ) {
+	$environment['php']['debug_extensions'][ $ext ]['active'] = false;
+	if ( extension_loaded( $ext ) ) {
+		$environment['php']['debug_extensions'][ $ext ]['active'] = true;
+		$current_debug_ext = $ext;
+	}
+}
+$environment['php']['current_debug_extension'] = $current_debug_ext;
 
 //<a class="button tool-phpstatus" href="" target="_blank">PHP Status</a>
 
@@ -109,11 +143,18 @@ if ( is_dir( '/srv/www/default/webgrind/' ) ) {
 
 if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) {
 	$tools[] = [
-		'title'       => 'Xdebug Info',
+		'title'       => 'XDebug Info',
 		'url'         => '//vvv.test/xdebuginfo/',
 		'description' => '...',
 	];
 }
+
+$vvv = [
+	'config'      => $initial_config,
+	'environment' => $environment,
+	'tools'       => $tools,
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,52 +166,11 @@ if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) 
 		<link href="https://unpkg.com/@fortawesome/fontawesome-free@5.13.0/css/all.css" rel="stylesheet" />
 		<link href="/dashboard/dist/css/style.css" rel="stylesheet">
 		<script>
-			window.vvv = <?php echo json_encode( [ 'config' => $initial_config, 'tools' => $tools, 'environment' => $environment ] ); ?>;
+			window.vvv = <?php echo json_encode( $vvv ); ?>;
 		</script>
 		<script defer="defer" src="/dashboard/dist/main.js"></script>
 	</head>
 	<body class="has-navbar-fixed-bottom">
 		<section id="container" class=""></section>
-	</body>
-</html>
-<?php
-
-return;
-?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>VVV Dashboard</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="/dashboard/style.css?t=<?php echo intval( filemtime( __DIR__ . '/style.css' ) ); ?>">
-		<link rel="shortcut icon" href="/dashboard/vvv-tight.png">
-	</head>
-	<body class="<?php echo $root_warning ? 'root-warning' : ''; ?>">
-		<header>
-			<h2 id="vvv_logo">
-				<img src="/dashboard/vvv-tight.png"/> VVV v<span class="version"><?php echo strip_tags( $version ); ?></span>
-			</h2>
-		</header>
-		<?php
-		require_once( __DIR__ . '/php/notices.php' );
-		?>
-		<div class="grid">
-			<main class="column left-column">
-				<?php
-				require_once __DIR__ . '/php/blocks/main/sites.php';
-				require_once __DIR__ . '/php/blocks/main/adding-site-doc.php';
-				require_once __DIR__ . '/php/blocks/main/php-status.php';
-				?>
-			</main>
-			<aside class="column right-column">
-				<?php
-				require_once __DIR__ . '/php/blocks/sidebar/inclusivity.php';
-				require_once __DIR__ . '/php/blocks/sidebar/bundled-tools.php';
-				require_once __DIR__ . '/php/blocks/sidebar/search-docs.php';
-				require_once __DIR__ . '/php/blocks/sidebar/disk-info.php';
-				require_once __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php';
-				?>
-			</aside>
-		</div>
 	</body>
 </html>
