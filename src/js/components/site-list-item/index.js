@@ -9,8 +9,8 @@ const SiteListItem = ( { siteName } ) => {
 		}
 		<div className="buttons">
 			{
-				site.hosts.map( host =>
-					<a className="button" href={ host } target="_blank">
+				site.hosts.map( ( host ) =>
+					<a className="button" href={ `http://${host}` } target="_blank">
 						<span className="icon is-small">
 							<i className="fas fa-link"></i>
 						</span>
