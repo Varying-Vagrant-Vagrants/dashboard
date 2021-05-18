@@ -7,12 +7,12 @@ const RootWarning = () => {
 		return null;
 	}
 
-	return <div class="notification is-danger">
-		<div class="content">
-			<h1 class="title">
-				<span class="icon-text">
-					<span class="icon">
-						<i class="fas fa-ban"></i>
+	return <div className="notification is-danger">
+		<div className="content">
+			<h1 className="title">
+				<span className="icon-text">
+					<span className="icon">
+						<i className="fas fa-ban"></i>
 					</span>
 					<span>
 						<strong>Danger</strong> this VVV was created using the <code>sudo</code> command!

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import useCurrentPHPDebugExtension from "../redux/hooks/useCurrentPHPDebugExtension";
 import useVersion from "../redux/hooks/useVersion";
 
 const StatusBar = () => {
+	const php_debug_extension = useCurrentPHPDebugExtension();
 	const version = useVersion();
 	return <nav className="navbar is-fixed-bottom" role="navigation" aria-label="top navigation">
 		<div className="navbar-brand">
@@ -13,14 +15,19 @@ const StatusBar = () => {
 			</Link>
 		</div>
 		<div className="navbar-start">
-			<span class="navbar-item">
+			<span className="navbar-item">
 				v{ version }
 			</span>
 		</div>
 
 		<div className="navbar-end">
-			<span class="navbar-item">
-				PHP debug module: Unknown
+			<span className="navbar-item">
+				<span className="icon">
+					<i className="fas fa-bug"></i>
+				</span>
+				<span>
+					PHP Debugger: { php_debug_extension.name }
+				</span>
 			</span>
 		</div>
 	</nav>

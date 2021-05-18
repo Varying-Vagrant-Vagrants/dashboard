@@ -4,7 +4,7 @@
 
 $bulmaswatch-import-font: false;
 
-@import "bulmaswatch/darkly/_variables.scss";
+@import "bulma-variables.scss";
 @import "bulma/sass/utilities/_all.sass";
 
 $primary: $blue;
@@ -30,7 +30,7 @@ $navbar-height: 1rem;
 
 html {
 	min-height: 100vh;
-	background: #272b35 fixed linear-gradient(0deg, #272b35 10%, #2b303b 37%, #343d46 100%);
+	//background: #272b35 fixed linear-gradient(0deg, #272b35 10%, #2b303b 37%, #343d46 100%);
 }
 
 .navbar-brand,

@@ -21,7 +21,7 @@ function Frame ( props ) {
 					<RootWarning />
 					<Switch>
 						<Route path="/placeholder">
-							<section class="section">
+							<section className="section">
 								<h1 className="title">Hello!</h1>
 							</section>
 						</Route>

@@ -2,17 +2,17 @@ import useSite from '../../redux/hooks/useSite';
 
 const SiteListItem = ( { siteName } ) => {
 	const site = useSite( siteName );
-	return <div class="box">
-		<h3 class="subtitle">{ siteName }</h3>
+	return <div className="box">
+		<h3 className="subtitle">{ siteName }</h3>
 		{
-			site.description ? <div class="content"><p>{ site.description }</p></div> : null
+			site.description ? <div className="content"><p>{ site.description }</p></div> : null
 		}
-		<div class="buttons">
+		<div className="buttons">
 			{
 				site.hosts.map( host =>
-					<a class="button" href={ host } target="_blank">
-						<span class="icon is-small">
-							<i class="fas fa-link"></i>
+					<a className="button" href={ host } target="_blank">
+						<span className="icon is-small">
+							<i className="fas fa-link"></i>
 						</span>
 						<span>{host}</span>
 					</a>
