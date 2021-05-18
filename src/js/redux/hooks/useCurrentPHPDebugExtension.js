@@ -3,7 +3,7 @@ import usePHPDebugExtension from './usePHPDebugExtension';
 
 const useCurrentPHPDebugExtension = () => {
 	const name = useSelector( state => state.environment.php.current_debug_extension );
-	return usePHPDebugExtension( name );s
-}
+	return usePHPDebugExtension( name );
+};
 
 export default useCurrentPHPDebugExtension;

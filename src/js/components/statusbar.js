@@ -30,7 +30,7 @@ const StatusBar = () => {
 				</span>
 			</span>
 		</div>
-	</nav>
-}
+	</nav>;
+};
 
 export default StatusBar;
