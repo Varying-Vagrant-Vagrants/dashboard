@@ -1,0 +1,43 @@
+{
+  "name": "vvv-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "*",
+    "react-router": "*",
+    "react-router-dom": "*",
+    "redux": "*",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "*",
+    "whatwg-fetch": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "babel-loader": "*",
+    "bulma": "^0.9.2",
+    "bulmaswatch": "*",
+    "css-loader": "^5.0.1",
+    "extract-text-webpack-plugin": "*",
+    "html-loader": "*",
+    "html-webpack-plugin": "*",
+    "mini-css-extract-plugin": "^1.3.3",
+    "redux-devtools": "*",
+    "sass": "*",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "5.*",
+    "webpack-cli": "4.*",
+    "webpack-dev-server": "*"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom J Nowell",
+  "license": "GPL-3.0-or-later"
+}
