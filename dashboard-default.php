@@ -30,12 +30,14 @@ $tools = [
 	[
 		'title'       => 'PHP Info',
 		'url'         => '//vvv.test/phpinfo/',
-		'description' => 'View PHP Info',
+		'description' => 'View php_info() output.',
+		'category'    => 'php',
 	],
 	[
 		'title'       => 'PHP Status',
 		'url'         => '//vvv.test/php-status?html&amp;full',
-		'description' => '',
+		'description' => 'PHP FPM status page.',
+		'category'    => 'php',
 	],
 ];
 
@@ -78,13 +80,12 @@ foreach ( $environment['php']['debug_extensions'] as $ext => $options ) {
 }
 $environment['php']['current_debug_extension'] = $current_debug_ext;
 
-//<a class="button tool-phpstatus" href="" target="_blank">PHP Status</a>
-
 if ( is_dir( '/srv/www/default/database-admin/' ) ) {
 	$tools[] = [
 		'title'       => 'phpMyAdmin',
 		'url'         => '//vvv.test/database-admin/',
-		'description' => 'SQL database config, use root and root as the username and password.',
+		'description' => 'Popular web based database tool, use "root" as both the username and password.',
+		'category'    => 'database',
 	];
 }
 
@@ -92,7 +93,8 @@ if ( is_dir( '/srv/www/default/memcached-admin/' ) ) {
 	$tools[] = [
 		'title'       => 'Memcached Admin',
 		'url'         => '//vvv.test/memcached-admin/',
-		'description' => '...',
+		'description' => 'Graphic stand-alone administration for memcached to monitor and debug purpose. This program allows to see in real-time (top-like) or from the start of the server, stats for get, set, delete, increment, decrement, evictions, reclaimed, cas command, as well as server stats (network, items, server version) with googlecharts and server internal configuration.',
+		'category'    => 'php',
 	];
 }
 
@@ -100,7 +102,8 @@ if ( is_dir( '/srv/www/default/opcache-status/' ) ) {
 	$tools[] = [
 		'title'       => 'Opcache Status',
 		'url'         => '//vvv.test/opcache-status/opcache.php',
-		'description' => '...',
+		'description' => 'A one-page opcache status page.',
+		'category'    => 'php',
 	];
 }
 
@@ -108,7 +111,8 @@ if ( is_dir( '/srv/www/default/opcache-gui/' ) ) {
 	$tools[] = [
 		'title'       => 'Opcache GUI Admin',
 		'url'         => '//vvv.test/opcache-gui/',
-		'description' => '...',
+		'description' => 'A clean and responsive interface for Zend OPcache information, showing statistics, settings and cached files, and providing a real-time update for the information.',
+		'category'    => 'php',
 	];
 }
 
@@ -116,13 +120,15 @@ if ( file_exists( '/usr/local/bin/mailhog' ) ) {
 	$tools[] = [
 		'title'       => 'MailHog',
 		'url'         => 'http://vvv.test:8025',
-		'description' => '...',
+		'description' => 'MailHog is an email testing tool for developers.',
+		'category'    => 'mail',
 	];
 } elseif ( file_exists( '/usr/local/rvm/bin/mailcatcher' ) ) {
 	$tools[] = [
 		'title'       => 'Mailcatcher',
 		'url'         => 'http://vvv.test:1080',
-		'description' => '...',
+		'description' => 'Catches mail and serves it through a dream.',
+		'category'    => 'mail',
 	];
 }
 
@@ -130,14 +136,16 @@ if ( is_dir( '/srv/www/default/xhgui/' ) ) {
 	$tools[] = [
 		'title'       => 'XHGui Profiler',
 		'url'         => '//xhgui.vvv.test/',
-		'description' => '...',
+		'description' => 'A graphical interface for XHProf profiling data.',
+		'category'    => 'php',
 	];
 }
 if ( is_dir( '/srv/www/default/webgrind/' ) ) {
 	$tools[] = [
 		'title'       => 'Webgrind',
 		'url'         => '//vvv.test/webgrind/',
-		'description' => '...',
+		'description' => 'Xdebug Profiling Web Frontend in PHP.',
+		'category'    => 'php',
 	];
 }
 
@@ -145,7 +153,8 @@ if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) 
 	$tools[] = [
 		'title'       => 'XDebug Info',
 		'url'         => '//vvv.test/xdebuginfo/',
-		'description' => '...',
+		'description' => 'View xdebug_info() output.',
+		'category'    => 'php',
 	];
 }
 

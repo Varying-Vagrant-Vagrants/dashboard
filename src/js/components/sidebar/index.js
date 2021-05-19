@@ -17,13 +17,22 @@ const Sidebar = () => {
 		</ul>
 		<p className="menu-label">Tools</p>
 		<ul className="menu-list">
+			<li><Link to="/databases">Databases</Link></li>
+			<li><Link to="/php">PHP</Link></li>
 			{ tools.map(
-				( tool ) =>
-					<li>
+				( tool ) => {
+					if ( tool.category === 'database' ) {
+						return null;
+					}
+					if ( tool.category === 'php' ) {
+						return null;
+					}
+					return (<li>
 						<a href={ tool.url } target="_blank">
 							{ tool.title }
 						</a>
-					</li>
+					</li>);
+				}
 			) }
 		</ul>
 		<p className="menu-label">Help</p>

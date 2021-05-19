@@ -6,6 +6,8 @@ import RootWarning from "./root-warning";
 
 import Demo from "./Demo";
 import Sidebar from "./sidebar";
+import Databases from "./databases";
+import Php from "./php";
 import Sites from "./sites";
 import StatusBar from "./statusbar";
 
@@ -27,6 +29,12 @@ function Frame () {
 						</Route>
 						<Route path="/demo">
 							<Demo />
+						</Route>
+						<Route path="/databases">
+							<Databases />
+						</Route>
+						<Route path="/php">
+							<Php />
 						</Route>
 						<Route path="/">
 							<Sites />
