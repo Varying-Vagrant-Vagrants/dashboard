@@ -2,8 +2,14 @@ import useSite from '../../redux/hooks/useSite';
 
 const SiteListItem = ( { siteName } ) => {
 	const site = useSite( siteName );
-	return <div className="box">
-		<h3 className="subtitle">{ siteName }</h3>
+	const disabledClass = site?.skip_provisioning ? 'disabled' : 'enabled';
+	return <div className={ `box ${disabledClass}` }>
+		<h3 className="title">
+			{ siteName }
+		</h3>
+		<div className="block tags">
+			{ site?.skip_provisioning ? <span className="tag">Disabled</span> : null }
+		</div>
 		{
 			site.description ? <div className="content"><p>{ site.description }</p></div> : null
 		}

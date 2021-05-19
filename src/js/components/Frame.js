@@ -6,7 +6,7 @@ import RootWarning from "./root-warning";
 
 import Demo from "./Demo";
 import Sidebar from "./sidebar";
-import SiteList from "./sitelist";
+import Sites from "./sites";
 import StatusBar from "./statusbar";
 
 function Frame () {
@@ -29,7 +29,7 @@ function Frame () {
 							<Demo />
 						</Route>
 						<Route path="/">
-							<SiteList />
+							<Sites />
 						</Route>
 					</Switch>
 				</section>
