@@ -1,7 +1,7 @@
 import useTools from "../../redux/hooks/useTools";
 
 const Databases = () => {
-	const tools = useTools().filter( tool => tool.category === 'database' );
+	const tools = useTools().filter( ( tool ) => tool.category === 'database' );
 	return <section className="section">
 		<h1 className="title">Databases</h1>
 		<div className="content">
@@ -26,7 +26,7 @@ const Databases = () => {
 		<h2 className="subtitle">Tools</h2>
 		<div className="columns is-multiline">
 			{
-				tools.map( tool => {
+				tools.map( ( tool ) => {
 					return <div className="column is-half">
 						<div className="box">
 							<h2 className="subtitle">{ tool.title }</h2>
@@ -36,7 +36,7 @@ const Databases = () => {
 							<a href={ tool.url } className="button" target="_blank">Open</a>
 						</div>
 					</div>;
-				 } )
+				} )
 			}
 		</div>
 	</section>;

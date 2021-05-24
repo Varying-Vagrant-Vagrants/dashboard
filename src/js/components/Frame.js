@@ -55,6 +55,6 @@ function Frame () {
 			</div>
 		</div>
 	</>;
-};
+}
 
 export default Frame;

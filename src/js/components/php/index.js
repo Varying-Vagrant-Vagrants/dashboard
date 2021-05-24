@@ -1,7 +1,7 @@
 import useTools from "../../redux/hooks/useTools";
 
 const Php = () => {
-	const tools = useTools().filter( tool => tool.category === 'php' );
+	const tools = useTools().filter( ( tool ) => tool.category === 'php' );
 	return <section className="section">
 		<h1 className="title">PHP</h1>
 		<div className="buttons">
@@ -32,7 +32,7 @@ const Php = () => {
 		<h2 className="subtitle">Tools</h2>
 		<div className="columns is-multiline">
 			{
-				tools.map( tool => {
+				tools.map( ( tool ) => {
 					return <div className="column is-half">
 						<div className="box">
 							<h2 className="subtitle">{ tool.title }</h2>
@@ -42,7 +42,7 @@ const Php = () => {
 							<a href={ tool.url } className="button" target="_blank">Open</a>
 						</div>
 					</div>;
-				 } )
+				} )
 			}
 		</div>
 	</section>;

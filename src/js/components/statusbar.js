@@ -3,7 +3,7 @@ import useCurrentPHPDebugExtension from "../redux/hooks/useCurrentPHPDebugExtens
 import useVersion from "../redux/hooks/useVersion";
 
 const StatusBar = () => {
-	const php_debug_extension = useCurrentPHPDebugExtension();
+	const phpDebugExtension = useCurrentPHPDebugExtension();
 	const version = useVersion();
 	return <nav className="navbar is-fixed-bottom" role="navigation" aria-label="top navigation">
 		<div className="navbar-brand">
@@ -26,7 +26,7 @@ const StatusBar = () => {
 					<i className="fas fa-bug"></i>
 				</span>
 				<span>
-					PHP Debugger: { php_debug_extension.name }
+					PHP Debugger: { phpDebugExtension.name }
 				</span>
 			</span>
 		</div>

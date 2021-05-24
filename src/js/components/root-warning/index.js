@@ -1,9 +1,9 @@
 import useRootWarning from "../../redux/hooks/useRootWarning";
 
 const RootWarning = () => {
-	const provisioned_as_root = useRootWarning();
+	const provisionedAsRoot = useRootWarning();
 
-	if ( ! provisioned_as_root ) {
+	if ( ! provisionedAsRoot ) {
 		return null;
 	}
 
