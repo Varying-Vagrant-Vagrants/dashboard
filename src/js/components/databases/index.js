@@ -5,7 +5,7 @@ const Databases = () => {
 	return <section className="section">
 		<h1 className="title">Databases</h1>
 		<div className="content">
-			<p>You can find a Sequel Pro/Sequel Ace connection file in the database folder. For the default database credentials see the following:</p>
+			<p>You can find a Sequel Pro/Sequel Ace connection file at <code>database/sql/sequelpro.spf</code>. For the default database credentials see the following:</p>
 		</div>
 		<div classaName="buttons">
 			<a
@@ -17,6 +17,11 @@ const Databases = () => {
 			</a>
 		</div>
 		<hr/>
+		<h2 className="subtitle">Back ups</h2>
+		<div className="content">
+			<p>You can manually back up databases by running the command <code>vagrant ssh -c "db_backup"</code>, and VVV will place SQL files in the <code>database/sql</code> VVV sub-folder.</p>
+			<p>Backups can be manually restored using <code>vagrant ssh -c "db_restore"</code>.</p>
+		</div>
 
 		<h2 className="subtitle">Tools</h2>
 		<div className="columns is-multiline">

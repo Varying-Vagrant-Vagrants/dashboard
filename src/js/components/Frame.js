@@ -7,8 +7,10 @@ import RootWarning from "./root-warning";
 import Demo from "./Demo";
 import Sidebar from "./sidebar";
 import Databases from "./databases";
+import Help from "./help";
 import Php from "./php";
 import Sites from "./sites";
+import NewSite from "./sites/new";
 import StatusBar from "./statusbar";
 
 function Frame () {
@@ -22,19 +24,28 @@ function Frame () {
 				<section className="main-area">
 					<RootWarning />
 					<Switch>
-						<Route path="/placeholder">
+						<Route exactly path="/placeholder">
 							<section className="section">
 								<h1 className="title">Hello!</h1>
 							</section>
 						</Route>
-						<Route path="/demo">
+						<Route exactly path="/demo">
 							<Demo />
 						</Route>
-						<Route path="/databases">
+						<Route exactly path="/databases">
 							<Databases />
 						</Route>
-						<Route path="/php">
+						<Route exactly path="/php">
 							<Php />
+						</Route>
+						<Route exactly path="/help">
+							<Help />
+						</Route>
+						<Route exactly path="/sites/new">
+							<NewSite />
+						</Route>
+						<Route exactly path="/sites/">
+							<Sites />
 						</Route>
 						<Route path="/">
 							<Sites />
