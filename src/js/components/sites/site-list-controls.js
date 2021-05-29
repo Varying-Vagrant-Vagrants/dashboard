@@ -1,21 +1,32 @@
-const SiteListControls = () => {
+import classnames from 'classnames';
+
+const SiteListControls = ( { currentSiteFilter, setSiteFilter } ) => {
 	return <nav className="level">
 		<div className="level-left"></div>
 		<div className="level-right">
 			<div className="level-item">
 				<div className="field has-addons">
 					<p className="control">
-						<button className="button is-info disabled" disabled>
+						<button
+							className={ classnames( 'button', { 'is-info': currentSiteFilter === 'all' } ) }
+							onClick={ () => setSiteFilter('all') }
+						>
 							<span>All</span>
 						</button>
 					</p>
 					<p className="control">
-						<button className="button disabled" disabled>
+						<button
+							className={ classnames( "button", { 'is-info': currentSiteFilter === 'enabled' } ) }
+							onClick={ () => setSiteFilter('enabled') }
+						>
 							<span>Enabled</span>
 						</button>
 					</p>
 					<p className="control">
-						<button className="button disabled" disabled>
+						<button
+							className={ classnames( "button", { 'is-info': currentSiteFilter === 'skipped' } ) }
+							onClick={ () => setSiteFilter('skipped') }
+						>
 							<span>Skipped</span>
 						</button>
 					</p>
