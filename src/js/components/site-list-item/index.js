@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import useSite from '../../redux/hooks/useSite';
 
 const SiteListItem = ( { siteName } ) => {
@@ -27,5 +29,9 @@ const SiteListItem = ( { siteName } ) => {
 		</div>
 	</div>;
 };
+
+SiteListItem.propTypes = {
+	siteName: PropTypes.string.isRequired,
+}
 
 export default SiteListItem;
