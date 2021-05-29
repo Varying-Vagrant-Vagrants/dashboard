@@ -1,8 +1,9 @@
 {
   "name": "vvv-dashboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "A react dashboard for the VVV project",
   "dependencies": {
+    "classnames": "^2.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "*",
@@ -39,5 +40,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tom J Nowell",
-  "license": "GPL-3.0-or-later"
+  "licence": "MIT"
 }
