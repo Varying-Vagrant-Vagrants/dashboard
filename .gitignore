@@ -1,0 +1,9 @@
+# Stuff that pops up locally for me - @jeremyfelt
+*.sublime*
+.DS_Store
+.idea
+Icon?
+Icon\r
+Icon\r\r
+
+/node_modules/
