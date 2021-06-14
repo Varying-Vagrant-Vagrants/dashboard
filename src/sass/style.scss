@@ -55,8 +55,8 @@ body > .section {
 }
 
 .navbar.is-fixed-bottom {
-    padding-top: 0;
-    padding-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .menu-label {
@@ -66,11 +66,15 @@ body > .section {
 @media only screen and (min-width: 769px) {
 	.fixed-column {
 		top: 0;
-		bottom: 4rem;
+		bottom: 0;
 		position: fixed;
 		max-height: 100vh;
 		overflow-y: scroll;
 	}
+}
+
+.fixed-column {
+	background: #00000022;
 }
 
 .disabled {

@@ -17,10 +17,10 @@ function Frame () {
 	return <>
 		<StatusBar/>
 		<div className="columns">
-			<div className="column is-one-fifth fixed-column ml-5 mr-5">
+			<div id="sidebar" className="column is-one-fifth fixed-column mr-5">
 				<Sidebar />
 			</div>
-			<div className="column is-offset-one-fifth is-four-fifths">
+			<main id="main" className="column is-offset-one-fifth is-four-fifths">
 				<section className="main-area">
 					<RootWarning />
 					<Switch>
@@ -52,7 +52,7 @@ function Frame () {
 						</Route>
 					</Switch>
 				</section>
-			</div>
+			</main>
 		</div>
 	</>;
 }
