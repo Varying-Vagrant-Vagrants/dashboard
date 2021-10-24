@@ -4,7 +4,7 @@
 		<?php
 		if ( is_dir( '/srv/www/default/database-admin/' ) ) {
 			?>
-			<a class="button tool-phpmyadmin" href="//vvv.test/database-admin/" `target="_blank"`>phpMyAdmin</a>
+			<a class="button tool-phpmyadmin" href="//vvv.test/database-admin/" target="_blank">phpMyAdmin</a>
 			<?php
 		}
 
