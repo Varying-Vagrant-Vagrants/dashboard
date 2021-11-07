@@ -62,7 +62,7 @@ $environment = [
 				'command'     => 'vagrant ssh -c "switch_php_debugmod pcov"'
 			],
 			'none'            => [
-				'name'        => 'None',
+				'name'        => 'No PHP Debug Extensions Loaded',
 				'description' => 'Vanilla PHP',
 				'command'     => 'vagrant ssh -c "switch_php_debugmod none"',
 			],
@@ -79,6 +79,24 @@ foreach ( $environment['php']['debug_extensions'] as $ext => $options ) {
 	}
 }
 $environment['php']['current_debug_extension'] = $current_debug_ext;
+
+$v_free_space_mb = round( disk_free_space( '/' ) / 1024 / 1024, 1 );
+$v_free_space_gb = round( $v_free_space_mb / 1024, 1 );
+$v_total_space   = round( disk_total_space( '/' ) / 1024 / 1024 / 1024, 0 );
+$v_used_space    = round( $v_total_space - ( $v_free_space_mb / 1024 ), 1 );
+$v_used_percent  = round( ( $v_used_space / $v_total_space ) * 100, 0 );
+$v_low_space     = ( 200 > $v_free_space_mb );
+$v_free_space    = ( $v_free_space_mb < 1024 ) ? $v_free_space_mb . ' MB' : $v_free_space_gb . ' GB';
+
+$environment['diskspace'] = [
+	'free_space_mb' => $v_free_space_mb,
+	'free_space_gb' => $v_free_space_gb,
+	'total_space'   => $v_total_space,
+	'used_space'    => $v_used_space,
+	'used_percent'  => $v_used_percent,
+	'low_space'     => $v_low_space,
+	'free_space'    => $v_free_space,
+];
 
 if ( is_dir( '/srv/www/default/database-admin/' ) ) {
 	$tools[] = [
@@ -160,6 +178,8 @@ if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) 
 
 $vvv = [
 	'config'      => $initial_config,
+	'config_file' => $config_file,
+	'config_raw'  => file_get_contents( $config_file ),
 	'environment' => $environment,
 	'tools'       => $tools,
 ];
