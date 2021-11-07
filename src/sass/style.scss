@@ -73,6 +73,14 @@ body > .section {
 	}
 }
 
+@media screen and (min-width: 769px), print {
+	.columns.is-gapless {
+		.column.is-offset-one-fifth, .column.is-offset-one-fifth-tablet {
+			margin-left: 20%;
+		}
+	}
+}
+
 .fixed-column {
 	background: #00000022;
 }
