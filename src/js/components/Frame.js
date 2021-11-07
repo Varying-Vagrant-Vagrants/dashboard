@@ -1,6 +1,6 @@
 import {
-  Switch,
-  Route
+	Switch,
+	Route
 } from "react-router-dom";
 import RootWarning from "./root-warning";
 
@@ -9,6 +9,7 @@ import Sidebar from "./sidebar";
 import Databases from "./databases";
 import Help from "./help";
 import Php from "./php";
+import Site from "./site";
 import Sites from "./sites";
 import NewSite from "./sites/new";
 import StatusBar from "./statusbar";
@@ -16,8 +17,8 @@ import StatusBar from "./statusbar";
 function Frame () {
 	return <>
 		<StatusBar/>
-		<div className="columns">
-			<div id="sidebar" className="column is-one-fifth fixed-column mr-5">
+		<div className="columns is-gapless">
+			<div id="sidebar" className="column is-one-fifth fixed-column">
 				<Sidebar />
 			</div>
 			<main id="main" className="column is-offset-one-fifth is-four-fifths">
@@ -41,8 +42,8 @@ function Frame () {
 						<Route exactly path="/help">
 							<Help />
 						</Route>
-						<Route exactly path="/sites/new">
-							<NewSite />
+						<Route path="/sites/:id">
+							<Site />
 						</Route>
 						<Route exactly path="/sites/">
 							<Sites />

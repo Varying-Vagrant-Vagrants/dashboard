@@ -1,6 +1,3 @@
-import {
-  Link
-} from "react-router-dom";
 import MenuItem from "./menu-item";
 import useTools from "../../redux/hooks/useTools";
 
@@ -10,7 +7,6 @@ const Sidebar = () => {
 		<p className="menu-label">Sites</p>
 		<ul className="menu-list">
 			<MenuItem to="/">Sites</MenuItem>
-			<MenuItem to="/sites/new">Add New Site</MenuItem>
 		</ul>
 		<p className="menu-label">Tools</p>
 		<ul className="menu-list">

@@ -4,7 +4,7 @@ import store from "./js/redux/store";
 
 import { Provider } from 'react-redux';
 import {
-  HashRouter as Router
+	HashRouter as Router
 } from "react-router-dom";
 
 const wrapper = document.getElementById("container");

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useSites from '../../redux/hooks/useSites';
 import SiteListItem from '../site-list-item';
+import NewSite from './new';
 import SiteListControls from './site-list-controls';
 
 const Sites = () => {
@@ -36,6 +37,7 @@ const Sites = () => {
 		<h1 className="title">Sites</h1>
 		<SiteListControls currentSiteFilter={ siteFilter } setSiteFilter={ setSiteFilter } />
 		{ siteList }
+		<NewSite/>
 	</section>;
 };
 

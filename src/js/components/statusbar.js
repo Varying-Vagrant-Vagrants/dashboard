@@ -26,7 +26,7 @@ const StatusBar = () => {
 					<i className="fas fa-bug"></i>
 				</span>
 				<span>
-					PHP Debugger: { phpDebugExtension.name }
+					{ phpDebugExtension.name }
 				</span>
 			</span>
 		</div>
