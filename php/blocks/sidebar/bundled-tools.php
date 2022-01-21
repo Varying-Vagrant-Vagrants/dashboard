@@ -1,7 +1,7 @@
 <?php
 function is_utility_enabled( $search_utility ) {
 	$data = read_config();
-    $found = false;
+	$found = false;
 	foreach ( $data['utilities'] as $suite => $utility ) {
 		if (
 			isset( $utility[ $search_utility ] )
