@@ -1,26 +1,42 @@
+<?php
+
+function is_utility_enabled( $search_utility ) : bool {
+	$data = read_config();
+	$found = false;
+	foreach ( $data['utilities'] as $suite => $utility ) {
+		if (
+			isset( $utility[ $search_utility ] )
+		) {
+			$found = true;
+		}
+	}
+
+	return $found;
+}
+?>
 <div class="box">
 	<h3>Tools</h3>
 	<nav class="tools">
 		<?php
-		if ( is_dir( '/srv/www/default/database-admin/' ) ) {
+		if ( is_utility_enabled( 'phpmyadmin' ) ) {
 			?>
 			<a class="button tool-phpmyadmin" href="//vvv.test/database-admin/" target="_blank">phpMyAdmin</a>
 			<?php
 		}
 
-		if ( is_dir( '/srv/www/default/memcached-admin/' ) ) {
+		if ( is_utility_enabled( 'memcached-admin' ) ) {
 			?>
 			<a class="button tool-memcached-admin" href="//vvv.test/memcached-admin/" target="_blank">phpMemcachedAdmin</a>
 			<?php
 		}
 
-		if ( is_dir( '/srv/www/default/opcache-status/' ) ) {
+		if ( is_utility_enabled( 'opcache-status' ) ) {
 			?>
 			<a class="button tool-opcachestatus" href="//vvv.test/opcache-status/opcache.php" target="_blank">Opcache Status</a>
 			<?php
 		}
 
-		if ( is_dir( '/srv/www/default/opcache-gui/' ) ) {
+		if ( is_utility_enabled( 'opcache-gui' ) ) {
 			?>
 			<a class="button tool-opcache-gui" href="//vvv.test/opcache-gui/" target="_blank">Opcache Gui</a>
 			<?php
@@ -36,12 +52,12 @@
 			<?php
 		}
 
-		if ( is_dir( '/srv/www/default/xhgui/' ) ) {
+		if ( is_utility_enabled( 'tideways' ) ) {
 			?>
 			<a class="button tool-xhgui" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
 			<?php
 		}
-		if ( is_dir( '/srv/www/default/webgrind/' ) ) {
+		if ( is_utility_enabled( 'webgrind' ) ) {
 			?>
 			<a class="button tool-webgrind" href="//vvv.test/webgrind/" target="_blank">Webgrind</a>
 			<?php
