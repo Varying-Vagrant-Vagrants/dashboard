@@ -1,5 +1,6 @@
 <?php
-function is_utility_enabled( $search_utility ) {
+
+function is_utility_enabled( $search_utility ) : bool {
 	$data = read_config();
 	$found = false;
 	foreach ( $data['utilities'] as $suite => $utility ) {
