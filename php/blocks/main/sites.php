@@ -120,7 +120,7 @@ function display_site( $name, array $site ) : void {
 }
 
 function read_config() {
-    $config_locations = [
+	$config_locations = [
 		'/srv/vvv/config.yml',
 		'/vagrant/config.yml',
 		'/vagrant/vvv-custom.yml',
