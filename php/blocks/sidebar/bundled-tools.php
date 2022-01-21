@@ -1,11 +1,11 @@
 <?php
 
-function is_utility_enabled( $search_utility ) : bool {
+function is_extension_enabled( $search_extension ) : bool {
 	$data = read_config();
 	$found = false;
-	foreach ( $data['utilities'] as $suite => $utility ) {
+	foreach ( $data['extensions'] as $suite => $extension ) {
 		if (
-			isset( $utility[ $search_utility ] )
+			isset( $extension[ $search_extension ] )
 		) {
 			$found = true;
 		}
@@ -18,25 +18,25 @@ function is_utility_enabled( $search_utility ) : bool {
 	<h3>Tools</h3>
 	<nav class="tools">
 		<?php
-		if ( is_utility_enabled( 'phpmyadmin' ) ) {
+		if ( is_extension_enabled( 'phpmyadmin' ) ) {
 			?>
 			<a class="button tool-phpmyadmin" href="//vvv.test/database-admin/" target="_blank">phpMyAdmin</a>
 			<?php
 		}
 
-		if ( is_utility_enabled( 'memcached-admin' ) ) {
+		if ( is_extension_enabled( 'memcached-admin' ) ) {
 			?>
 			<a class="button tool-memcached-admin" href="//vvv.test/memcached-admin/" target="_blank">phpMemcachedAdmin</a>
 			<?php
 		}
 
-		if ( is_utility_enabled( 'opcache-status' ) ) {
+		if ( is_extension_enabled( 'opcache-status' ) ) {
 			?>
 			<a class="button tool-opcachestatus" href="//vvv.test/opcache-status/opcache.php" target="_blank">Opcache Status</a>
 			<?php
 		}
 
-		if ( is_utility_enabled( 'opcache-gui' ) ) {
+		if ( is_extension_enabled( 'opcache-gui' ) ) {
 			?>
 			<a class="button tool-opcache-gui" href="//vvv.test/opcache-gui/" target="_blank">Opcache Gui</a>
 			<?php
@@ -52,12 +52,12 @@ function is_utility_enabled( $search_utility ) : bool {
 			<?php
 		}
 
-		if ( is_utility_enabled( 'tideways' ) ) {
+		if ( is_extension_enabled( 'tideways' ) ) {
 			?>
 			<a class="button tool-xhgui" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
 			<?php
 		}
-		if ( is_utility_enabled( 'webgrind' ) ) {
+		if ( is_extension_enabled( 'webgrind' ) ) {
 			?>
 			<a class="button tool-webgrind" href="//vvv.test/webgrind/" target="_blank">Webgrind</a>
 			<?php
