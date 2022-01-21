@@ -149,9 +149,6 @@ function display_sites() : void {
 		echo '<p>No config file was found.</p>';
 		return;
 	}
-	
-	$yaml = new Alchemy\Component\Yaml\Yaml();
-	$data = $yaml->load( $config_file );
 
 	$provisioned_sites = [];
 	$skipped_sites = [];
