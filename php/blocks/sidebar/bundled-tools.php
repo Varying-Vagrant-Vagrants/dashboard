@@ -1,18 +1,33 @@
 <?php
 
-function is_extension_enabled( $search_extension ) : bool {
+function is_extension_enabled( $search_extension ) {
 	$data = read_config();
-	$found = false;
-	foreach ( $data['extensions'] as $suite => $extension ) {
-		if (
-			isset( $extension[ $search_extension ] )
-		) {
-			$found = true;
+	
+	if ( empty( $data ) ) {
+		return false;
+	}
+	
+	if ( ! empty( $data['extensions'] ) ) {
+		// check the extensions section
+		foreach ( $data['extensions'] as $suite => $extension ) {
+			if ( isset( $extension[ $search_extension ] ) ) {
+				return true;
+			}
 		}
 	}
 
-	return $found;
+	if ( ! empty( $data['utilities'] ) ) {
+		// check the utilities fallback
+		foreach ( $data['utilities'] as $suite => $extension ) {
+			if ( isset( $extension[ $search_extension ] ) ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
+
 ?>
 <div class="box">
 	<h3>Tools</h3>
@@ -32,7 +47,7 @@ function is_extension_enabled( $search_extension ) : bool {
 
 		if ( is_extension_enabled( 'opcache-status' ) ) {
 			?>
-			<a class="button tool-opcachestatus" href="//vvv.test/opcache-status/opcache.php" target="_blank">Opcache Status</a>
+			<a class="button tool-opcache-status" href="//vvv.test/opcache-status/opcache.php" target="_blank">Opcache Status</a>
 			<?php
 		}
 
@@ -54,7 +69,7 @@ function is_extension_enabled( $search_extension ) : bool {
 
 		if ( is_extension_enabled( 'tideways' ) ) {
 			?>
-			<a class="button tool-xhgui" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
+			<a class="button tool-xhgui tool-tideways" href="//xhgui.vvv.test/" target="_blank">XHGui Profiler</a>
 			<?php
 		}
 		if ( is_extension_enabled( 'webgrind' ) ) {
@@ -68,7 +83,7 @@ function is_extension_enabled( $search_extension ) : bool {
 		<?php
 		if ( extension_loaded( 'xdebug' ) && is_dir( '/srv/www/default/xdebuginfo/' ) ) {
 			?>
-			<a class="button tool-xdebuginfo" href="//vvv.test/xdebuginfo/" target="_blank">Xdebug Info</a>
+			<a class="button tool-xdebug tool-xdebuginfo" href="//vvv.test/xdebuginfo/" target="_blank">Xdebug Info</a>
 			<?php
 		}
 		?>
