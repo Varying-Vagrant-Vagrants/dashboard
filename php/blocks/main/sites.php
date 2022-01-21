@@ -119,9 +119,8 @@ function display_site( $name, array $site ) : void {
 	<?php
 }
 
-function display_sites() : void {
-	
-	$config_locations = [
+function read_config() {
+    $config_locations = [
 		'/srv/vvv/config.yml',
 		'/vagrant/config.yml',
 		'/vagrant/vvv-custom.yml',
@@ -136,6 +135,17 @@ function display_sites() : void {
 	}
 
 	if ( false === $config_file ) {
+		return false;
+	}
+
+	$yaml = new Alchemy\Component\Yaml\Yaml();
+	return $yaml->load( $config_file );
+}
+
+function display_sites() : void {
+	$data = read_config();
+
+	if ( false === $data ) {
 		echo '<p>No config file was found.</p>';
 		return;
 	}
