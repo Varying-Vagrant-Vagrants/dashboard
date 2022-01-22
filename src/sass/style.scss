@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+//@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+$bulmaswatch-import-font: false;
+
+@import "bulma-variables.scss";
+@import "bulma/sass/utilities/_all.sass";
+
+$primary: $blue;
+$link: $blue;
+$turquoise: $blue;
+$link-hover: darken($link, 5);
+$navbar-background-color: $grey-darker;
+$navbar-dropdown-background-color: $grey-darker;
+$navbar-padding-vertical: 0.5rem;
+$navbar-height: 1rem;
+
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/elements/_all.sass";
+@import "bulma/sass/form/_all.sass";
+@import "bulma/sass/components/_all.sass";
+@import "bulma/sass/grid/_all.sass";
+@import "bulma/sass/helpers/_all";
+@import "bulma/sass/layout/_all.sass";
+
+@import "bulmaswatch/darkly/_overrides.scss";
+
+html {
+	min-height: 100vh;
+	//background: #272b35 fixed linear-gradient(0deg, #272b35 10%, #2b303b 37%, #343d46 100%);
+}
+
+.navbar-brand,
+.navbar-tabs {
+	.title {
+		font-size: 1rem;
+	}
+}
+
+.navbar-brand a {
+	color: $white;
+}
+
+body > .section {
+	padding-top: 0;
+}
+
+.main-area {
+	padding-top: 1rem;
+
+	& > .section:first-child {
+		padding-top: 0;
+	}
+}
+
+.navbar.is-fixed-bottom {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.menu-label {
+	padding: $menu-list-link-padding;
+}
+
+@media only screen and (min-width: 769px) {
+	.fixed-column {
+		top: 0;
+		bottom: 0;
+		position: fixed;
+		max-height: 100vh;
+		overflow-y: scroll;
+	}
+}
+
+@media screen and (min-width: 769px), print {
+	.columns.is-gapless {
+		.column.is-offset-one-fifth, .column.is-offset-one-fifth-tablet {
+			margin-left: 20%;
+		}
+	}
+}
+
+.fixed-column {
+	background: #00000022;
+}
+
+.disabled {
+	cursor: not-allowed;
+
+	& > a {
+		pointer-events: none;
+		opacity: 50%;
+	}
+}

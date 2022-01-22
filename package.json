@@ -1,0 +1,40 @@
+{
+  "name": "vvv-dashboard",
+  "version": "1.0.1",
+  "description": "A react dashboard for the VVV project",
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "*",
+    "whatwg-fetch": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "bulma": "^0.9.3",
+    "bulmaswatch": "^0.8.1",
+    "css-loader": "^5.0.1",
+    "mini-css-extract-plugin": "^1.6.2",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom J Nowell",
+  "licence": "MIT"
+}
