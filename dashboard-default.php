@@ -1,5 +1,9 @@
 <?php
-$version = file_get_contents( '/vagrant/version' );
+$version = 0;
+if ( file_exists( '/vagrant/version' ) && is_readable( '/vagrant/version' ) ) {
+	$version = file_get_contents( '/vagrant/version' );
+}
+
 $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 
 ?><!DOCTYPE html>
