@@ -2,15 +2,15 @@
 
 function is_extension_enabled( $search_extension ) {
 	$data = read_config();
-	
+
 	if ( empty( $data ) ) {
 		return false;
 	}
-	
+
 	if ( ! empty( $data['extensions'] ) ) {
 		// check the extensions section
 		foreach ( $data['extensions'] as $suite => $extension ) {
-			if ( isset( $extension[ $search_extension ] ) ) {
+			if ( in_array( $search_extension, $extension, true ) ) {
 				return true;
 			}
 		}
@@ -19,7 +19,7 @@ function is_extension_enabled( $search_extension ) {
 	if ( ! empty( $data['utilities'] ) ) {
 		// check the utilities fallback
 		foreach ( $data['utilities'] as $suite => $extension ) {
-			if ( isset( $extension[ $search_extension ] ) ) {
+			if ( in_array( $search_extension, $extension, true ) ) {
 				return true;
 			}
 		}
