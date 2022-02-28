@@ -14,26 +14,32 @@ if ( file_exists( '/vagrant/provisioned_as_root' ) ) {
 	return;
 }
 ?>
-<div class="box inclusivity">
+<div class="box inclusivity" style="background: #21242c;">
 	<div class="inclusive-teddy-bear">
-		<h3>Black Lives Matter!</h3>
+		<h3 style="color: #0057b7;">Ukraine needs your help</h3>
 
-<pre class="teddy"> ✧ ▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄ ✧ 
-  ✧█▒▒░░░░░░░░░▒▒█   
-✧   █░░█░░░░░█░░█ ✧  
- ▄▄  █░░░▀█▀░░░█  ▄▄✧
-█░░█ ▀▄░░░░░░░▄▀ █░░█</pre>
+<pre class="teddy" style="color: #ffd700;"> ! ▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄ ! 
+  !█▒▒░░░░░░░░░▒▒█   
+!   █░░█░░░░░█░░█ !  
+     █░░░▀█▀░░░█    !
+  !  ▀▄░░░░░░░▄▀     
+       ▀▀▀▀▀▀▀  !    </pre>
 	</div>
 	<ul>
-		<li>
-			<a href="https://blacklivesmatters.carrd.co/" target="_blank">
-				How to Help Those In Need
+	<li>
+			<a href="https://twitter.com/Ukraine/status/1497294422354055171" target="_blank">
+				🇺🇦 Help Ukraine 🇺🇦
 			</a>
 		</li>
 		<li>
-			<a href="https://github.com/Varying-Vagrant-Vagrants/VVV/blob/develop/CODE_OF_CONDUCT.md" target="_blank" >
-				Our Code of Conduct
-			</a>
+			<small>
+				<a href="https://github.com/Varying-Vagrant-Vagrants/VVV/blob/develop/CODE_OF_CONDUCT.md" target="_blank" >
+					Our Code of Conduct
+				</a>, 
+				<a href="https://blacklivesmatters.carrd.co/" target="_blank">
+					Black lives still matter
+				</a>
+			</small>
 		</li>
 	</ul>
 </div>
