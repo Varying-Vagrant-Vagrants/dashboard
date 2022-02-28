@@ -35,7 +35,11 @@ if ( file_exists( '/vagrant/provisioned_as_root' ) ) {
 			<small>
 				<a href="https://github.com/Varying-Vagrant-Vagrants/VVV/blob/develop/CODE_OF_CONDUCT.md" target="_blank" >
 					Our Code of Conduct
-				</a>, 
+				</a>
+			</small>
+		</li>
+		<li>
+			<small>
 				<a href="https://blacklivesmatters.carrd.co/" target="_blank">
 					Black lives still matter
 				</a>
