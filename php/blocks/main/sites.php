@@ -69,7 +69,7 @@ function display_site( $name, array $site ) : void {
 	if ( !empty( $site['nginx_upstream'] ) ) {
 		$upstream = $site['nginx_upstream'];
 	}
-	if( isset( $site['custom']['site_title'] ) ) {
+	if ( isset( $site['custom']['site_title'] ) ) {
 		$site_title = strip_tags( $site['custom']['site_title'] );
 	}
 
@@ -80,6 +80,12 @@ function display_site( $name, array $site ) : void {
 	} else {
 		$classes[] = 'site_provision';
 	}
+	
+	$vm_dir = '/srv/www/' . $name;
+	if ( !empty( $site['vm_dir'] ) ) {
+		$vm_dir = $site['vm_dir'];
+	}
+	
 	?>
 	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
 		<h4>
@@ -90,8 +96,11 @@ function display_site( $name, array $site ) : void {
 			}
 			?>
 			<div class="site-header-meta">
-				<small><code>/srv/www/<?php echo strip_tags( $name ); ?></code></small>
-				<span class="chip"><?php echo strip_tags( $upstream ); ?></span>
+				<small><code><?php echo strip_tags( $vm_dir ); ?></code></small>
+				<?php
+				// TODO: Re-enable when we add support for the php: parameter along with a version check to avoid confusion
+				/*<span class="chip"><?php echo strip_tags( $upstream ); ?></span> */
+				?>
 			</div>
 		</h4>
 		<?php
