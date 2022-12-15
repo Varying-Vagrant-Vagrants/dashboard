@@ -74,7 +74,7 @@ function display_site( string $name, array $site ) : void {
 	}
 
 	$version_arr = explode( '.', phpversion() );
-	$php_version = $version_arr[0] . $version_arr[1];
+	$php_version = $version_arr[0] . '.' . $version_arr[1];
 	if ( ! empty( $site['php'] ) ) {
 		$php_version = $site['php'];
 	}
