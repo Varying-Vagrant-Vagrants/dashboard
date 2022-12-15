@@ -16,7 +16,7 @@ if ( file_exists( '/vagrant/provisioned_as_root' ) ) {
 ?>
 <div class="box inclusivity" style="background: #21242c;">
 	<div class="inclusive-teddy-bear">
-		<h3 style="color: #0057b7;">Ukraine needs your help</h3>
+		<h3>Ukraine needs your help</h3>
 
 <pre class="teddy" style="color: #ffd700;"> ! ▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄ ! 
   !█▒▒░░░░░░░░░▒▒█   
@@ -28,13 +28,13 @@ if ( file_exists( '/vagrant/provisioned_as_root' ) ) {
 	<ul>
 	<li>
 			<a href="https://twitter.com/Ukraine/status/1497294422354055171" target="_blank">
-				🇺🇦 Help Ukraine 🇺🇦
+				🇺🇦 Help Ukraine
 			</a>
 		</li>
 		<li>
 			<small>
 				<a href="https://github.com/Varying-Vagrant-Vagrants/VVV/blob/develop/CODE_OF_CONDUCT.md" target="_blank" >
-					Our Code of Conduct
+					The VVV Code of Conduct
 				</a>
 			</small>
 		</li>
