@@ -27,16 +27,21 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 			<main class="column left-column">
 				<?php
 				require_once __DIR__ . '/php/blocks/main/sites.php';
-				require_once __DIR__ . '/php/blocks/main/adding-site-doc.php';
-				require_once __DIR__ . '/php/blocks/main/php-status.php';
 				?>
+				<details class="box alt-box">
+					<summary>Advanced</summary>
+					<?php
+					require_once __DIR__ . '/php/blocks/main/adding-site-doc.php';
+					require_once __DIR__ . '/php/blocks/main/php-status.php';
+				require_once __DIR__ . '/php/blocks/sidebar/disk-info.php';
+					?>
+				</details>
 			</main>
 			<aside class="column right-column">
 				<?php
-				require_once __DIR__ . '/php/blocks/sidebar/inclusivity.php';
 				require_once __DIR__ . '/php/blocks/sidebar/bundled-tools.php';
-				require_once __DIR__ . '/php/blocks/sidebar/search-docs.php';
-				require_once __DIR__ . '/php/blocks/sidebar/disk-info.php';
+				require_once __DIR__ . '/php/blocks/sidebar/inclusivity.php';
+				//require_once __DIR__ . '/php/blocks/sidebar/search-docs.php';
 				require_once __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php';
 				?>
 			</aside>
