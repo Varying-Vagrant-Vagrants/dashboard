@@ -86,14 +86,25 @@ function display_site( string $name, array $site ) : void {
 	} else {
 		$classes[] = 'site_provision';
 	}
-	
+
 	$vm_dir = '/srv/www/' . $name;
 	if ( ! empty( $site['vm_dir'] ) ) {
 		$vm_dir = $site['vm_dir'];
 	}
-	
+
 	?>
 	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
+		<div class="site-header-meta">
+			<span class="chip">
+				<code><?php echo strip_tags( $vm_dir ); ?></code>
+			</span>
+			<?php
+			if ( $upstream !== 'php' ) {
+				?><span class="chip">Custom Upstream: <?php echo strip_tags( $upstream ); ?></span><?php
+			}
+			?>
+			<span class="chip">PHP: <?php echo strip_tags( $php_version ); ?></span>
+		</div>
 		<h4>
 			<?php
 			echo '<strong>' . strip_tags( $site_title ) . '</strong>';
@@ -101,15 +112,6 @@ function display_site( string $name, array $site ) : void {
 				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
 			}
 			?>
-			<div class="site-header-meta">
-				<small><code><?php echo strip_tags( $vm_dir ); ?></code></small>
-				<?php
-				if ( $upstream !== 'php' ) {
-					?><span class="chip">Custom Upstream: <?php echo strip_tags( $upstream ); ?></span><?php
-				}
-				?>
-				<span class="chip">PHP: <?php echo strip_tags( $php_version ); ?></span>
-			</div>
 		</h4>
 		<?php
 		if ( ! empty( $description ) ) {
