@@ -4,7 +4,7 @@ $version = $version_arr[0] . "." . $version_arr[1] . "." . explode( '+', $versio
 $base_version = $version_arr[0] . "." . $version_arr[1];
 ?>
 <div class="box alt-box">
-	<h3>PHP Versions</h3>
+	<h3>Installed PHP Versions</h3>
 	<ul class="chips">
 		<?php
 		$default_version = 'php' . $version_arr[0] . "." . $version_arr[1];
@@ -16,12 +16,17 @@ $base_version = $version_arr[0] . "." . $version_arr[1];
 				$default = ' <strong>( default )</strong>';
 				$chip_class .= ' default';
 			}
+			$version = trim( basename( $file ) );
+			$version = str_replace( 'php', '', $version );
 			?>
-				<li class="<?php echo $chip_class; ?>"><?php echo basename( $file ) . $default; ?></li>
+				<li class="<?php echo $chip_class; ?>">
+					PHP v<?php echo $version . $default; ?></li>
 			<?php
 		}
 		?>
-		<a class="chip" href="https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/changing-php-version/" target="_blank">+ Add more</a>
+		<a class="chip" href="https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/changing-php-version/" target="_blank">
+			+ How To Add more
+		</a>
 	</ul>
 
 	<h3>PHP Debugging Extensions</h3>

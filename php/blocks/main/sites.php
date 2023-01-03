@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../yaml.php';
 
-function endsWith( $haystack, $needle ) : bool {
+function endsWith( $haystack, $needle ) {
 	$length = strlen( $needle );
 
 	return $length === 0 || ( substr( $haystack, -$length ) === $needle );
@@ -16,7 +16,7 @@ function show_warnings( array $warnings ) : void {
 	echo '</div>';
 }
 
-function get_site_description( $name, array $site ) : string {
+function get_site_description( $name, array $site ) {
 	if ( !empty( $site['description'] ) ) {
 		return $site['description'];
 	}
@@ -63,31 +63,48 @@ function get_site_warnings( array $site ) : array {
 function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = get_site_description( $name, $site );
-	$site_title = strip_tags( $name );
-	$version_arr = explode( '.', phpversion() );
-	$upstream = 'php' . $version_arr[0] . $version_arr[1];
-	if ( !empty( $site['nginx_upstream'] ) ) {
+	$site_title = $name;
+	if ( isset( $site['custom']['site_title'] ) ) {
+		$site_title = $site['custom']['site_title'];
+	}
+
+	$upstream = 'php';
+	if ( ! empty( $site['nginx_upstream'] ) ) {
 		$upstream = $site['nginx_upstream'];
 	}
-	if ( isset( $site['custom']['site_title'] ) ) {
-		$site_title = strip_tags( $site['custom']['site_title'] );
+
+	$version_arr = explode( '.', phpversion() );
+	$php_version = $version_arr[0] . '.' . $version_arr[1];
+	if ( ! empty( $site['php'] ) ) {
+		$php_version = $site['php'];
 	}
 
 	$skip_provisioning = false;
-	if ( !empty( $site['skip_provisioning'] ) ) {
+	if ( ! empty( $site['skip_provisioning'] ) ) {
 		$skip_provisioning = $site['skip_provisioning'];
 		$classes[] = 'site_skip_provision';
 	} else {
 		$classes[] = 'site_provision';
 	}
-	
+
 	$vm_dir = '/srv/www/' . $name;
-	if ( !empty( $site['vm_dir'] ) ) {
+	if ( ! empty( $site['vm_dir'] ) ) {
 		$vm_dir = $site['vm_dir'];
 	}
-	
+
 	?>
 	<article class="box <?php echo strip_tags( implode( ',', $classes ) ); ?>">
+		<div class="site-header-meta">
+			<span class="chip">
+				<code><?php echo strip_tags( $vm_dir ); ?></code>
+			</span>
+			<?php
+			if ( $upstream !== 'php' ) {
+				?><span class="chip">Custom Upstream: <?php echo strip_tags( $upstream ); ?></span><?php
+			}
+			?>
+			<span class="chip">PHP: <?php echo strip_tags( $php_version ); ?></span>
+		</div>
 		<h4>
 			<?php
 			echo '<strong>' . strip_tags( $site_title ) . '</strong>';
@@ -95,13 +112,6 @@ function display_site( $name, array $site ) : void {
 				echo ' <a target="_blank" href="https://varyingvagrantvagrants.org/docs/en-US/config/#skip_provisioning"><small class="site_badge">provisioning skipped</small></a>';
 			}
 			?>
-			<div class="site-header-meta">
-				<small><code><?php echo strip_tags( $vm_dir ); ?></code></small>
-				<?php
-				// TODO: Re-enable when we add support for the php: parameter along with a version check to avoid confusion
-				/*<span class="chip"><?php echo strip_tags( $upstream ); ?></span> */
-				?>
-			</div>
 		</h4>
 		<?php
 		if ( ! empty( $description ) ) {
