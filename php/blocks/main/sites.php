@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../yaml.php';
 
-function endsWith( string $haystack, string $needle ) : bool {
+function endsWith( $haystack, $needle ) {
 	$length = strlen( $needle );
 
 	return $length === 0 || ( substr( $haystack, -$length ) === $needle );
@@ -16,7 +16,7 @@ function show_warnings( array $warnings ) : void {
 	echo '</div>';
 }
 
-function get_site_description( string $name, array $site ) : string {
+function get_site_description( $name, array $site ) {
 	if ( !empty( $site['description'] ) ) {
 		return $site['description'];
 	}
@@ -60,7 +60,7 @@ function get_site_warnings( array $site ) : array {
 	return $warnings;
 }
 
-function display_site( string $name, array $site ) : void {
+function display_site( $name, array $site ) : void {
 	$classes = [];
 	$description = get_site_description( $name, $site );
 	$site_title = $name;
