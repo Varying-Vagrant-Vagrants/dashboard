@@ -28,7 +28,8 @@ $base_version = $version_arr[0] . "." . $version_arr[1];
 			+ How To Add more
 		</a>
 	</ul>
-
+</div>
+<div class="box alt-box">
 	<h3>PHP Debugging Extensions</h3>
 
 	<?php
