@@ -31,7 +31,16 @@
 	<p><a href="http://vvv.test" class="button">Visit the Dashboard</a></p>
 </div>
 <div id="vvv_update" class="top-notice box" style="display:none">
-	<p>There is an updated version of VVV, check the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/keeping-up-to-date/#thoroughly-updating-vvv">documentation</a> for how to upgrade.</p>
+	<p>There is an newer version of VVV <strong class="vvv_newest_version">???</strong>! </p>
+	<?php
+	if ( file_exists( '/vagrant/version' ) ) {
+		// note that at this time we cannot check for updates to be 100% sure,
+		// that requires a network connection which isn't always present
+		?>
+		<p>You are on <strong>v<?php echo trim( strip_tags( file_get_contents( '/vagrant/version' ) ) ); ?></strong>, You can run <code>git pull</code> then <code>vagrant up --provision</code> in your VVV folder to update. <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/keeping-up-to-date/#minor-versions">More information on how to update.</a></p>
+		<?php
+	}
+	?>
 </div>
 
 <script>
@@ -103,13 +112,15 @@ function versionCompare(v1, v2, options) {
 	}
 	return 0;
 }
-fetch('https://raw.githubusercontent.com/Varying-Vagrant-Vagrants/VVV/master/version').then(function(response) {
+fetch('https://raw.githubusercontent.com/Varying-Vagrant-Vagrants/VVV/stable/version').then(function(response) {
 	return response.text();
 }).then(function(version) {
 	const currentVersion = document.querySelector('.version').textContent.trim();
 	if ( versionCompare( version.trim(), currentVersion ) > 0 ) {
 		document.querySelector('#vvv_update').style.display = 'block';
 	}
+	const matches = document.querySelectorAll('.vvv_newest_version');
+	matches.forEach( match => match.textContent = version.trim() );
 });
 // If it's not vvv.test then this site has failed to provision, let the user know
 // also notify if the dashboard is being shown on the raw IP

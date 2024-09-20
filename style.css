@@ -5,24 +5,56 @@ html {
 body {
 	font-family: 'Source Code Pro', monospace;
 	color: #c0c5ce;
-	padding: 0.25em;
 	font-size: 14px;
 	line-height: 1.6em;
+}
+
+header,
+body > section,
+footer {
+  padding: 2em 0.25em
+}
+
+footer {
+  background-color: #272b35;
 }
 
 @media only screen and (min-width: 600px) {
 	body {
 		font-size: 16px;
-		padding: 3em;
-		padding-top: 1.5em;
+		padding: 0;
+    margin: 0;
+	}
+
+  header,
+  body > section,
+  footer {
 		max-width: 1920px;
 		margin-left: auto;
 		margin-right: auto;
-	}
+    padding: 3em 1.5em;
+  }
+
+  footer {
+    padding: 3em;
+  }
+}
+
+header {
+  padding-bottom: 0;
 }
 
 body.root-warning {
 	background: #290a10;
+}
+
+body > .top-notice {
+  margin-top: 1em;
+  padding: 1.5em 2.5em;
+}
+
+.top-notice .button {
+  margin: 0;
 }
 
 p:first-child {
@@ -93,6 +125,7 @@ pre.teddy {
 	color: white;
 	background: #2b303b;
 	display: inline-block;
+  margin: 0;
 }
 
 .root-warning #vvv_logo {
@@ -156,10 +189,6 @@ nav {
 	margin-bottom: 1em;
 }
 
-.grid50 .box {
-	margin-bottom: 0;
-}
-
 .box {
 	border-radius: 8px;
 	padding: 1.5em;
@@ -213,6 +242,26 @@ input:active {
 
 input[type="submit"]:hover {
 	cursor: pointer;
+}
+
+details summary {
+  color: #ebcb8b;
+  cursor: pointer;
+  list-style-position: outside;
+  margin-left: 1em;
+  padding-left: 10px;
+}
+
+details summary:hover {
+  color: #d08770;
+}
+
+details summary > * {
+  display: inline;
+}
+
+details[open] summary {
+  margin-bottom: 2em;
 }
 
 .button {
@@ -358,6 +407,10 @@ td:last-child {
 	list-style: none;
 	margin-bottom: 1.5em;
 	padding: 0;
+}
+
+.chips > .chip {
+  margin-bottom: 0.5em;
 }
 
 .chip {
