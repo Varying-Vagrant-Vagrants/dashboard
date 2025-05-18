@@ -52,6 +52,7 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 					</div>
 					<div>
 						<?php
+						require_once __DIR__ . '/php/blocks/sidebar/environment.php';
 						require_once __DIR__ . '/php/blocks/sidebar/disk-info.php';
 						require_once __DIR__ . '/php/blocks/sidebar/find-out-more-vvv.php';
 						?>
