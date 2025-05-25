@@ -42,7 +42,25 @@
 	}
 	?>
 </div>
+<?php
 
+$ubuntu_version = trim( shell_exec( 'lsb_release -r -s' ) );
+if ( $ubuntu_version !== '24.04' ) {
+	?>
+	<div id="vvv_box_update" class="top-notice box" >
+		<p>You're running an older box with <strong>Ubuntu <?php echo $ubuntu_version; ?></strong>. The currently supported version is <strong>Ubuntu 24.04 LTS</strong>.</p>
+		<ul>
+			<li>Update to the latest VVV</li>
+			<li>Back up your database ( you can run <code>vagrant ssh -c "db_backup"</code> which puts SQL files in <code>database/sql/backups</code>)</li>
+			<li>Destroy your VVV with <code>vagrant destroy</code></li>
+			<li>Reprovision <code>vagrant up --provision</code></li>
+			<li>Optional: Restore your database backups</li>
+		</ul>
+		<p>If you ignore this then reprovisioning PHP may be broken from June 2024.</p>
+	</div>
+	<?php
+}
+?>
 <script>
 /**
  * Compares two software version numbers (e.g. "1.7.1" or "1.2b").
