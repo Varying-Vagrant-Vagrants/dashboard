@@ -1,8 +1,8 @@
-<div id="vvv_root_warning" class="top-notice box">
+<div id="vvv_root_warning" class="top-notice top-notice--alert box">
 	<h1><strong>DANGER:</strong> This VM was created using sudo/root</h1>
 	<p>This is an emergency. Root VMs cause lots of problems. Do not use <code>sudo</code> with vagrant commands, and do not use VVV as a root user.</p>
 	<p>We are assuming you are trying to recover your database so that you can fix this:</p>
-	<details class="button">
+	<details>
 		<summary>Click For Sudo Recovery Instructions</summary>
 		<ol>
 			<li>These commands must be done in this order.</li>
@@ -20,12 +20,12 @@
 	<p>In the future we will be adding more roadblocks to prevent normal usage of VVV while under root. E.g. sites will refuse to provision, features will disable themselves, etc.</p>
 	<p><em>By continuing to use VVV with <code>sudo</code> you will be unable to request support for anything other than fixing this issue.</em></p>
 </div>
-<div id="vvv_provision_fail" class="top-notice box" style="display:none">
+<div id="vvv_provision_fail" class="top-notice top-notice--alert box" style="display:none">
 	<p><strong>Problem:</strong> Could not load the site, this implies that provisioning the site failed, please check there were no errors during provisioning, and reprovision.</p>
 	<p><em><strong>Note</strong>, sometimes this is because provisioning hasn't finished yet, if it's still running, wait and refresh the page.</em> If that doesn't fix the issue, re-read our docs on adding sites, check the syntax of all your provisioner files, and double check our troubleshooting page:</p>
 	<p><a class="button" href="https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/">Troubleshooting</a> <a href="https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/" class="button">Adding a Site</a></p>
 </div>
-<div id="vvv_hosts_fail" class="top-notice box" style="display:none">
+<div id="vvv_hosts_fail" class="top-notice top-notice--alert box" style="display:none">
 	<p><strong>Info:</strong> It appears you've accessed the dashboard via the IP, you should visit <a href="http://vvv.test">http://vvv.test</a>, but if this isn't working, make sure you've installed the hosts updater vagrant plugin</p>
 	<p>If you're trying to access a site, you need to visit the host/domain given to the site if one was set.</p>
 	<p><a href="http://vvv.test" class="button">Visit the Dashboard</a></p>

@@ -2,7 +2,13 @@
   --main-bg-color: #2b303b;
   --darker-bg-color: #272b35;
 
+  --alt-bg-color: #343a46;
+  --alt-border-color: #343a46;
+
   --root-warning-bg-color: #290a10;
+
+  --border-color: #4f5b66;
+  --provision-border-color: #21242c;
 
   --main-text-color: #c0c5ce;
   --main-link-color: #ebcb8b;
@@ -12,6 +18,53 @@
 
   --main-link-active-color: #ff00ee;
   --main-link-active-color-bg: #ff00ee11;
+  --main-link-active-color-bg: --text1: color-mix(in srgb, var(--main-link-active-color-bg) 10%, white);
+
+  --code-text-color: #a3be8c;
+  --strong-text-color: #eff1f5;
+
+  --warning-bg: #b54a55;
+  --warning-button-bg: #913b44;
+  --red-warning-color: #9b323d;
+  --green-bar-color: #7da35c;
+
+  --table-bg: rgba(0, 0, 0, 0.2);
+
+  --corner-radius: 4px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-bg-color: #fff;
+    --darker-bg-color: #fafafa;
+
+    --alt-bg-color: #f8f8f8;
+    --alt-border-color: #f0f0f0;
+
+    --root-warning-bg-color: #290a10;
+
+    --border-color:hsl(210, 5.50%, 71.40%);
+    --provision-border-color: var(--border-color);
+
+    --main-text-color: #111;
+    --main-link-color: #ecb343;
+    --main-link-color-bg: color-mix( in srgb, var(--main-link-color) 10%, white );
+    --main-link-hover-color: #ec724d;
+    --main-link-hover-color-bg: color-mix( in srgb, var(--main-link-hover-color) 10%, white );
+
+    --main-link-active-color: #ff00ee;
+    --main-link-active-color-bg: color-mix( in srgb, var(--main-link-active-color) 10%, white );
+
+    --code-text-color: #699641;
+    --strong-text-color: #000;
+
+    --warning-bg: #b54a55;
+    --warning-button-bg: #913b44;
+    --red-warning-color: #9b323d;
+    --green-bar-color: #7da35c;
+
+    --table-bg: rgba(239, 239, 239, 0.1);
+  }
 }
 
 html {
@@ -85,7 +138,7 @@ a {
 	color: var(--main-link-color);
 	text-decoration: none;
 	background: var(--main-link-color-bg);
-  border-radius: 4px;
+  border-radius: var(--corner-radius);
   border-bottom: 1px solid var(--main-link-color);
 }
 
@@ -108,12 +161,12 @@ h2, h3, h4, h5 {
 
 pre, code {
 	background: var(--main-bg-color);
-	border-radius: 4px;
-	border: 1px solid #4f5b66;
+	border-radius: var(--corner-radius);
+	border: 1px solid var(--border-color);
 }
 
 code {
-	color: #a3be8c;
+	color: var(--code-text-color);
 	padding: .1em .2em;
 }
 
@@ -138,7 +191,7 @@ pre.teddy {
 #vvv_logo {
 	font-size: 2em;
 	font-weight: normal;
-	color: white;
+	color: var(--main-text-color);
 	background: var(--main-bg-color);
 	display: inline-block;
   margin: 0;
@@ -154,21 +207,16 @@ pre.teddy {
 }
 
 strong {
-	color: #eff1f5;
+	color: var(--strong-text-color);
 }
 
 nav {
 	margin-bottom: 1.5em;
 }
 
-#vvv_provision_fail,
-#vvv_hosts_fail,
-#vvv_root_warning,
-#vvv_disk_space_fail,
-.top-notice-box.box {
-	background: #9b323d;
+.top-notice--alert.box {
+	background: var( --red-warning-color);
 	font-weight: bold;
-	border: 1px solid var(--main-link-color);
 }
 
 #vvv_disk_space_fail {
@@ -206,9 +254,9 @@ nav {
 }
 
 .box {
-	border-radius: 8px;
+	border-radius: var(--corner-radius);
 	padding: 1.5em;
-	background: #343a46;
+	background: var(--alt-bg-color);
 	box-sizing: border-box;
 	margin-bottom:1em;
 }
@@ -224,20 +272,20 @@ nav {
 }
 
 .site_provision {
-    border: 1px solid #21242c;
+    border: 1px solid var(--provision-border-color);
 }
 
 .site_skip_provision {
-	opacity: .4;
-    border: 1px solid #343a46;
+  opacity: .4;
+  border: 1px solid var(--alt-bg-color);
 }
 
 input,
 .button {
 	padding: .5em 1em;
 	border: 1px solid var(--main-link-color);
-	border-radius: 4px;
-	background: #343a46;
+	border-radius: var(--corner-radius);
+	background: var(--alt-bg-color);
 	color: var(--main-link-color);
 	font-family: 'Source Code Pro', monospace;
 	font-size: 16px;
@@ -273,7 +321,7 @@ details summary {
 }
 
 details summary:hover {
-  color: #d08770;
+  color: var(--main-link-hover-color);
 }
 
 details summary > * {
@@ -301,8 +349,8 @@ input:hover,
 .warning {
 	font-style: italic;
 
-	background: #b54a55;
-	color: white;
+	background: var(--warning-bg);
+	color: var(--main-text-color);
 
 	padding: 1.5em;
 	margin-left: -1.5em;
@@ -311,31 +359,19 @@ input:hover,
 }
 
 .warning .button {
-    background: #913b44;
-    color: white;
+    background: var(--warning-button-bg);
+    color: var(--main-text-color);
 }
 
 .warning .button:hover {
-    color: #d08770;
+    color: var(--main-link-hover-color);
 }
 
 
 .right-column > .box,
 .alt-box {
-	background: var(--darker-bg-color);
-	border: 1px solid #343a46;
-}
-
-.right-column > .box input,
-.alt-box input {
-	background: var(--darker-bg-color);
-}
-
-.right-column > .box input[type="submit"],
-.alt-box input[type="submit"],
-.right-column > .box input[type="button"],
-.alt-box input[type="button"] {
-	background: var(--main-link-color-bg);
+	background: var(--alt-bg-color);
+	border: 1px solid var(--alt-border-color);
 }
 
 .vvv-site-link {
@@ -348,11 +384,10 @@ input:hover,
 }
 
 table {
-	border-radius: 4px;
-	width: 100%;
+	border-radius: var(--corner-radius);
 	text-align: left;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+	width: 100%;
+  background-color: var(--table-bg);
   padding: 0 8px;
 }
 
@@ -413,19 +448,19 @@ td:last-child {
 
 .disk .disk-use-bar {
 	background: var(--main-bg-color);
-	border-radius: 4px;
-	border: 1px solid #4f5b66;
+	border-radius: var(--corner-radius);
+	border: 1px solid var(--border-color);
 	height: 1.2em;
 }
 
 .disk .disk-use-bar .inner {
-	background: #7da35c;
-	border-radius: 4px;
+	background: var(--green-bar-color);
+	border-radius: var(--corner-radius);
 	height: 1.2em;
 }
 
 .disk .disk-use-bar .inner.low {
-	background: #9b323d;
+	background: var(--red-warning-color);
 }
 
 .disk .disk-total,
@@ -445,7 +480,7 @@ td:last-child {
 
 .chip {
 	border: 1px dashed;
-	border-radius: 4px;
+	border-radius: var(--corner-radius);
 	display: inline-block;
 	font-size: 75%;
 	padding: 0.1em 0.75em;
@@ -453,8 +488,8 @@ td:last-child {
 
 .chip.default,
 .chip.active {
-	border-color: white;
-	color: white;
+	border-color: var(--main-text-color);
+	color: var(--main-text-color);
 	font-weight: bold;
 }
 
