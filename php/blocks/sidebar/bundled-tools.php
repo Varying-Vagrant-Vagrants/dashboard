@@ -87,6 +87,7 @@ function is_extension_enabled( $search_extension ) {
 			<?php
 		}
 		?>
+		<a class="button tool-directmysql" href="mysql://external:external@vvv.test:3306">Open SQL Client</a>
 	</nav>
 	<h3>Search the Documentation</h3>
 	<form method="get" action="https://varyingvagrantvagrants.org/search/" >
