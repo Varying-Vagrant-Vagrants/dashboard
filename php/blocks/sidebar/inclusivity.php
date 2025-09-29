@@ -27,8 +27,8 @@ if ( file_exists( '/vagrant/provisioned_as_root' ) ) {
 	</div>
 	<ul>
 	<li>
-			<a href="https://saveukraine.org/" target="_blank">
-				🇺🇦 saveukraine.org
+			<a href="https://www.saveukraineua.org/" target="_blank">
+				🇺🇦 saveukraineua.org
 			</a>
 		</li>
 		<li>
