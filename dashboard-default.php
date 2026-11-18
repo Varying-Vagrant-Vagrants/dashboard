@@ -17,7 +17,10 @@ $root_warning = file_exists( '/vagrant/provisioned_as_root' );
 	<body class="<?php echo $root_warning ? 'root-warning' : ''; ?>">
 		<header>
 			<h2 id="vvv_logo">
-				<img src="/dashboard/vvv-tight.png"/> VVV
+				<picture>
+					<source srcset="/dashboard/vvv-tight-light.png" media="(prefers-color-scheme: light)">
+					<img src="/dashboard/vvv-tight.png" alt=""/>
+				</picture> VVV
 			</h2>
 			<small class="version">v<?php echo strip_tags( $version ); ?></small>
 		</header>

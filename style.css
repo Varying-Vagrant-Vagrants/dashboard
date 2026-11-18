@@ -35,34 +35,26 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --main-bg-color: #fff;
-    --darker-bg-color: #fafafa;
-
-    --alt-bg-color: #f8f8f8;
-    --alt-border-color: #f0f0f0;
-
+    --main-bg-color: #eceff4;
+    --darker-bg-color: #e2e6ed;
+    --alt-bg-color: #f6f7f9;
+    --alt-border-color: #dde2ea;
     --root-warning-bg-color: #290a10;
-
-    --border-color:hsl(210, 5.50%, 71.40%);
+    --border-color: #9aa3b0;
     --provision-border-color: var(--border-color);
-
-    --main-text-color: #111;
-    --main-link-color: #ecb343;
+    --main-text-color: #2e3440;
+    --main-link-color: #8a5a00;
     --main-link-color-bg: color-mix( in srgb, var(--main-link-color) 10%, white );
-    --main-link-hover-color: #ec724d;
+    --main-link-hover-color: #a8431c;
     --main-link-hover-color-bg: color-mix( in srgb, var(--main-link-hover-color) 10%, white );
-
-    --main-link-active-color: #ff00ee;
+    --main-link-active-color: #b0009f;
     --main-link-active-color-bg: color-mix( in srgb, var(--main-link-active-color) 10%, white );
-
-    --code-text-color: #699641;
-    --strong-text-color: #000;
-
+    --code-text-color: #3f6d1f;
+    --strong-text-color: #1d2129;
     --warning-bg: #b54a55;
     --warning-button-bg: #913b44;
     --red-warning-color: #9b323d;
     --green-bar-color: #7da35c;
-
     --table-bg: rgba(239, 239, 239, 0.1);
   }
 }
@@ -110,7 +102,7 @@ footer {
 }
 
 header {
-  padding-bottom: 0;
+  padding-bottom: 1em;
 }
 
 body.root-warning {
@@ -201,7 +193,7 @@ pre.teddy {
 	padding: 0.1em 0.25em;
 }
 
-#vvv_logo > img {
+#vvv_logo img {
 	max-height: 1em;
 	vertical-align: sub;
 }
@@ -216,7 +208,13 @@ nav {
 
 .top-notice--alert.box {
 	background: var( --red-warning-color);
+	color: #fff;
 	font-weight: bold;
+}
+
+.top-notice--alert.box strong,
+.top-notice--alert.box a:not(.button) {
+	color: inherit;
 }
 
 #vvv_disk_space_fail {
