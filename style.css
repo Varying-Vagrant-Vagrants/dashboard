@@ -110,7 +110,7 @@ footer {
 }
 
 header {
-  padding-bottom: 0;
+  padding-bottom: 1em;
 }
 
 body.root-warning {
@@ -216,7 +216,13 @@ nav {
 
 .top-notice--alert.box {
 	background: var( --red-warning-color);
+	color: #fff;
 	font-weight: bold;
+}
+
+.top-notice--alert.box strong,
+.top-notice--alert.box a:not(.button) {
+	color: inherit;
 }
 
 #vvv_disk_space_fail {
