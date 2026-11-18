@@ -37,32 +37,24 @@
   :root {
     --main-bg-color: #eceff4;
     --darker-bg-color: #e2e6ed;
-
     --alt-bg-color: #f6f7f9;
     --alt-border-color: #dde2ea;
-
     --root-warning-bg-color: #290a10;
-
     --border-color: #9aa3b0;
     --provision-border-color: var(--border-color);
-
     --main-text-color: #2e3440;
     --main-link-color: #8a5a00;
     --main-link-color-bg: color-mix( in srgb, var(--main-link-color) 10%, white );
     --main-link-hover-color: #a8431c;
     --main-link-hover-color-bg: color-mix( in srgb, var(--main-link-hover-color) 10%, white );
-
     --main-link-active-color: #b0009f;
     --main-link-active-color-bg: color-mix( in srgb, var(--main-link-active-color) 10%, white );
-
     --code-text-color: #3f6d1f;
     --strong-text-color: #1d2129;
-
     --warning-bg: #b54a55;
     --warning-button-bg: #913b44;
     --red-warning-color: #9b323d;
     --green-bar-color: #7da35c;
-
     --table-bg: rgba(239, 239, 239, 0.1);
   }
 }
